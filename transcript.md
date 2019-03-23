@@ -129,7 +129,7 @@
 
 #### Sodium bicarbonate 8.4%
 
-- {1}-{1.5} mEq IV slow push for hyperkalaemia, antidepressant overdose – **not** prolonged resuscitation
+- {1}-{1.5} mEq IV slow push for hyperkalaemia, antidepressant overdose – **not** prolonged resuscitation
 
 ## Potentially Reversible Causes
 
@@ -160,20 +160,20 @@
 
 #### Call for help and E-trolley
 
-- Ask: "Who will be the crisis manager?"
+- Ask: "Who will be the crisis manager?"
 
 #### Turn Fi O<sub>2</sub> to 100%
 
-- Verify oxygenation/ventilation adequate 
+- Verify oxygenation/ventilation adequate
 
-#### Give atropine
+#### Give atropine
 
-#### Stop surgical stimulation (if laparoscopy, desufflate)
+#### Stop surgical stimulation (if laparoscopy, desufflate)
 
 #### If atropine ineffective:
 
-- Start adrenaline or dopamine infusion
-- *Or* start transcutaneous pacing 
+- Start adrenaline or dopamine infusion
+- *Or* start transcutaneous pacing
 
 #### Consider…
 
@@ -211,11 +211,11 @@
 1. Place pacing electrodes front and back.
 2. Connect 3-lead ECG from pacing defibrillator to patient
 3. Turn monitor/defibrillator to **pacer** mode
-4. Set **pacer rate** (ppm) to 80/min (adjust based on clinical response once pacing is established)
+4. Set **pacer rate** (ppm) to 80/min (adjust based on clinical response once pacing is established)
 5. Start to 60mA of **pacer output** and increase until electrical capture (pacer spikes aligned with QRS complexes)
 6. Set final milliamperes 10mA above initial capture level
-7. Confirm effective capture 
-   - Electrically: Assess ECG tracing
+7. Confirm effective capture 
+   - Electrically: Assess ECG tracing
    - Mechanically: Palpate femoral pulse (carotid pulse unreliable)
 
 # Difficult Airway: Needle Cricothyroidotomy
@@ -224,7 +224,7 @@
 
 #### Call for expert anaesthesiology and/or ENT specialist, E-trolley & Difficult Airway Cart 
 
-- Ask: "Who will be the crisis manager?"
+- Ask: "Who will be the crisis manager?"
 
 #### Identify cricothyroid membrane
 
@@ -233,7 +233,7 @@
 #### Use Insyte 14G or Ravussin needle-catheter connected to 5ml syringe with normal saline
 
 - Stab over midpoint of cricothyroid membrane, at an angle 45-60° to the skin, in a caudad direction
-- On aspiration of air into 5ml syringe, advance 2mm and confirm aspiration of air again before advancing catheter over needle
+- On aspiration of air into 5ml syringe, advance 2mm and confirm aspiration of air again before advancing catheter over needle
 
 #### Connect Rapid O<sub>2</sub> to auxiliary oxygen source on anaesthetic machine at 15L/min, and connect luer-lock end to catheter
 
@@ -251,9 +251,9 @@ Note: This device can deliver 15L/min but at the expense of high airway pressure
 
 #### Initial jet:
 
-- Deliver 4 second oxygen jet by occluding thumb Y-piece 
-- While administering
-  1. Look for chest rise
+- Deliver 4 second oxygen jet by occluding thumb Y-piece
+- While administering
+  1. Look for chest rise
   2. Ensure no excessive back pressure on thumb 
 
 #### Wait for response: 
@@ -267,7 +267,7 @@ Note: This device can deliver 15L/min but at the expense of high airway pressure
 
 #### Wait for response for 20 seconds
 
-- No SpO<sub>2</sub> response:  2 seconds jet 
+- No SpO<sub>2</sub> response:  2 seconds jet
 - SpO<sub>2</sub> response: Repeat from Step 3 
 
 ## In all cases, once there has been successful oxygenation, early conversion to a definitive airway is required.
@@ -278,13 +278,13 @@ Note: This device can deliver 15L/min but at the expense of high airway pressure
 
 #### Call for expert anaesthesiology and/or ENT specialist, E-trolley & Difficult Airway Cart 
 
-- Ask: "Who will be the crisis manager?"
+- Ask: "Who will be the crisis manager?"
 
 #### Identify cricothyroid membrane
 
-#### Transverse stab incision through skin and membrane
+#### Transverse stab incision through skin and membrane
 
-#### Rotate scalpel blade 90° with sharp edge of blade pointing caudally, while maintaining traction towards the operator
+#### Rotate scalpel blade 90° with sharp edge of blade pointing caudally, while maintaining traction towards the operator
 
 #### Insert bougie into airway 
 
@@ -295,7 +295,7 @@ Note: This device can deliver 15L/min but at the expense of high airway pressure
 
 - Inflate cuff and withdraw ETT till resistance is felt from inflated cuff abutting airway wall
 
-#### Ventilate with low-pressure source
+#### Ventilate with low-pressure source
 
 #### Verify tube position and pulmonary ventilation with EtCO<sub>2</sub>
 
@@ -328,8 +328,8 @@ Note: This device can deliver 15L/min but at the expense of high airway pressure
 - If non-electrical: Extinguish with saline or saline-soaked gauze
 - If electrical equipment burning, use only CO<sub>2</sub> fire extinguisher (safe in wounds)
 - **Do not use:** 
-  - Alcohol-based solutions
-  - Any liquid on or in energised equipment (laser, anaesthesia/diathermy machine)
+  - Alcohol-based solutions
+  - Any liquid on or in energised equipment (laser, anaesthesia/diathermy machine)
 
 #### EOT Registrar-on-call to take charge of EOT evacuation 
 
@@ -345,7 +345,7 @@ Note: This device can deliver 15L/min but at the expense of high airway pressure
     1. **Drug tray**
     2. **Ambu bag** (induction room) 
     3. **Portable monitor** (induction room/recovery area); 
-    4. **Torchlight** (Anaesthesia machine drawer) 
+    4. **Torchlight** (Anaesthesia machine drawer)
   - Inform **Circulating Nurse** to turn of all medical gases supply to OT and induction room
   - Transfer patient onto trolley and evacuate patient to Assembly area accompanied by Scrub Nurse 
 - If patient cannot be evacuated:
@@ -387,7 +387,7 @@ Note: This device can deliver 15L/min but at the expense of high airway pressure
 
 #### Ventilate patient with bag-valve-mask circuit 
 
-- If necessary, continue anaesthesia with TIVA     
+- If necessary, continue anaesthesia with TIVA
 - Avoid supplemental O<sub>2</sub> & nitrous oxide, if possible
 
 #### Surgeon to inspect airway with rigid bronchoscope to assess damage and remove remaining fragments 
@@ -400,7 +400,7 @@ Note: This device can deliver 15L/min but at the expense of high airway pressure
 
 ## CVS: Cardiovascular collapse - hypotension, brady-arrhythmias including conduction blocks, ventricular tachy-arrhythmias or asystole
 
-#### Stop injecting the LA
+#### Stop injecting the LA
 
 #### Call for help, E-trolley and Intralipid 20%
 
@@ -414,7 +414,7 @@ Note: This device can deliver 15L/min but at the expense of high airway pressure
 
 #### Secure IV access, give Intralipid 20% & treat seizures
 
-- Consider sending bloods for analysis
+- Consider sending bloods for analysis
 
 #### Commence CPR if circulatory arrest
 
@@ -448,9 +448,9 @@ Note: This device can deliver 15L/min but at the expense of high airway pressure
 
 #### If cardiovascular stability not restored after 5 min:
 
-#### Repeat up to max two boluses of {1.5} ml  5 min apart, and increase infusion to {30} ml/hr
+#### Repeat up to max two boluses of {1.5} ml 5 min apart, and increase infusion to {30} ml/hr
 
-#### Do not exceed max cumulative dose of  {12} ml.
+#### Do not exceed max cumulative dose of {12} ml.
 
 ## Approximate dose in 70-kg patient 
 
@@ -460,13 +460,13 @@ Note: This device can deliver 15L/min but at the expense of high airway pressure
 
 #### Repeat up to max two boluses of 100 ml 5 min apart, and increase infusion to 2000 ml/hr if indicated
 
-#### Do not exceed max cumulative dose of  840 ml.
+#### Do not exceed max cumulative dose of 840 ml.
 
 # Malignant Hyperthermia
 
 ## Unexplained increase in ETCO2 **and** tachycardia **and** increase in oxygen requirement. Temperature changes are a late sign.
 
-#### STOP all trigger agents
+#### STOP all trigger agents
 
 #### Call for help, MH Kit, vapour-free AU machine
 
@@ -475,13 +475,13 @@ Note: This device can deliver 15L/min but at the expense of high airway pressure
 - Obtain E-trolley & defibrillator - place in induction room
 - Move induction room patient to another theatre, with all notes
 
-#### Hyperventilate with 15L/min 100% Fi O<sub>2</sub>
+#### Hyperventilate with 15L/min 100% Fi O<sub>2</sub>
 
-#### Maintain anaesthesia with IV agents e.g. Propofol 
+#### Maintain anaesthesia with IV agents e.g. Propofol 
 
 #### Abandon or finish surgery ASAP, insert IDC 
 
-- Assist in cooling with intra-abdominal sterile cold saline lavage 
+- Assist in cooling with intra-abdominal sterile cold saline lavage 
 
 #### Give IV Dantrolene (only found in MH box at MOT)
 
@@ -511,7 +511,7 @@ Note: This device can deliver 15L/min but at the expense of high airway pressure
 
 #### Repeat 1 mg/kg bolus as required up to max 10 mg/kg.
 
--  Note: Dantrolene can interact with calcium channel blockers (e.g. Verapamil) and precipitate profound hypotension 
+- Note: Dantrolene can interact with calcium channel blockers (e.g. Verapamil) and precipitate profound hypotension 
 
 #### Propofol: TIVA 4 mcg/ml or 30–50 ml/hr in adults
 
@@ -525,18 +525,18 @@ Note: This device can deliver 15L/min but at the expense of high airway pressure
 
 #### Arrhythmias
 
-- Consider magnesium 
+- Consider magnesium
 - Amiodarone 3mg/kg
 - Metoprolol1-2mg IV prm
 - Lignocaine 1mg/kg IV
-- Procaina,mide 300mg over 15 mins, if adult
+- Procainamide 300mg over 15 mins, if adult
 - Avoid calcium channel blockers
 
 #### Myoglobinemia/Renal protection
 
-- Always ensure **aggressive fluid resuscitation** has been initiated **before** considering pharmacological diuresis  
+- Always ensure **aggressive fluid resuscitation** has been initiated **before** considering pharmacological diuresis 
 - Maintain urine output ≥ 2 ml/kg/hr by maintaining intravasular volume with normal saline **and** mannitol and/or furosemide 
-- Mannitol {0.5} g (Including 3g mannitol/vial of dantrolene) - Forced alkaline diuresis 
+- Mannitol {0.5} g (Including 3g mannitol/vial of dantrolene) - Forced alkaline diuresis 
 - Consider sodium bicarbonate {0.5}-{1} mmol if pH < 7.2
 
 #### DIVC
@@ -562,11 +562,11 @@ Note: This device can deliver 15L/min but at the expense of high airway pressure
 
 ## > 50% blood volume loss in 3 hours, > 150 ml blood loss / min or loss of one blood volume within 24 hours
 
-#### Call for help and E-trolley
+#### Call for help and E-trolley
 
 #### Confirm there is surgical effort to control bleeding
 
-#### Maintain airway, secure with ETT if necessary, ventilate with 100% Fi O<sub>2</sub> until crisis is resolved
+#### Maintain airway, secure with ETT if necessary, ventilate with 100% Fi O<sub>2</sub> until crisis is resolved
 
 #### Obtain 2 peripheral large bore IV access, run warm fluids fast; actively warm patient 
 
@@ -646,29 +646,29 @@ Note: This device can deliver 15L/min but at the expense of high airway pressure
 - Ask: "Who will be the crisis manager?"
 - Say: "Shock patient as soon as defibrillator arrives"
 
-#### Turn FiO<sub>2</sub> to 100%, turn off volatile anaesthetics 
+#### Turn FiO<sub>2</sub> to 100%, turn off volatile anaesthetics
 
-- Ventilate at 8–10 breaths/min. Do not overventilate.
+- Ventilate at 8–10 breaths/min. Do not overventilate.
 
-#### **Shock** at 150 Joules immediately. Resume CPR
+#### **Shock** at 150 Joules immediately. Resume CPR
 
 - Assess every 2 minutes. Aim for any pause to be < 5 seconds.
 - Instruct change of CPR compression provider as and when necessary.
 - Check EtCO<sub>2</sub>
   - If < 10mmHg, evaluate CPR technique
-  - If sudden increase to > 40mmHg, may indicate ROSC 
+  - If sudden increase to > 40mmHg, may indicate ROSC
 
 #### **Shock** at 2 minutes.  Resume CPR.
 
 #### **Shock** at 4 minutes. Give Adrenaline 1mg. Resume CPR. 
 
-- Drugs are given immediately following shock.
+- Drugs are given immediately following shock.
 
-#### **Shock** at 6 minutes. Give Amiodarone 300mg. Resume CPR. 
+#### **Shock** at 6 minutes. Give Amiodarone 300mg. Resume CPR. 
 
-#### Continue to shock every 2 minutes and treat reversible causes, consider reading aloud Hs and Ts
+#### Continue to shock every 2 minutes and treat reversible causes, consider reading aloud Hs and Ts
 
-#### For resistant VF/VT, give adrenaline 1mg every 2 minutes (alternate shocks) and further 150mg of amiodarone followed by infusion of 900mg over 24 hours 
+#### For resistant VF/VT, give adrenaline 1mg every 2 minutes (alternate shocks) and further 150mg of amiodarone followed by infusion of 900mg over 24 hours 
 
 #### Following ROSC, commence post resuscitation care.
 
@@ -790,23 +790,23 @@ Note: This device can deliver 15L/min but at the expense of high airway pressure
 
 ## Peer Support Networks
 
-#### SGH SAFE (Support Action For Employees):  Supports institutions on SGH Campus 
+#### SGH SAFE (Support Action For Employees): Supports institutions on SGH Campus 
 
 - Tel: 6576 2012
--  9am – 6pm (weekdays)
+- 9am – 6pm (weekdays)
 
 #### CGH PEER Network Hotline
 
-- Tel: 8125 8452 
+- Tel: 8125 8452
 - 9am – 5pm (weekdays)
 
 #### SKH PALS (Peers Actively Leading Support) Hotline
 
-- Tel: 6379 3370 
+- Tel: 6379 3370
 - 8.30am – 5.30pm (weekdays)
 
 #### KKH Carers' Support Helpline
 
-- Tel: 8181 7655 
+- Tel: 8181 7655
 - 8.30am – 5.30pm (weekdays)
 
