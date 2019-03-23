@@ -72,8 +72,8 @@ Child (6-12 years): 100 mg IV
 
 #### Blood samples for mast cell tryptase are to be taken during resuscitation, 2 hours and >24 hours
 
-- At least 5mls of blood into plain tube labelled with patient’s sticker and time of collection
-- Use "Immunology Form" and write "Note: Sample to TTSH, spin and separate", indicate 'serum tryptase test' under 'other tests', indicate Department’s fax number 62241792
+- At least 5mls of blood into plain tube labelled with patient's sticker and time of collection
+- Use "Immunology Form" and write "Note: Sample to TTSH, spin and separate", indicate 'serum tryptase test' under 'other tests', indicate Department's fax number 62241792
 - No need to send sample in ice, regardless of time of sample collection
 - Use pneumatic tube system, send to '901'
 
@@ -165,7 +165,7 @@ Chest compressions, Airway, Vascular access, Documentation, Crash trolley, Time 
 
 #### Call for help and E-trolley
 
-- Ask: “Who will be the crisis manager?”
+- Ask: "Who will be the crisis manager?"
 
 #### Turn Fi O<sub>2</sub> to 100%
 
@@ -225,11 +225,11 @@ Chest compressions, Airway, Vascular access, Documentation, Crash trolley, Time 
 
 # Difficult Airway: Needle Cricothyroidotomy
 
-## Rescue technique for “can’t intubate, can’t ventilate” situation to buy time before definite airway
+## Rescue technique for "can't intubate, can't ventilate" situation to buy time before definite airway
 
 #### Call for expert anaesthesiology and/or ENT specialist, E-trolley & Difficult Airway Cart 
 
-- Ask: “Who will be the crisis manager?”
+- Ask: "Who will be the crisis manager?"
 
 #### Identify cricothyroid membrane
 
@@ -279,11 +279,11 @@ Note: This device can deliver 15L/min but at the expense of high airway pressure
 
 # Difficult Airway: Surgical Cricothyroidotomy
 
-## Rescue technique for “can’t intubate, can’t ventilate” situation or failure of needle cricothyroidotomy 
+## Rescue technique for "can't intubate, can't ventilate" situation or failure of needle cricothyroidotomy 
 
 #### Call for expert anaesthesiology and/or ENT specialist, E-trolley & Difficult Airway Cart 
 
-- Ask: “Who will be the crisis manager?”
+- Ask: "Who will be the crisis manager?"
 
 #### Identify cricothyroid membrane
 
@@ -320,11 +320,11 @@ Note: This device can deliver 15L/min but at the expense of high airway pressure
 
 # Fire
 
-## Evidence of fire (smoke, odour, flash) on patient, drapes or in patient’s airway 
+## Evidence of fire (smoke, odour, flash) on patient, drapes or in patient's airway 
 
 #### Call for help, and activate fire alarm
 
-- Ask: “Who will be the crisis manager?”
+- Ask: "Who will be the crisis manager?"
 - Delegate: Get the fire extinguisher (Located along corridors)
 
 #### Extinguish fire
@@ -354,7 +354,7 @@ Note: This device can deliver 15L/min but at the expense of high airway pressure
   - Inform **Circulating Nurse** to turn of all medical gases supply to OT and induction room
   - Transfer patient onto trolley and evacuate patient to Assembly area accompanied by Scrub Nurse 
 - If patient cannot be evacuated:
-  - Cover patient in ‘fire blanket’ (R2 exit lobby/M5 prep room)
+  - Cover patient in 'fire blanket' (R2 exit lobby/M5 prep room)
   - Ensure patient ventilated and anaesthetised
   - Take torchlight (In anaesthesia machine drawer)
 
@@ -398,3 +398,419 @@ Note: This device can deliver 15L/min but at the expense of high airway pressure
 #### Surgeon to inspect airway with rigid bronchoscope to assess damage and remove remaining fragments 
 
 #### Refer to ICU for post crisis management 
+
+# Local Anaesthetic Toxicity
+
+## CNS: Sudden alteration in mental status, agitation or loss of consciousness with or without tonic-clonic seizures
+
+## CVS: Cardiovascular collapse - hypotension, brady-arrhythmias including conduction blocks, ventricular tachy-arrhythmias or asystole
+
+#### Stop injecting the LA
+
+#### Call for help, E-trolley and Intralipid 20%
+
+- Ask: "Who will be the crisis manager?" 
+- Intralipid is kept in **AU store between R1 and R2**
+
+#### Maintain the airway
+
+- If necessary, secure with tracheal tube
+- Use **100% Fi O<sub>2</sub>** and ensure adequate ventilation
+
+#### Secure IV access, give Intralipid 20% & treat seizures
+
+- Consider sending bloods for analysis
+
+#### Commence CPR if circulatory arrest
+
+- Follow standard ACLS protocols for respective cardiac rhythms detected
+- Do **not** use IV lignocaine for treatment of VT/VF
+- **Avoid** beta blockers
+
+#### Consider the use of cardiopulmonary bypass
+
+- Arrhythmias may be very refractory to treatment
+- Recovery from LA-induced cardiac arrest may take >1hr
+- To get perfusionists on standby
+
+## Drug Doses (Anticonvulsants)
+
+#### Midazolam
+
+- {0.05}-{0.1}mg
+
+#### Thiopentone
+
+- {1} mg
+
+#### Propofol
+
+- {0.5}-{2} mg
+
+## Intralipid Regimen
+
+#### Give **bolus** {1.5} ml over 1 min and start **infusion** at {15} ml/hr
+
+#### If cardiovascular stability not restored after 5 min:
+
+#### Repeat up to max two boluses of {1.5} ml  5 min apart, and increase infusion to {30} ml/hr
+
+#### Do not exceed max cumulative dose of  {12} ml.
+
+## Approximate dose in 70-kg patient 
+
+#### Give bolus 100 ml over 1 min and start infusion at 1000 ml/hr
+
+#### If cardiovascular stability not restored after 5 min:
+
+#### Repeat up to max two boluses of 100 ml 5 min apart, and increase infusion to 2000 ml/hr if indicated
+
+#### Do not exceed max cumulative dose of  840 ml.
+
+# Malignant Hyperthermia
+
+## Unexplained increase in ETCO2 **and** tachycardia **and** increase in oxygen requirement. Temperature changes are a late sign.
+
+#### STOP all trigger agents
+
+#### Call for help, MH Kit, vapour-free AU machine
+
+- MH Kit & machine: Opposite D1 (EOT)
+- Delegate roles as per MH Action Cards (in MH Kit)
+- Obtain E-trolley & defibrillator - place in induction room
+- Move induction room patient to another theatre, with all notes
+
+#### Hyperventilate with 15L/min 100% Fi O<sub>2</sub>
+
+#### Maintain anaesthesia with IV agents e.g. Propofol 
+
+#### Abandon or finish surgery ASAP, insert IDC 
+
+- Assist in cooling with intra-abdominal sterile cold saline lavage 
+
+#### Give IV Dantrolene (only found in MH box at MOT)
+
+- Highest priority, mobilise pharmacist 
+- Use as many people as are available
+
+#### Insert intra-arterial line, central venous line
+
+- Ix: iStat, UECr, FBC, PT/PTT, CK, urine myoglobin 
+- Insert temp probe, BIS monitor 
+
+#### Initiate aggressive active cooling measures (see notes) and expose patient outside sterile field 
+
+#### Treat associated conditions: Hyperkalemia / Arrhythmias / Acidosis / Myoglobinemia / DIVC 
+
+#### Admit to ICU
+
+- Monitor with serial labs e.g. ABG, FBC, electrolytes, CK, coagulation profile; temperature and urine output
+
+#### Early recognition and fluid resuscitation is key.
+
+## Drug Doses
+
+#### Each vial of Dantrolene (20 mg) to be reconstituted with 60 ml sterile water
+
+#### Give IV Dantrolene 2.5 mg/kg bolus until signs of hypermetabolism i.e. acidosis/pyrexia/muscle rigidity resolve. 
+
+#### Repeat 1 mg/kg bolus as required up to max 10 mg/kg.
+
+-  Note: Dantrolene can interact with calcium channel blockers (e.g. Verapamil) and precipitate profound hypotension 
+
+#### Propofol: TIVA 4 mcg/ml or 30–50 ml/hr in adults
+
+### Treatment for associated conditions
+
+#### Hyperkalemia
+
+- {0.3} ml 10% Ca Gluconate OR {0.1} ml 10% CaCl<sub>2 </sub>
+- 10U actrapid insulin with 50 ml 50% dextrose
+- Consider IV 8.4% sodium bicarbonate
+
+#### Arrhythmias
+
+- Consider magnesium 
+- Amiodarone 3mg/kg
+- Metoprolol1-2mg IV prm
+- Lignocaine 1mg/kg IV
+- Procaina,mide 300mg over 15 mins, if adult
+- Avoid calcium channel blockers
+
+#### Myoglobinemia/Renal protection
+
+- Always ensure **aggressive fluid resuscitation** has been initiated **before** considering pharmacological diuresis  
+- Maintain urine output ≥ 2 ml/kg/hr by maintaining intravasular volume with normal saline **and** mannitol and/or furosemide 
+- Mannitol {0.5} g (Including 3g mannitol/vial of dantrolene) - Forced alkaline diuresis 
+- Consider sodium bicarbonate {0.5}-{1} mmol if pH < 7.2
+
+#### DIVC
+
+- FFP, cryoprecipitate, platelets
+
+#### Inotropic support
+
+- Adrenaline/Noradrenaline prn 
+
+## Additional Notes
+
+1. Active cooling measures include:
+   - Intra-abdominal lavage with cold sterile saline at 4°C
+   - Cool IV fluids 
+   - Cool sponging and ice packs (obtain from perfusionist @ NHC **or** MOT behind OT 26 in Store L12)
+   - Lowering theatre temperature: Call 4000
+2. Monitor for acute kidney injury and compartment syndrome
+3. Aim urine output >2 ml/kg/hr with pH >7.0
+4. Consider alternative diagnoses (sepsis, phaeochromocytoma, thyroid storm, myopathy)
+
+# Massive Hemorrhage
+
+## > 50% blood volume loss in 3 hours, > 150 ml blood loss / min or loss of one blood volume within 24 hours
+
+#### Call for help and E-trolley
+
+#### Confirm there is surgical effort to control bleeding
+
+#### Maintain airway, secure with ETT if necessary, ventilate with 100% Fi O<sub>2</sub> until crisis is resolved
+
+#### Obtain 2 peripheral large bore IV access, run warm fluids fast; actively warm patient 
+
+- Use fluid pressure bag or rapid infusor +/- cell saver
+
+#### Contact blood bank (Ext 3666/4852) to activate Massive Transfusion Protocol (MTP) and crossmatch blood early
+
+- Send GXM for urgent determination 
+- Consider O-positive e-blood for all patients except Indian, Caucasians of child-bearing potential (O-negative blood); AB-positive FFP to all patients 
+- D-negative or positive red cell alloantibodies should be excluded from MTP – use O negative emergency blood if necessary but contact BTS MO urgently for advice 
+- Call blood bank directly for release of MTP Pack 1, 2 but inform BTS MO after delivery of MTP Pack 2 for release of MTP Pack 3; 
+- Inform BTS MO when MTP ceases 
+
+#### Consider the use of anti-fibrinolytic therapy 
+
+#### Establish bedside monitoring: Arterial line, urinary catheter, CVP, temperature, TEG or ROTEM
+
+#### Monitor serial lab tests: ABG, FBC, PT/PTT, electrolytes, Ca/Mg/PO<sub>4</sub>, fibrinogen
+
+## Drug Doses for Vasopressor Infusions
+
+#### Noradrenaline
+
+- {0.01}–{0.2} mcg/min IV
+
+#### Adrenaline
+
+- 10 mcg boluses (1 ml of 1:100000 dilution)
+- {0.01}–{0.2} mcg/min IV
+
+#### Dopamine
+
+- {5}-{20} mcg/min IV
+
+## Notes
+
+#### MTP Packs:
+
+- Pack 1: 4 units PCT, 4 units FFP, 1 unit pooled platelets
+- Pack 2: 4 units PCT, 4 units FFP, 1 unit pooled platelets
+- Pack 3: 4 units PCT, 4 units FFP, 1 unit pooled platelets, 2 units pooled cryoprecipitate
+- BTS MO must be informed after activation of Pack 2 in case Pack 3 is required
+
+## Therapy Requirements
+
+#### FFP
+
+- Indication: PT, aPTT < 1.5 normal, fibrinogen < 1 g/l
+- Administer {15} ml
+
+#### Cryoprecipitate
+
+- Indication: Fibrinogen < 1 g/l
+- Administer {5}–{10} ml
+
+#### Factor VIIa
+
+- Indication: Fibrinogen < 1 g/l
+- Administer {90} mcg
+
+#### Tranexamic acid
+
+- Indication: Fibrinolysis
+- Administer 1 g IV over 10 min, then 1 g over 8 hours
+
+#### Platelets
+
+- Indication: Platelet count <75×10<sup>9</sup>
+- Administer {15}-{20}ml
+
+# Ventricular Fibrillation/Tachycardia (VF/VT)
+
+## Shockable pulseless cardiac arrest 
+
+#### Call for help and E-trolley
+
+- Ask: "Who will be the crisis manager?"
+- Say: "Shock patient as soon as defibrillator arrives"
+
+#### Turn FiO<sub>2</sub> to 100%, turn off volatile anaesthetics 
+
+- Ventilate at 8–10 breaths/min. Do not overventilate.
+
+#### **Shock** at 150 Joules immediately. Resume CPR
+
+- Assess every 2 minutes. Aim for any pause to be < 5 seconds.
+- Instruct change of CPR compression provider as and when necessary.
+- Check EtCO<sub>2</sub>
+  - If < 10mmHg, evaluate CPR technique
+  - If sudden increase to > 40mmHg, may indicate ROSC 
+
+#### **Shock** at 2 minutes.  Resume CPR.
+
+#### **Shock** at 4 minutes. Give Adrenaline 1mg. Resume CPR. 
+
+- Drugs are given immediately following shock.
+
+#### **Shock** at 6 minutes. Give Amiodarone 300mg. Resume CPR. 
+
+#### Continue to shock every 2 minutes and treat reversible causes, consider reading aloud Hs and Ts
+
+#### For resistant VF/VT, give adrenaline 1mg every 2 minutes (alternate shocks) and further 150mg of amiodarone followed by infusion of 900mg over 24 hours 
+
+#### Following ROSC, commence post resuscitation care.
+
+## Drug Doses and Treatments
+
+#### Adrenaline
+
+1 mg in 10ml (1:10,000) IV, repeat 2 minutes 
+
+### Antiarrythmics 
+
+#### Amiodarone
+
+- 300 mg IV over 15 mins
+
+#### Magnesium
+
+- 1 to 2 g IV/IO over 3 mins for Torsades de Pointes 
+
+#### Lignocaine
+
+- {1} mg IV if amiodarone not available
+
+## Defibrillator Instructions
+
+#### Tear debrillator pads into two and place across chest 
+
+#### Turn defibrillator **on**, set to **Defib** mode and increase **Energy Level** to 150 Joules 
+
+#### Deliver shock: Press **Charge** then press **Shock** 
+
+## Potentially reversible causes (Hs & Ts)
+
+- Hydrogen ion (acidosis)
+- Hypo/Hyperkalaemia
+- Hypothermia
+- Hypovolemia
+- Hypoxia
+- Tamponade (Cardiac)
+- Tension pneumothorax
+- Thrombosis (coronary/pulmonary)
+- Toxins
+
+## During CPR
+
+#### Airway: 
+
+Adequate ventilation
+
+#### Circulation: 
+
+Confirm adequate IV or IO access
+
+#### Assign roles: 
+
+Chest compressions, Airway, Vascular access, Documentation, Crash trolley, Time keeping
+
+## Post-Resuscitation 
+
+#### Consider:
+
+- Referral for urgent percutaneous intervention
+- Therapeutic hypothermia
+
+#### Avoid:
+
+- Hyperglycaemia (treat > 10 mmol/L)
+- Hyperoxaemia (keep SpO<sub>2</sub> 94-98%)
+- Hypercarbia
+
+# Debriefing after a Crisis
+
+## To promote guided reflection as a way to improve and maintain patient safety, increase efficiency and contribute to a supportive culture of dialogue and learning in any clinical environment 
+
+#### Tell: Share your perspective on the clinical situation
+
+- Target: agreement on key discussion points
+- What shall we discuss to improve patient care?
+- Share your perspective – How do you see the situation?
+
+#### Analyse: Explore specific points of patient care as appropriate 
+
+- What helped or hindered
+  - Communication
+  - Decision making
+  - Situational awareness
+  - Efficiency 
+- The way forward 
+  - How can we repeat successful performance?
+  - How can we improve?
+
+#### Collate learning points
+
+- What can the team learn from the experience?
+
+#### Key actions
+
+- What can we do to improve and maintain patient safety?
+- Let's find solutions and agree on responsibilities
+
+## Values
+
+#### Positivity
+
+- Identify positive strategies and behaviours.
+- Avoid negative comments 
+
+#### Focus on finding solution.
+
+- Rather than pointing out blame.
+
+#### Professional communication.
+
+- Value everyone's input.
+
+#### Step by step. 
+
+- Identify small objectives and follow up outcomes. 
+
+## Peer Support Networks
+
+#### SGH SAFE (Support Action For Employees):  Supports institutions on SGH Campus 
+
+- Tel: 6576 2012
+-  9am – 6pm (weekdays)
+
+#### CGH PEER Network Hotline
+
+- Tel: 8125 8452 
+- 9am – 5pm (weekdays)
+
+#### SKH PALS (Peers Actively Leading Support) Hotline
+
+- Tel: 6379 3370 
+- 8.30am – 5.30pm (weekdays)
+
+#### KKH Carers' Support Helpline
+
+- Tel: 8181 7655 
+- 8.30am – 5.30pm (weekdays)
