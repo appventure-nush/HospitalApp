@@ -38,19 +38,17 @@
 
 #### Adrenaline: 
 
-Adult: 50 mcg (0.5 ml of 1:10 000 solution)
-
-Child: {1.0} μg ({0.1} ml of 1:100 000 solution)
-
-IV infusion: {2}-{10} mcg/min
+- Adult: 50 mcg (0.5 ml of 1:10 000 solution)
+- Child: {1.0} μg ({0.1} ml of 1:100 000 solution)
+- IV infusion: {2}-{10} mcg/min
 
 #### Dopamine: 
 
-{2}-{10} mcg/min
+- {2}-{10} mcg/min
 
 #### Salbutamol:
 
-MDI: 6-8 puffs repeated as necessary
+- MDI: 6-8 puffs repeated as necessary
 
 **Refractory bronchospasm**: IV 100-200 mcg slow bolus ± infusion of 5-25 mcg/min. Consider neb Salbutamol: NS 2:2 
 
@@ -58,13 +56,10 @@ MDI: 6-8 puffs repeated as necessary
 
 #### Hydrocortisone: 
 
-Adult: 200 mg IV
-
-Child (<6 months): 25mg IV
-
-Child (6 months - 12 years): 50mg IV
-
-Child (6-12 years): 100 mg IV
+- Adult: 200 mg IV
+- Child (<6 months): 25mg IV
+- Child (6 months - 12 years): 50mg IV
+- Child (6-12 years): 100 mg IV
 
 #### Consider oral 2nd generation antihistamines when patient able to take orally
 
@@ -112,29 +107,29 @@ Child (6-12 years): 100 mg IV
 
 #### Adrenaline
 
-**1 mg in 10 ml (1:10,000) IV**, repeat every 2 minutes 
+- **1 mg in 10 ml (1:10,000) IV**, repeat every 2 minutes 
 
 #### Dopamine
 
-{5}-{20} mcg/min IV
+- {5}-{20} mcg/min IV
 
 ### Hyperkalaemia treatments
 
 #### Calcium glutonate 
 
-{0.3} ml IV
+- {0.3} ml IV
 
 #### *Or* calcium chloride
 
-{0.1} ml IV
+- {0.1} ml IV
 
 #### Insulin
 
-10 units regular IV with 1-2 amps D50W as needed 
+- 10 units regular IV with 1-2 amps D50W as needed 
 
 #### Sodium bicarbonate 8.4%
 
-{1}-{1.5} mEq IV slow push for hyperkalaemia, antidepressant overdose – **not** prolonged resuscitation
+- {1}-{1.5} mEq IV slow push for hyperkalaemia, antidepressant overdose – **not** prolonged resuscitation
 
 ## Potentially Reversible Causes
 
@@ -151,15 +146,15 @@ Child (6-12 years): 100 mg IV
 
 #### Airway: 
 
-Adequate ventilation
+- Adequate ventilation
 
 #### Circulation: 
 
-Confirm adequate IV or IO access
+- Confirm adequate IV or IO access
 
 #### Assign roles: 
 
-Chest compressions, Airway, Vascular access, Documentation, Crash trolley, Time keeping
+- Chest compressions, Airway, Vascular access, Documentation, Crash trolley, Time keeping
 
 # Bradycardia - Unstable
 
@@ -721,15 +716,15 @@ Note: This device can deliver 15L/min but at the expense of high airway pressure
 
 #### Airway: 
 
-Adequate ventilation
+- Adequate ventilation
 
 #### Circulation: 
 
-Confirm adequate IV or IO access
+- Confirm adequate IV or IO access
 
 #### Assign roles: 
 
-Chest compressions, Airway, Vascular access, Documentation, Crash trolley, Time keeping
+- Chest compressions, Airway, Vascular access, Documentation, Crash trolley, Time keeping
 
 ## Post-Resuscitation 
 
@@ -814,3 +809,4 @@ Chest compressions, Airway, Vascular access, Documentation, Crash trolley, Time 
 
 - Tel: 8181 7655 
 - 8.30am – 5.30pm (weekdays)
+
