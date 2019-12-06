@@ -1,0 +1,6 @@
+framework module Pods_Hospital_App_iOS {
+  umbrella header "Pods-Hospital App iOS-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Down
 
 class DataHandler {
     
@@ -22,14 +23,18 @@ class DataHandler {
             return _markdownContents
         }
         public var formattedContents: NSAttributedString? {
-            return NSAttributedString() //TODO: Convert markdown to attributed string
+            return try? Down(markdownString: markdownContents).toAttributedString()
         }
         
         
-        public var asAttributedString: NSAttributedString? {
-            let newMarkdown = "# " + _title + "\n\n" + _markdownContents
-            return NSAttributedString() //TODO: Convert markdown to attributed string
+        public func asMarkdown() -> String {
+            return "# " + _title + "\n\n" + _markdownContents
         }
+        public func asAttributedString() -> NSAttributedString? {
+            let newMarkdown = asMarkdown()
+            return try? Down(markdownString: newMarkdown).toAttributedString()
+        }
+        
         
         public init(title: String, markdownContents: String) {
             self._title = title
