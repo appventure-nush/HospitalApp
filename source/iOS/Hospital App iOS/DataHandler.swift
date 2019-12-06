@@ -9,12 +9,11 @@
 import Foundation
 import Down
 
-class DataHandler {
+public class DataHandler {
     
-    class Topic {
-        private var _title: String
-        private var _markdownContents: String
-        
+    public class Section {
+        fileprivate var _title: String
+        fileprivate var _markdownContents: String
         
         public var title: String {
             return _title
@@ -35,14 +34,61 @@ class DataHandler {
             return try? Down(markdownString: newMarkdown).toAttributedString()
         }
         
-        
-        public init(title: String, markdownContents: String) {
+        fileprivate init(title: String, markdownContents: String) {
             self._title = title
             self._markdownContents = markdownContents
         }
     }
     
-    
+    public class Subtopic: Section {
+        public override func asMarkdown() -> String {
+            return "## " + _title + "\n\n" + _markdownContents
+        }
+    }
+    public class Topic : Section {
+        fileprivate var _subtopics: [Subtopic] = []
+        public var subtopics: [Subtopic] {
+            return _subtopics
+        }
+        fileprivate override init(title: String, markdownContents: String) {
+            super.init(title: title, markdownContents: markdownContents)
+        }
+        
+        public func convertToSubtopics() {
+            var remainingContents = ""
+            var tmp_title : String?
+            var tmp_contents : String?
+            func insert() {
+                if let t = tmp_title, let c = tmp_contents {
+                    _subtopics.append(
+                        Subtopic(title: t,
+                                 markdownContents: c.trimmingCharacters(in: .whitespacesAndNewlines)
+                        )
+                    )
+                }
+            }
+            
+            for line in markdownContents.split(separator: "\n") {
+                if line.starts(with: "## ") {
+                    insert()
+                    tmp_title =
+                        line
+                        .dropFirst()
+                        .dropFirst()
+                        .trimmingCharacters(in: .whitespacesAndNewlines)
+                    
+                    tmp_contents = ""
+                } else if tmp_contents != nil {
+                    tmp_contents! += line + "\n"
+                } else {
+                    remainingContents += line + "\n"
+                }
+            }
+            insert()
+            
+            _markdownContents = remainingContents
+        }
+    }
     
     
     private var _rawContents: String
@@ -62,17 +108,19 @@ class DataHandler {
         
         var tmp_title : String?
         var tmp_contents : String?
+        func insert() {
+            if let t = tmp_title, let c = tmp_contents {
+                list.append(
+                    Topic(title: t,
+                             markdownContents: c.trimmingCharacters(in: .whitespacesAndNewlines)
+                    )
+                )
+            }
+        }
         
         for line in rawContents.split(separator: "\n") {
             if line.starts(with: "# ") {
-                if let t = tmp_title, let c = tmp_contents {
-                    list.append(
-                        Topic(title: t,
-                              markdownContents: c.trimmingCharacters(in: .whitespacesAndNewlines)
-                        )
-                    )
-                }
-                
+                insert()
                 tmp_title    =
                     line
                     .dropFirst()
@@ -85,6 +133,8 @@ class DataHandler {
                 return nil //No header detected.
             }
         }
+        insert()
+        
         
         return list
     }
