@@ -1,0 +1,25 @@
+*.log
+*.class
+*.o
+
+#Xcode
+*.pbxuser
+*.mode1v3
+*.mode2v3
+*.perspectivev3
+*.xcuserstate
+xcuserdata/
+
+#Android Studio
+.gradle/
+build/
+.idea/
+*.iml
+local.properties
+
+#cache files
+.DS_Store
+.Trashes
+Thumbs.db
+desktop.ini
+~$*

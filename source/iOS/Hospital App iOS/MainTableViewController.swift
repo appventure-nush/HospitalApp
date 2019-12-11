@@ -10,8 +10,23 @@ import UIKit
 
 class MainTableViewController: UITableViewController {
 
+    var dataHandler: DataHandler?
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if #available(iOS 11.0, *) {
+            self.navigationController?.navigationBar.prefersLargeTitles = true
+            self.navigationItem.largeTitleDisplayMode = .always
+        }
+        
+        if let url = Bundle.main.url(forResource: "transcript", withExtension: "md"),
+            let str = try? String(contentsOf: url, encoding: .utf8) {
+                
+            dataHandler = DataHandler(rawContents: str)
+        }
     }
 
     // MARK: - Table view data source
@@ -21,18 +36,20 @@ class MainTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        //TODO: make this dynamic
-        return 14
+        return dataHandler?.topicList.count ?? 0
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         
-        //TODO: make this actually display data
-        cell.textLabel?.text = "<placeholder>"
-        
+        cell.textLabel?.text = dataHandler!.topicList[indexPath.row].title
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        self.performSegue(withIdentifier: "showContents", sender: dataHandler!.topicList[indexPath.row])
     }
     
 
@@ -51,8 +68,12 @@ class MainTableViewController: UITableViewController {
     
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-        
+        if segue.identifier == "showContents",
+            let vc = segue.destination as? ContentViewController,
+            let topic = sender as? DataHandler.Topic {
+            
+            vc.topic = topic
+        }
     }
 
 }

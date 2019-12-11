@@ -3,10 +3,15 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		73EBC61F65229D8644044C03 /* Pods_Hospital_App_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 083F9EFE1826A1A6CA598CE4 /* Pods_Hospital_App_iOS.framework */; };
+		D0361F1B239AC17F0013B12E /* index.html in Resources */ = {isa = PBXBuildFile; fileRef = D0361F1A239AC17F0013B12E /* index.html */; };
+		D0983808239A579B00F850A3 /* DataHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0983807239A579B00F850A3 /* DataHandler.swift */; };
+		D098380A239A5BE300F850A3 /* transcript.md in Resources */ = {isa = PBXBuildFile; fileRef = D0983809239A5BE300F850A3 /* transcript.md */; };
+		D098380C239A72CE00F850A3 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D098380B239A72CE00F850A3 /* Extensions.swift */; };
 		ED73072A220B2E310093B38F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED730729220B2E310093B38F /* AppDelegate.swift */; };
 		ED73072C220B2E310093B38F /* ContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED73072B220B2E310093B38F /* ContentViewController.swift */; };
 		ED73072F220B2E310093B38F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED73072D220B2E310093B38F /* Main.storyboard */; };
@@ -16,6 +21,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		083F9EFE1826A1A6CA598CE4 /* Pods_Hospital_App_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Hospital_App_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		53F3A86ABED3A62A0333BFD4 /* Pods-Hospital App iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hospital App iOS.release.xcconfig"; path = "Target Support Files/Pods-Hospital App iOS/Pods-Hospital App iOS.release.xcconfig"; sourceTree = "<group>"; };
+		92F6700C5CF8D4715760208C /* Pods-Hospital App iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hospital App iOS.debug.xcconfig"; path = "Target Support Files/Pods-Hospital App iOS/Pods-Hospital App iOS.debug.xcconfig"; sourceTree = "<group>"; };
+		D0361F1A239AC17F0013B12E /* index.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = index.html; sourceTree = "<group>"; };
+		D0983807239A579B00F850A3 /* DataHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataHandler.swift; sourceTree = "<group>"; };
+		D0983809239A5BE300F850A3 /* transcript.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = transcript.md; path = ../../../transcript.md; sourceTree = "<group>"; };
+		D098380B239A72CE00F850A3 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		ED730726220B2E310093B38F /* Hospital App iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Hospital App iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED730729220B2E310093B38F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ED73072B220B2E310093B38F /* ContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewController.swift; sourceTree = "<group>"; };
@@ -31,17 +43,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				73EBC61F65229D8644044C03 /* Pods_Hospital_App_iOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		27C3936ECFE834D8C279D0BA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				083F9EFE1826A1A6CA598CE4 /* Pods_Hospital_App_iOS.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		ED73071D220B2E310093B38F = {
 			isa = PBXGroup;
 			children = (
 				ED730728220B2E310093B38F /* Hospital App iOS */,
 				ED730727220B2E310093B38F /* Products */,
+				FF374339C0EB5E2CC52F872B /* Pods */,
+				27C3936ECFE834D8C279D0BA /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -58,13 +81,26 @@
 			children = (
 				ED730729220B2E310093B38F /* AppDelegate.swift */,
 				ED73073B220B2F2D0093B38F /* MainTableViewController.swift */,
+				D0983807239A579B00F850A3 /* DataHandler.swift */,
+				D098380B239A72CE00F850A3 /* Extensions.swift */,
 				ED73072B220B2E310093B38F /* ContentViewController.swift */,
+				D0361F1A239AC17F0013B12E /* index.html */,
 				ED73072D220B2E310093B38F /* Main.storyboard */,
 				ED730730220B2E360093B38F /* Assets.xcassets */,
 				ED730732220B2E360093B38F /* LaunchScreen.storyboard */,
+				D0983809239A5BE300F850A3 /* transcript.md */,
 				ED730735220B2E360093B38F /* Info.plist */,
 			);
 			path = "Hospital App iOS";
+			sourceTree = "<group>";
+		};
+		FF374339C0EB5E2CC52F872B /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				92F6700C5CF8D4715760208C /* Pods-Hospital App iOS.debug.xcconfig */,
+				53F3A86ABED3A62A0333BFD4 /* Pods-Hospital App iOS.release.xcconfig */,
+			);
+			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -74,9 +110,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = ED730738220B2E360093B38F /* Build configuration list for PBXNativeTarget "Hospital App iOS" */;
 			buildPhases = (
+				038E1C754B1DCE8F1F6AD5E1 /* [CP] Check Pods Manifest.lock */,
 				ED730722220B2E310093B38F /* Sources */,
 				ED730723220B2E310093B38F /* Frameworks */,
 				ED730724220B2E310093B38F /* Resources */,
+				FA4FEDC3471D7A6E799D7518 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -99,6 +137,7 @@
 				TargetAttributes = {
 					ED730725220B2E310093B38F = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1120;
 					};
 				};
 			};
@@ -125,19 +164,65 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D0361F1B239AC17F0013B12E /* index.html in Resources */,
 				ED730734220B2E360093B38F /* LaunchScreen.storyboard in Resources */,
 				ED730731220B2E360093B38F /* Assets.xcassets in Resources */,
+				D098380A239A5BE300F850A3 /* transcript.md in Resources */,
 				ED73072F220B2E310093B38F /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		038E1C754B1DCE8F1F6AD5E1 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Hospital App iOS-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FA4FEDC3471D7A6E799D7518 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Hospital App iOS/Pods-Hospital App iOS-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Hospital App iOS/Pods-Hospital App iOS-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Hospital App iOS/Pods-Hospital App iOS-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		ED730722220B2E310093B38F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D098380C239A72CE00F850A3 /* Extensions.swift in Sources */,
+				D0983808239A579B00F850A3 /* DataHandler.swift in Sources */,
 				ED73072C220B2E310093B38F /* ContentViewController.swift in Sources */,
 				ED73073C220B2F2D0093B38F /* MainTableViewController.swift in Sources */,
 				ED73072A220B2E310093B38F /* AppDelegate.swift in Sources */,
@@ -284,36 +369,40 @@
 		};
 		ED730739220B2E360093B38F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 92F6700C5CF8D4715760208C /* Pods-Hospital App iOS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2MNM6PUQP4;
 				INFOPLIST_FILE = "Hospital App iOS/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.limwernjie.Hospital-App-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
 		ED73073A220B2E360093B38F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 53F3A86ABED3A62A0333BFD4 /* Pods-Hospital App iOS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2MNM6PUQP4;
 				INFOPLIST_FILE = "Hospital App iOS/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.limwernjie.Hospital-App-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
