@@ -1,21 +1,26 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat">
+    <style name="AppTheme" parent="Theme.AppCompat.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">#fff</item>
         <item name="android:textColor">@color/colorPrimaryDark</item>
         <item name="android:colorBackground">@color/colorBackground</item>
         <item name="colorPrimaryDark">@color/colorPrimary</item>
         <item name="colorAccent">@color/colorAccent</item>
-        <item name="actionBarStyle">@style/ActionBar</item>
     </style>
-    <style name="ActionBar" parent="@style/Widget.AppCompat.ActionBar">
-        <item name="android:titleTextStyle">@style/ActionBarTitleText</item>
-        <item name="titleTextStyle">@style/ActionBarTitleText</item>
+
+    <style name="Toolbar" parent="@style/Widget.AppCompat.ActionBar">
+        <item name="android:textColorPrimary">@color/colorPrimaryDarkLess</item>
+        <item name="android:textColorSecondary">@color/colorPrimaryDarkLess</item>
     </style>
-    <style name="ActionBarTitleText" parent="@style/TextAppearance.AppCompat.Widget.ActionBar.Title">
-        <item name="android:textColor">@color/colorPrimaryDarker</item>
-        <item name="android:gravity">center</item>
+
+    <style name="NavigationView" parent="@style/Widget.Design.NavigationView">
+        <item name="android:textColorPrimary">@color/colorPrimaryDarkLess</item>
+        <item name="android:textColorSecondary">@color/colorPrimaryDarkLess</item>
     </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>
