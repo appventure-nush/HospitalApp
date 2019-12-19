@@ -255,7 +255,8 @@ public class MainActivity extends AppCompatActivity {
                 span.setSpan(new RelativeSizeSpan(1.4f), st, span.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
                 //span.setSpan(new LineHeightSpan.Standard(4*size), st, span.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
             } else if (original.startsWith("#### ")) {
-                span.setSpan(new StyleSpan(Typeface.ITALIC), st, span.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+                span.setSpan(new StyleSpan(Typeface.BOLD_ITALIC), st, span.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+                span.setSpan(new ForegroundColorSpan(ContextCompat.getColor(getApplicationContext(),R.color.colorAccentDark)),st,span.length(),Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
                 span.setSpan(new RelativeSizeSpan(1.2f), st, span.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
                 //span.setSpan(new LineHeightSpan.Standard(4*size), st, span.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
             }

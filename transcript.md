@@ -40,7 +40,7 @@
 
 - Adult: 50 mcg (0.5 ml of 1:10 000 solution)
 - Child: {1.0} μg ({0.1} ml of 1:100 000 solution)
-- IV infusion: {2}-{10} mcg/min
+- IV infusion: {0.05}-{0.10} mcg/min
 
 #### Dopamine: 
 
@@ -90,7 +90,7 @@
 
 #### Give IV Adrenaline 1mg in 10ml bolus 
 
-- Repeat adrenaline every 2 minutes 
+- Repeat adrenaline every 3-5 minutes 
 
 #### Assess every 2 minutes
 
@@ -157,6 +157,8 @@
 - Chest compressions, Airway, Vascular access, Documentation, Crash trolley, Time keeping
 
 # Bradycardia - Unstable
+
+## Instructions
 
 #### Call for help and E-trolley
 
@@ -475,7 +477,7 @@ Note: This device can deliver 15L/min but at the expense of high airway pressure
 - Obtain E-trolley & defibrillator - place in induction room
 - Move induction room patient to another theatre, with all notes
 
-#### Hyperventilate with 15L/min 100% Fi O<sub>2</sub>
+#### Hyperventilate with 15L/min 100% Fi O<sub>2</sub>, remove vaporisers, change circuit tubing
 
 #### Maintain anaesthesia with IV agents e.g. Propofol 
 
@@ -668,7 +670,7 @@ Note: This device can deliver 15L/min but at the expense of high airway pressure
 
 #### Continue to shock every 2 minutes and treat reversible causes, consider reading aloud Hs and Ts
 
-#### For resistant VF/VT, give adrenaline 1mg every 2 minutes (alternate shocks) and further 150mg of amiodarone followed by infusion of 900mg over 24 hours 
+#### For resistant VF/VT, give adrenaline 1mg every 4 minutes (alternate shocks) and further 150mg of amiodarone followed by infusion of 900mg over 24 hours 
 
 #### Following ROSC, commence post resuscitation care.
 
@@ -809,4 +811,3 @@ Note: This device can deliver 15L/min but at the expense of high airway pressure
 
 - Tel: 8181 7655
 - 8.30am – 5.30pm (weekdays)
-
