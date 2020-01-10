@@ -210,15 +210,22 @@
 
 ## Transcutaneous Pacing Instructions
 
-1. Place pacing electrodes front and back.
-2. Connect 3-lead ECG from pacing defibrillator to patient
-3. Turn monitor/defibrillator to **pacer** mode
-4. Set **pacer rate** (ppm) to 80/min (adjust based on clinical response once pacing is established)
-5. Start to 60mA of **pacer output** and increase until electrical capture (pacer spikes aligned with QRS complexes)
-6. Set final milliamperes 10mA above initial capture level
-7. Confirm effective capture 
-   - Electrically: Assess ECG tracing
-   - Mechanically: Palpate femoral pulse (carotid pulse unreliable)
+#### 1. Place pacing electrodes front and back.
+
+#### 2. Connect 3-lead ECG from pacing defibrillator to patient
+
+#### 3. Turn monitor/defibrillator to **pacer** mode
+
+#### 4. Set **pacer rate** (ppm) to 80/min (adjust based on clinical response once pacing is established)
+
+#### 5. Start to 60mA of **pacer output** and increase until electrical capture (pacer spikes aligned with QRS complexes)
+
+#### 6. Set final milliamperes 10mA above initial capture level
+
+#### 7. Confirm effective capture 
+
+- Electrically: Assess ECG tracing
+- Mechanically: Palpate femoral pulse (carotid pulse unreliable)
 
 # Difficult Airway: Needle Cricothyroidotomy
 
@@ -251,23 +258,25 @@ Note: All equipment available in 2nd drawer of AU machine
 
 Note: This device can deliver 15L/min but at the expense of high airway pressure and risk of barotrauma 
 
-#### Initial jet:
+#### 1. Initial jet:
 
 - Deliver 4 second oxygen jet by occluding thumb Y-piece
 - While administering
   1. Look for chest rise
   2. Ensure no excessive back pressure on thumb 
 
-#### Wait for response: 
+#### 2. Wait for response: 
 
 - Release occlusion and wait 20 seconds for SpO<sub>2</sub> to rise 
-- DO NOT jet again unless 
-  1. No initial rise in SpO<sub>2</sub> or 
-  2. Drop in SpO<sub>2</sub> by 5% from maximum previously achieved from initial successful jet 
 
-#### Subsequent jet: 2 seconds duration 
+#### 3. DO NOT jet again unless 
 
-#### Wait for response for 20 seconds
+1. No initial rise in SpO<sub>2</sub> or 
+2. Drop in SpO<sub>2</sub> by 5% from maximum previously achieved from initial successful jet 
+
+#### 4. Subsequent jet: 2 seconds duration 
+
+#### 5. Wait for response for 20 seconds
 
 - No SpO<sub>2</sub> response:  2 seconds jet
 - SpO<sub>2</sub> response: Repeat from Step 3 
@@ -303,15 +312,15 @@ Note: This device can deliver 15L/min but at the expense of high airway pressure
 
 ## Equipment
 
-- Scalpel – short and rounded (Size 10)
-- Small (e.g. 6-7mm) cuffed tracheal tube **or** tracheostomy tube 
-- Bougie
+1. Scalpel – short and rounded (Size 10)
+2. Small (e.g. 6-7mm) cuffed tracheal tube **or** tracheostomy tube 
+3. Bougie
 
 ## If anatomy not palpable
 
-- Make a 6-8cm midline vertical neck incision 
-- With blunt finger dissection, separate the strap muscles to expose the trachea
-- Cannula cricothyroidotomy can then be achieved under vision. 
+1. Make a 6-8cm midline vertical neck incision 
+2. With blunt finger dissection, separate the strap muscles to expose the trachea
+3. Cannula cricothyroidotomy can then be achieved under vision. 
 
 ## In all cases, once there has been successful oxygenation, early conversion to a definitive airway is required.
 
@@ -375,26 +384,26 @@ Note: This device can deliver 15L/min but at the expense of high airway pressure
 
 ## **Airway** Fire
 
-#### Call for help and inform your immediate theatre team 
+#### 1. Call for help and inform your immediate theatre team 
 
-#### Surgeon to switch off laser and flood operation site with water/saline
+#### 2. Surgeon to switch off laser and flood operation site with water/saline
 
 - Remove all flammable and burning materials from the airway 
 
-#### Disconnect anaesthesia machine and stop flow of respiratory gases 
+#### 3. Disconnect anaesthesia machine and stop flow of respiratory gases 
 
-#### Remove all flammable materials and ETT
+#### 4. Remove all flammable materials and ETT
 
 - If difficult airway: railroad new ETT through bougie 
 
-#### Ventilate patient with bag-valve-mask circuit 
+#### 5. Ventilate patient with bag-valve-mask circuit 
 
 - If necessary, continue anaesthesia with TIVA
 - Avoid supplemental O<sub>2</sub> & nitrous oxide, if possible
 
-#### Surgeon to inspect airway with rigid bronchoscope to assess damage and remove remaining fragments 
+#### 6. Surgeon to inspect airway with rigid bronchoscope to assess damage and remove remaining fragments 
 
-#### Refer to ICU for post crisis management 
+#### 7. Refer to ICU for post crisis management 
 
 # Local Anaesthetic Toxicity
 
@@ -446,21 +455,21 @@ Note: This device can deliver 15L/min but at the expense of high airway pressure
 
 ## Intralipid Regimen
 
-#### Give **bolus** {1.5} ml over 1 min and start **infusion** at {15} ml/hr
+#### 1. Give **bolus** {1.5} ml over 1 min and start **infusion** at {15} ml/hr
 
 #### If cardiovascular stability not restored after 5 min:
 
-#### Repeat up to max two boluses of {1.5} ml 5 min apart, and increase infusion to {30} ml/hr
+#### 2. Repeat up to max two boluses of {1.5} ml 5 min apart, and increase infusion to {30} ml/hr
 
 #### Do not exceed max cumulative dose of {12} ml.
 
 ## Approximate dose in 70-kg patient 
 
-#### Give bolus 100 ml over 1 min and start infusion at 1000 ml/hr
+#### 1. Give bolus 100 ml over 1 min and start infusion at 1000 ml/hr
 
 #### If cardiovascular stability not restored after 5 min:
 
-#### Repeat up to max two boluses of 100 ml 5 min apart, and increase infusion to 2000 ml/hr if indicated
+#### 2. Repeat up to max two boluses of 100 ml 5 min apart, and increase infusion to 2000 ml/hr if indicated
 
 #### Do not exceed max cumulative dose of 840 ml.
 

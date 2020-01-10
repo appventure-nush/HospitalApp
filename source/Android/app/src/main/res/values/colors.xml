@@ -2,6 +2,7 @@
 <resources>
     <color name="colorWhite">#fff</color>
     <color name="colorTranslucent">#1000</color>
+    <color name="colorOverlay">#8000</color>
     <color name="colorBackground">#fff</color>
     <color name="colorPrimaryLight">#ddeeff</color>
     <color name="colorPrimaryLightLess">#e3e3f3</color>
