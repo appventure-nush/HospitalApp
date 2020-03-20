@@ -10,6 +10,8 @@ import UIKit
 import WebKit
 
 public class WeightCalcHandler {
+    
+    ///Shows a prompt over a view controller for configuring the patient weight and updates it in `Settings.preferredPatientWeight`.
     public static func showConfigurationPrompt(on vc: UIViewController, completion: (() -> ())?) {
         var inputTextField: UITextField?
         let prompt = UIAlertController(title: "Weight (kg)", message: "Calculate dosage by patient weight:", preferredStyle: .alert)
@@ -19,9 +21,9 @@ public class WeightCalcHandler {
         prompt.addAction(UIAlertAction(title: "Set", style: .default, handler: { action in
             if let text = inputTextField?.text,
                 let num = Double(text) {
-                Settings.patientWeightPreferred = num
+                Settings.preferredPatientWeight = num
             } else if inputTextField?.text?.isEmpty != false {
-                Settings.patientWeightPreferred = nil
+                Settings.preferredPatientWeight = nil
             } else {
                 let errorPrompt = UIAlertController(title: "Error", message: "Invalid value", preferredStyle: .alert)
                 errorPrompt.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
@@ -32,7 +34,7 @@ public class WeightCalcHandler {
         prompt.addTextField(configurationHandler: { textField in
             textField.placeholder = "None (disabled)"
             textField.keyboardType = .decimalPad
-            if let w = Settings.patientWeightPreferred {
+            if let w = Settings.preferredPatientWeight {
                 textField.text = "\(w)"
             }
             inputTextField = textField
@@ -41,6 +43,7 @@ public class WeightCalcHandler {
         vc.present(prompt, animated: true, completion: nil)
     }
     
+    ///Replaces dynamic dosage values (wrapped in `{}`) in the input text with the relevant calculations based off `Settings.preferredPatientWeight`, and then returns the updated text as an output.
     public static func updateDynamicDosage(markdownContents: String) -> String {
         var newStr = ""
         var inDynDosTag = false
@@ -54,7 +57,7 @@ public class WeightCalcHandler {
                 let terms = tmpDynDos.split(separator: " ")
                 if var val = Double(terms[0]) {
                     let unit = terms[1]
-                    if let weight = Settings.patientWeightPreferred {
+                    if let weight = Settings.preferredPatientWeight {
                         val *= weight
                         val = round(val*1000)/1000
                         newStr += "**<dyn>" + "\(val) \(unit)" + "</dyn>**";
@@ -75,71 +78,6 @@ public class WeightCalcHandler {
         }
         newStr += tmpDynDos
         return newStr
-    }
-    
-    public static func injectJavascriptSetup(into webView: WKWebView) {
-        return
-        webView.evaluateJavaScript(
-            """
-            var doseConvList = [];
-            function setupDynamicDose() {
-                if (document.body.innerText.match(/{.*}/g) == null) {
-                    doseConvList = [];
-                    return {"present": false}
-                }
-                if (document.getElementsByClassName("dynamicDoseLabel") == [] && document.body.innerText.match(/{.*}/g).length >= 0) {
-                    
-                    doseConvList = document.body.innerText.match(/{.*}/g);
-                
-                    for (var i = 0; i < doseConvList.length; i++) {
-                        var terms = doesConvList[i].split(" ");
-                        doesConvList[i] = {"value": terms[0] - 0, "unit/kg": terms[1]};
-                    }
-
-                    document.body.innerHTML = document.body.innerHTML.replace(/{.*}/g, "<b><span class='dynamicDoseLabel'></span></b>");
-                    
-                    updateDynamicDoses();
-                    return {"present": true}
-                }
-            }
-            
-            function updateDynamicDoses(value) {
-                var eles = document.getElementsByClassName("dynamicDoseLabel");
-                if (value == undefined || value == null) {
-                    for (var i = 0; i < eles.length; i++) {
-                        eles.innerText = doseConvList[i]["value"] + " " + doseConvList[i]["value"]["unit"] + "/kg";
-                    }
-                } else {
-                    for (var i = 0; i < eles.length; i++) {
-                        eles.innerText = doseConvList[i]["value"]*value + " " + doseConvList[i]["value"]["unit"];
-                    }
-                }
-                return {"result": true}
-            }
-
-            setupDynamicDose();
-            """
-        ) { (res, err) in
-            if err != nil {
-                print("ono js injection went wrong yeet")
-                print(err!)
-            } else {
-                print("javascript \(res)")
-            }
-        }
-    }
-    public static func injectJavascriptUpdate(into webView: WKWebView, patientWeight: Double? = nil) {
-        let input = patientWeight ?? Settings.patientWeightPreferred
-        let inputStr = input != nil ? String(input!) : "null"
-        let inputFunc = "updateDynamicDoses(\(inputStr));"
-        webView.evaluateJavaScript(inputFunc) { (res, err) in
-            if err != nil {
-                print("ono js injection went wrong aaaa")
-                print(err!)
-            } else {
-                print("javascript \(res)")
-            }
-        }
     }
 }
 

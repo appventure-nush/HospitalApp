@@ -17,5 +17,5 @@ public class Settings {
             UserDefaults.standard.set(x, forKey: "contentMinimumTextSize")
         }
     }
-    public static var patientWeightPreferred: Double?
+    public static var preferredPatientWeight: Double?
 }
