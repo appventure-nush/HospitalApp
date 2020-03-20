@@ -39,17 +39,17 @@
 
 ##### Dopamine
 
-- {5}-{20} mcg/min IV
+- {5 mcg}/min-{20 mcg}/min IV
 
 #### Hyperkalaemia treatments
 
-##### Calcium glutonate
+##### Calcium gluconate
 
-- {0.3} ml IV
+- {0.3 ml} IV
 
 ##### *Or* calcium chloride
 
-- {0.1} ml IV
+- {0.1 ml} IV
 
 ##### Insulin
 
@@ -57,7 +57,7 @@
 
 ##### Sodium bicarbonate 8.4%
 
-- {1}-{1.5} mEq IV slow push for hyperkalaemia, antidepressant overdose – **not** prolonged resuscitation
+- {1 mEq}-{1.5 mEq} IV slow push for hyperkalaemia, antidepressant overdose – **not** prolonged resuscitation
 
 ### Potentially Reversible Causes
 
@@ -124,7 +124,7 @@
 
 ##### Dopamine
 
-- {5}-{20} mcg/min IV
+- {5 mcg}/min-{20 mcg}/min IV
 
 #### Overdose Treatments
 
@@ -208,7 +208,7 @@
 
 ##### Lignocaine
 
-- {1} mg IV if amiodarone not available
+- {1 mg} IV if amiodarone not available
 
 ### Defibrillator Instructions
 
@@ -275,12 +275,12 @@
 
 - Intubate if airway oedema or potential respiratory compromise
 
-##### Give IV Crystalloids fast ({20} ml); repeat as required.
+##### Give IV Crystalloids fast ({20 ml}); repeat as required.
 
 ##### Give IV Adrenaline; repeat as required.
 
 - Consider IV Adrenaline infusion if repeated boluses required (i.e. severe hypotension or bronchospasm)
-- **Refractory hypotension:** Continue Adrenaline and IV fluid bolus {50} ml
+- **Refractory hypotension:** Continue Adrenaline and IV fluid bolus {50 ml}
 - Consider insertion of IA/CVP lines; Consider TTE to assess filling
 
 ##### Obtain labelled blood samples.
@@ -302,12 +302,12 @@
 ##### Adrenaline:
 
 - Adult: 50 mcg (0.5 ml of 1:10 000 solution)
-- Child: {1.0} μg ({0.1} ml of 1:100 000 solution)
-- IV infusion: {0.05}-{0.10} mcg/min
+- Child: {1.0 μg} ({0.1 ml} of 1:100 000 solution)
+- IV infusion: {0.05 mcg}/min-{0.10 mcg}/min
 
 ##### Dopamine:
 
-- {2}-{10} mcg/min
+- {2 mcg}/min-{10 mcg}/min
 
 ##### Salbutamol:
 
@@ -551,25 +551,25 @@ Note: This device can deliver 15L/min but at the expense of high airway pressure
 
 ##### Midazolam
 
-- {0.05}-{0.1} mg
+- {0.05 mg}-{0.1 mg}
 
 ##### Thiopentone
 
-- {1} mg
+- {1 mg}
 
 ##### Propofol
 
-- {0.5}-{2} mg
+- {0.5 mg}-{2 mg}
 
 ### Intralipid Regimen
 
-##### 1. Give **bolus** {1.5} ml over 1 min and start **infusion** at {15} ml/hr
+##### 1. Give **bolus** {1.5 ml} over 1 min and start **infusion** at {15 ml}/hr
 
 ##### If cardiovascular stability not restored after 5 min:
 
-##### 2. Repeat up to max two boluses of {1.5} ml 5 min apart, and increase infusion to {30} ml/hr
+##### 2. Repeat up to max two boluses of {1.5 ml} 5 min apart, and increase infusion to {30 ml}/hr
 
-##### Do not exceed max cumulative dose of {12} ml.
+##### Do not exceed max cumulative dose of {12 ml}.
 
 ### Approximate dose in 70-kg patient
 
@@ -587,10 +587,10 @@ Note: This device can deliver 15L/min but at the expense of high airway pressure
 
 ##### **STOP** all trigger agents
 
-##### Call for help, MH Kit, vapour-free AU machine
+##### Call for help, MH Kit
 
-- MH Kit & machine: Opposite D1 (EOT)
-- Delegate roles as per MH Action Cards (in MH Kit)
+- MH Kit: **Opposite D1** (EOT)
+- Delegate roles as per **MH Action Cards** (in MH Kit)
 - Obtain E-trolley & defibrillator - place in induction room
 - Move induction room patient to another theatre, with all notes
 
@@ -626,9 +626,9 @@ Note: This device can deliver 15L/min but at the expense of high airway pressure
 
 ##### Each vial of Dantrolene (20 mg) to be reconstituted with 60 ml sterile water
 
-##### Give IV Dantrolene {2.5} mg bolus until signs of hypermetabolism i.e. acidosis/pyrexia/muscle rigidity resolve.
+##### Give IV Dantrolene {2.5 mg} bolus until signs of hypermetabolism i.e. acidosis/pyrexia/muscle rigidity resolve.
 
-##### Repeat {1} mg bolus as required up to max {10} mg.
+##### Repeat {1 mg} bolus as required up to max {10 mg}.
 
 - Note: Dantrolene can interact with calcium channel blockers (e.g. Verapamil) and precipitate profound hypotension
 
@@ -638,16 +638,16 @@ Note: This device can deliver 15L/min but at the expense of high airway pressure
 
 ##### Hyperkalemia
 
-- {0.3} ml 10% Ca Gluconate OR {0.1} ml 10% CaCl<sub>2 </sub>
+- {0.3 ml} 10% Ca Gluconate OR {0.1 ml} 10% CaCl<sub>2</sub>
 - 10U actrapid insulin with 50 ml 50% dextrose
 - Consider IV 8.4% sodium bicarbonate
 
 ##### Arrhythmias
 
 - Consider magnesium;
-- Amiodarone {3} mg;
+- Amiodarone {3 mg};
 - Metoprolol 1-2mg IV prm;
-- Lignocaine {1} mg IV;
+- Lignocaine {1 mg} IV;
 - Procainamide 300mg over 15 mins, if adult
 - Avoid calcium channel blockers
 
@@ -655,9 +655,9 @@ Note: This device can deliver 15L/min but at the expense of high airway pressure
 
 - Always ensure **aggressive fluid resuscitation** has been initiated **before** considering pharmacological diuresis
 - Maintain urine output ≥ 2 ml/kg/hr by maintaining intravasular volume with normal saline **and** mannitol and/or furosemide
-- Mannitol {0.5} g (Including 3g mannitol/vial of dantrolene)
+- Mannitol {0.5 g} (Including 3g mannitol/vial of dantrolene)
 - Forced alkaline diuresis
-- Consider sodium bicarbonate {0.5}-{1} mmol if pH < 7.2
+- Consider sodium bicarbonate {0.5 mmol}-{1 mmol} if pH < 7.2
 
 ##### DIVC
 
@@ -675,7 +675,7 @@ Note: This device can deliver 15L/min but at the expense of high airway pressure
   - Cool sponging and ice packs (obtain from perfusionist @ NHC **or** MOT behind OT 26 in Store L12)
   - Lowering theatre temperature: Call 4000
 2. Monitor for acute kidney injury and compartment syndrome
-3. Aim urine output >{2} ml/hr with pH >7.0
+3. Aim urine output >{2 ml}/hr with pH >7.0
 4. Consider alternative diagnoses (sepsis, phaeochromocytoma, thyroid storm, myopathy)
 
 ## Massive Hemorrhage
@@ -710,16 +710,16 @@ Note: This device can deliver 15L/min but at the expense of high airway pressure
 
 ##### Noradrenaline
 
-- {0.01}–{0.2} mcg/min IV
+- {0.01 mcg}/min–{0.2 mcg}/min IV
 
 ##### Adrenaline
 
 - 10 mcg boluses (1 ml of 1:100000 dilution)
-- {0.01}–{0.2} mcg/min IV
+- {0.01 mcg}/min–{0.2 mcg}/min IV
 
 ##### Dopamine
 
-- {5}-{20} mcg/min IV
+- {5 mcg}/min-{20 mcg}/min IV
 
 ### Notes
 
@@ -735,17 +735,17 @@ Note: This device can deliver 15L/min but at the expense of high airway pressure
 ##### FFP
 
 - Indication: PT, aPTT < 1.5 normal, fibrinogen < 1 g/l
-- Administer {15} ml
+- Administer {15 ml}
 
 ##### Cryoprecipitate
 
 - Indication: Fibrinogen < 1 g/l
-- Administer {5}–{10} ml
+- Administer {5 ml}–{10 ml}
 
 ##### Factor VIIa
 
 - Indication: Fibrinogen < 1 g/l
-- Administer {90} mcg
+- Administer {90 mcg}
 
 ##### Tranexamic acid
 
@@ -755,7 +755,7 @@ Note: This device can deliver 15L/min but at the expense of high airway pressure
 ##### Platelets
 
 - Indication: Platelet count <75×10<sup>9</sup>
-- Administer {15}-{20} ml
+- Administer {15 ml}-{20 ml}
 
 ## Debriefing after a Crisis
 
@@ -827,4 +827,200 @@ Note: This device can deliver 15L/min but at the expense of high airway pressure
 
 - Tel: 8181 7655
 - 8.30am – 5.30pm (weekdays)
+
+# Standard Operating Procedures
+
+## 3M Jupiter Procedures
+
+### 3M Jupiter (Standard Operating Procedures)
+
+#### Donning PAPR
+
+##### While wearing an N95 mask, perform hand hygiene.
+
+##### Insert battery into blower unit.
+
+##### Battery check
+
+- Press the power button to check if the battery is working (green light is on). 
+- Switch off the power button after checking the battery.
+
+##### Calibration
+
+- Insert black calibration tube.
+- Press and hold power button for 10-15 seconds for calibration. Ball should be **at** or **above** calibration line.
+- Remove black calibration tube.
+
+##### HEPA filter check
+
+- Check condition and expiration date, and insert HEPA filters.
+- Rotate filters in place until hearing 'click' sound.
+
+##### Air flow check
+
+- Insert white calibration tube.
+- Switch on power button.
+- If filters are working and air flow is unobstructed, the white ball should be pushed up to the **top** of the tube.
+- If the airflow indicator fails to rise above the minimum flow mark, change out your filter on the unit and reconduct the airflow test.
+
+##### Leave the power button on and remove the white calibration tube.
+
+##### Obstruction check
+
+- Once the white calibration tube is removed, obstruct the airflow with your hand.
+- An alarm should sound in 7 seconds, indicating the blower unit can detect any obstruction.
+- Switch off the blower unit.
+
+##### Connect the breathing hose to the blower unit and face mask.
+
+- When connecting the breathing hose to the blower-unit, ensure the **arrows** on the end of the breathing hose and blower unit are **aligned**.
+
+##### Switch the blower unit on and don PAPR.
+
+##### Don PPE (inner gloves, then gown and outer gloves) over PAPR ensemble.
+
+#### Doffing PAPR
+
+##### Clean the face shield with disinfectant wipes after attending to the patient.
+
+##### Remove and dispose of gown and outer gloves.
+
+##### Go to dedicated PAPR doffing area.
+
+##### Carefully remove PAPR (hood first) and perform hand hygiene on inner gloves.
+
+##### Clean PAPR equipment with disinfectant wipes.
+
+- Clean exterior of PAPR (hood, blower unit, breathing hose) first.
+- Remove inner gloves and perform hand hygiene before wearing a new set of gloves.
+- Clean interior of hood.
+- Turn on blower unit with PAPR ensemble intact for a few seconds.
+- Clean trolley / tabletop with disinfectant wipes.
+
+##### Remove gloves and perform hand hygiene.
+
+##### Follow-up phase
+
+- Demonstrate knowledge on:
+  - Monitoring expiration of filter life and battery life.
+  - Reconnecting to AC power for charging.
+  - Document on checklist when device was last checked. 
+
+## 3M Scotts Proflow
+
+### 3M Scotts Proflow (Standard Operating Procedures)
+
+#### Donning PAPR
+
+##### While wearing an N95 mask, perform hand hygiene.
+
+##### Filter check. (Check condition and expiry date on filters.)
+
+##### Attach filters to blower unit.
+
+##### Turn on blower unit.
+
+##### Battery check. (If battery is fully charged, A9.)
+
+##### Airflow check. 
+
+- Airflow reading should be P7-P9.
+- If reading fails to reach the minimum airflow reading, change out your filter on the unit and reconduct the airflow test.
+
+##### Connect face mask-breathing tube ensemble to the blower unit.
+
+##### Switch the blower unit on and don PAPR.
+
+##### Don PPE (inner gloves, then gown and outer gloves) over PAPR ensemble.
+
+#### Doffing PAPR
+
+##### Clean the face shield with disinfectant wipes after attending to the patient.
+
+##### Remove and dispose of gown and outer gloves.
+
+##### Go to dedicated PAPR doffing area.
+
+##### Carefully remove PAPR (hood first) and perform hand hygiene on inner gloves.
+
+##### Clean PAPR equipment with disinfectant wipes.
+
+- Clean exterior of PAPR (hood, blower unit, breathing hose) first.
+- Remove inner gloves and perform hand hygiene before wearing a new set of gloves.
+- Clean interior of hood.
+- Turn on blower unit with PAPR ensemble intact for a few seconds.
+- Clean trolley / tabletop with disinfectant wipes.
+
+##### Remove gloves and perform hand hygiene.
+
+##### Follow-up phase
+
+- Demonstrate knowledge on:
+  - Monitoring expiration of filter life and battery life.
+  - Reconnecting to AC power for charging.
+  - Document on checklist when device was last checked. 
+
+# Reference Information
+
+## Singapore General Hospital
+
+### Important Numbers and Drug Dilutions
+
+#### Contact Numbers / Locations
+
+**BTS MO:** 9186 4133
+
+**Blood Bank:** 3666 or 4852
+
+**EOT Nurse Clinician in-charge:** 8125 1945
+
+**Massive Tranfusion Protocol:** Intranet
+
+**Malignant Hyperthermia Kit:** Opposite EOT 
+
+**Intralipid 20%:** AU store between R1 and R2
+
+**Difficult Airway Cart:** Outside EOT; Needle cricothyroidotomy set available in 2nd drawer of each AU machine
+
+**E-trolley:** Outside EOT, Recovery 1 & 2
+
+#### Drug Dosages
+
+**To use N/S 0.9% unless otherwise stated**
+
+**Dopamine:** {2 mcg}/min – {15 mcg}/min, 200 mg in 100 ml NS/D5%
+
+**Dobutamine:** {2 mcg}/min – {15 mcg}/min, 250 mg in 100 ml NS/D5%
+
+**Adrenaline/Noradrenaline:** {0.01 mcg}/min – {0.5 mcg}/min, 4 mg in 50ml NS/D5%
+
+**Nitroprusside:** {0.5 mcg}/min – {0.8 mcg}/min, 50 mg in 50mls D5%, **protect from sunlight**
+
+**Nitroglycerin:** 1 – 2 mg/hr, 50 mg in 50 mls 
+
+**Morphine:** 1 -2 mg/hr, 20 mg in 20 mls
+
+**Insulin:** 1 – 2 units/hr, 20 units in 20 mls
+
+**Labetolol:** 1 - 2 mg/hr, 50 mg in 50 mls 
+
+**Furosemide:** 10 – 30 mg/hr, 500 mg in 50 mls
+
+**Somatostatin:** 250 mcg/hr, 3000 mcg in 30 mls 
+
+## Application Docs
+
+### Documentation
+
+**Sidebar icon:** View content page. This allows all contents to be viewed.
+
+**Kilogram icon in top bar:** Calculate mass-dependent drug dosages via entering patient weight. This will be enabled until the user disables it.
+
+**Search icon in top bar:** Allows user to search one chapter or the entire manual for a key term. The "search entire manual" switch determines if the entire manual is searched, or only one chapter.
+
+**Email icon in top bar:** If you have any queries or would like to report an issue, please contact the developer here.
+
+**Zoom in/out pop-up buttons:** Sets the font size of the manual.
+
+**Menu pop-up button:** Allows user to view additional information for each section. Information will be displayed in pop-ups.
 

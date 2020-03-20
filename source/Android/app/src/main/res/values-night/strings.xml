@@ -12,7 +12,7 @@
     <string name="appNameMultiline">SGH\nCrisis\nManual</string>
     <string name="begin">Begin</string>
     <string name="weightToggle">Calculate dose by weight</string>
-    <string name="email">Email the developer</string>o
+    <string name="email">Email the developer</string>
     <string name="help">Documentation</string>
     <string name="search_all">Search whole manual</string>
 </resources>

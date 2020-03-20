@@ -1,20 +1,28 @@
 package tk.owl10124.crisismanual;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Typeface;
+import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.os.Bundle;
+import android.text.Editable;
 import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.SpannableStringBuilder;
 import android.text.Spanned;
+import android.text.TextWatcher;
+import android.text.method.LinkMovementMethod;
 import android.text.style.BackgroundColorSpan;
 import android.text.style.BulletSpan;
 import android.text.style.ForegroundColorSpan;
+import android.text.style.ImageSpan;
 import android.text.style.LeadingMarginSpan;
 import android.text.style.RelativeSizeSpan;
 import android.text.style.StyleSpan;
 import android.text.style.SubscriptSpan;
 import android.text.style.SuperscriptSpan;
+import android.text.style.URLSpan;
 import android.transition.TransitionManager;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -25,14 +33,18 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
+import android.widget.Switch;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
 import java.util.ArrayList;
+import java.util.Locale;
 import java.util.Scanner;
+import java.util.concurrent.atomic.AtomicInteger;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
@@ -55,16 +67,22 @@ public class MainActivity extends AppCompatActivity implements WeightDialogFragm
     private FloatingActionButton zoomIn;
     private FloatingActionButton zoomOut;
     private FloatingActionButton menuBtn;
-    private ScrollView scrollView;
+    private ScrollView scrollView, activeScrollView;
+    private Switch searchSwitch;
     private View overlay;
     private EditText searchText;
     private ArrayList<String> headers = new ArrayList<>();
-    private ArrayList<ArrayList<String>> subHeaders = new ArrayList<>();
     private ArrayList<ArrayList<ArrayList<String>>> content = new ArrayList<>();
-    private int size = 14;
+    private int fontSize = 18;
     public static float weight = 50f;
     public static boolean calculateByWeight = false;
-    private int ind=-1, view=0;
+    private int page=-1, section=0;
+    private int searchPage=0, searchSection=0, searchLine=0, searchChar=0;
+    private boolean searching = false;
+    private String searchTerm = "";
+
+    private static DecimalFormat df = new DecimalFormat("#.#####",new DecimalFormatSymbols(Locale.ENGLISH));
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,9 +99,10 @@ public class MainActivity extends AppCompatActivity implements WeightDialogFragm
         zoomIn = findViewById(R.id.zoomInBtn);
         zoomOut = findViewById(R.id.zoomOutBtn);
         menuBtn = findViewById(R.id.menuBtn);
-        scrollView = findViewById(R.id.scrollView);
+        activeScrollView = scrollView = findViewById(R.id.scrollView);
         overlay = findViewById(R.id.overlay);
         searchText = findViewById(R.id.searchText);
+        searchSwitch = findViewById(R.id.searchAllSwitch);
 
         scrollView.setOnScrollChangeListener((v,x,y,ox,oy)->{
             if (y-oy>20&&zoomIn.isOrWillBeShown()) hideButtons();
@@ -91,14 +110,16 @@ public class MainActivity extends AppCompatActivity implements WeightDialogFragm
         });
 
         zoomIn.setOnClickListener(e->{
-            if (size<36) size+=2;
+            if (fontSize<36) fontSize +=2;
             loadPage();
+            showButtons();
             TransitionManager.endTransitions(root);
         });
 
         zoomOut.setOnClickListener(e->{
-            if (size>8) size-=2;
+            if (fontSize>8) fontSize -=2;
             loadPage();
+            showButtons();
             TransitionManager.endTransitions(root);
         });
 
@@ -106,8 +127,38 @@ public class MainActivity extends AppCompatActivity implements WeightDialogFragm
             if (optionsMenu.isShown()) hideOptions(); else showOptions();
         });
 
-        searchText.setOnFocusChangeListener((v,b)->{
-            if (!b) ((InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE)).hideSoftInputFromWindow(root.getWindowToken(),0);
+        searchText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if (page==-1) return; //How... did you even do this? Apparently if you switch to dark theme while searching...
+                searchPage = page;
+                searchSection = searchLine = searchChar = 0;
+                searchTerm = s.toString().toLowerCase();
+                searching = true;
+                loadPage();
+                hideModal();
+                showSearch();
+                TransitionManager.endTransitions(root);
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+            }
+        });
+        searchText.setOnEditorActionListener((v,i,e)->{
+            searching = true;
+            loadPage();
+            hideButtons();
+            TransitionManager.endTransitions(root);
+            System.out.println(searchPage);
+            System.out.println(searchSection);
+            System.out.println(searchLine);
+            System.out.println(searchChar);
+            return true;
         });
 
         setSupportActionBar(menuBar);
@@ -118,69 +169,98 @@ public class MainActivity extends AppCompatActivity implements WeightDialogFragm
         loadManual();
     }
 
-    public void addCard(String header, ArrayList<String> content, boolean inModal) {
-        LinearLayout ll = new LinearLayout(getApplicationContext());
+    public int getSearchChar(int page, int section, int item) {
+        if (!searching) return -1;
+        if (page > searchPage) return 0;
+        if (page < searchPage) return -1;
+        if (section > searchSection) return 0;
+        if (section < searchSection) return -1;
+        if (item > searchLine) return 0;
+        if (item < searchLine) return -1;
+        return searchChar;
+    }
+
+    public void addCard(int section) {
+        ArrayList<String> text = content.get(page).get(section);
+        if (text.isEmpty()) return;
+
+        LinearLayout ll = new LinearLayout(this);
         ll.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT));
         ll.setOrientation(LinearLayout.VERTICAL);
 
-        CardView ch = new CardView(getApplicationContext());
+        CardView ch = new CardView(this);
         ch.setRadius(0);
-        ch.setCardBackgroundColor(getColor(container.getChildCount()%2==0?R.color.colorPrimary:R.color.colorPrimaryLess));
+        ch.setCardBackgroundColor(getColor(R.color.colorPrimary));
         ch.setCardElevation(2);
         ll.addView(ch);
 
-        TextView h = new TextView(getApplicationContext());
+        TextView h = new TextView(this);
         h.setTextColor(getColor(R.color.colorText));
         CardView.LayoutParams lp = new CardView.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
-        lp.setMargins(2*size, 2*size, 2*size, 2*size);
+        lp.setMargins(2* fontSize, 2* fontSize, 2* fontSize, 2* fontSize);
         h.setLayoutParams(lp);
         ch.addView(h);
-        h.setTextSize(1.4f*size);
-        h.setText(parse(header));
+        h.setTextSize(1.4f* fontSize);
+        h.setText(parse(text.get(0),getSearchChar(page,section,0),()->{scrollView.scrollTo(0,0);}));
 
-        if (content.size()>0) {
-            SpannableStringBuilder ssb = new SpannableStringBuilder();
-            int j=0;
-            for (String i: content) {
-                if (inModal) ssb.append(parse(i));
-                else {
-                    if (i.startsWith("##### ")) ++j;
-                    ssb.append(parse(i,j));
-                }
-            }
-            CardView cc = new CardView(getApplicationContext());
-            cc.setRadius(0);
-            cc.setCardBackgroundColor(getColor(container.getChildCount() % 2 == 0 ? R.color.colorPrimaryLight : R.color.colorPrimaryLightLess));
-            cc.setCardElevation(1);
-            if (inModal) {
-                ScrollView s = new ScrollView(getApplicationContext());
-                s.setOnScrollChangeListener((v,x,y,ox,oy)->{
-                    if (y-oy>20&&zoomIn.isOrWillBeShown()) hideButtons();
-                    else if (oy-y>20&&zoomIn.isOrWillBeHidden()) showButtons();
-                });
-                ll.addView(s);
-                s.addView(cc);
-                s.fullScroll(View.FOCUS_DOWN);
-            } else ll.addView(cc);
+        CardView cc = new CardView(this);
+        cc.setRadius(0);
+        cc.setCardBackgroundColor(getColor(R.color.colorPrimaryLight));
+        cc.setCardElevation(1);
 
-            TextView c = new TextView(getApplicationContext());
-            c.setTextColor(getColor(R.color.colorText));
-            lp = new CardView.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
-            lp.setMargins(2*size, 2*size, 2*size, 2*size);
-            c.setLayoutParams(lp);
-            //c.setLineHeight(Math.round(3*size));
-            c.setTextSize(size);
-            cc.addView(c);
-            c.setText(ssb);
+
+        TextView c = new TextView(this);
+        c.setTextColor(getColor(R.color.colorText));
+        lp = new CardView.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
+        lp.setMargins(2* fontSize, 2* fontSize, 2* fontSize, 2* fontSize);
+        c.setLayoutParams(lp);
+        //c.setLineHeight(Math.round(3*fontSize));
+        c.setTextSize(fontSize);
+        c.setMovementMethod(LinkMovementMethod.getInstance());
+
+        cc.addView(c);
+
+        if (section>0) {
+            activeScrollView = new ScrollView(this);
+            activeScrollView.setOnScrollChangeListener((v, x, y, ox, oy)->{
+                if (y-oy>20&&zoomIn.isOrWillBeShown()||!searchTerm.isEmpty()) hideButtons();
+                else if (oy-y>20&&zoomIn.isOrWillBeHidden()) showButtons();
+            });
+            ll.addView(activeScrollView);
+            activeScrollView.addView(cc);
+        } else ll.addView(cc);
+
+        SpannableStringBuilder ssb = new SpannableStringBuilder();
+        int j=0;
+        int cChar=0;
+        AtomicInteger fChar= new AtomicInteger(0);
+        for (int i=1;i<text.size();++i) {
+            String s = text.get(i);
+            if (section==0&&s.startsWith("#####")) ++j;
+            int finalCChar = cChar;
+            ssb.append(parse(s,(section==0&&s.startsWith("#####")?j:0),getSearchChar(page,section,i),()->{
+                fChar.set(finalCChar + searchChar);
+            }));
+            cChar=ssb.length();
         }
+        c.setText(ssb);
 
-        if (inModal) modal.addView(ll);
+        if (section>0) {
+            modal.removeAllViews();
+            modal.addView(ll);
+        }
         else container.addView(ll);
+
+        c.getViewTreeObserver().addOnGlobalLayoutListener(()->{
+            if (c.getLayout()!=null&&!searchTerm.isEmpty()) activeScrollView.scrollTo(0, c.getLayout().getLineTop(c.getLayout().getLineForOffset(fChar.get())));
+        });
+
+        System.out.println("Adding view "+section);
     }
 
     public void showContents() {
         TransitionManager.beginDelayedTransition(root);
-        ind=-1;
+        page=-1;
         setSupportActionBar(menuBar);
         getSupportActionBar().setTitle("Contents");
         getSupportActionBar().setDisplayHomeAsUpEnabled(false);
@@ -189,13 +269,17 @@ public class MainActivity extends AppCompatActivity implements WeightDialogFragm
         navigationView.setVisibility(View.VISIBLE);
         navigationView.setLayoutParams(lp);
         hideButtons();
+        hideSearch();
     }
     public void hideContents() {
+        if (!navigationView.isShown()) return;
+        if (page==-1) page=0;
         TransitionManager.beginDelayedTransition(root);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_menu);        getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_menu);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(false);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setTitle(parse(headers.get(ind)));
+        getSupportActionBar().setTitle(parse(headers.get(page)));
         ViewGroup.LayoutParams lp = navigationView.getLayoutParams();
         lp.width=1;
         navigationView.setLayoutParams(lp);
@@ -214,7 +298,7 @@ public class MainActivity extends AppCompatActivity implements WeightDialogFragm
     }
 
     public void showButtons() {
-        zoomIn.show(); zoomOut.show(); menuBtn.show(); hideOptions();
+        zoomIn.show(); zoomOut.show(); if (optionsMenu.getMenu().hasVisibleItems()) menuBtn.show(); hideOptions();
     }
     public void hideButtons() {
         zoomIn.hide(); zoomOut.hide(); menuBtn.hide(); hideOptions();
@@ -222,13 +306,33 @@ public class MainActivity extends AppCompatActivity implements WeightDialogFragm
 
     public void showSearch() {
         searchText.setVisibility(View.VISIBLE);
+        searchSwitch.setVisibility(View.VISIBLE);
         searchText.requestFocus();
         ((InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE)).showSoftInput(searchText, 0);
+        hideContents();
     }
     public void hideSearch() {
+        System.out.println("Search hidden D:");
+        if (!searchText.isShown()) return;
         searchText.clearFocus();
         searchText.setVisibility(View.GONE);
+        searchSwitch.setVisibility(View.GONE);
+        searchTerm="";
+        searching=false;
         ((InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE)).hideSoftInputFromWindow(root.getWindowToken(),0);
+        if (page>=0) loadPage();
+        TransitionManager.endTransitions(root);
+    }
+
+    public void showModal(int i) {
+        if (i!=0) {
+            TransitionManager.beginDelayedTransition(root);
+            section = i;
+            addCard(i);
+            overlay.setVisibility(View.VISIBLE);
+            hideButtons();
+            System.out.println("seek");
+        }
     }
 
     public void hideModal() {
@@ -236,7 +340,9 @@ public class MainActivity extends AppCompatActivity implements WeightDialogFragm
         showButtons();
         modal.removeAllViews();
         overlay.setVisibility(View.GONE);
-        view=0;
+        activeScrollView = scrollView;
+        section=0;
+        System.out.println("hide");
     }
     public void hideModal(View v) {hideModal();}
 
@@ -257,55 +363,74 @@ public class MainActivity extends AppCompatActivity implements WeightDialogFragm
             } else if (str.startsWith("## ")) {
                 ++i;
                 headers.add(str.substring(2));
-                subHeaders.add(new ArrayList<>());
                 content.add(new ArrayList<>());
                 MenuItem item = menu.getMenu().add(i+1+".  "+str.substring(3));
                 int finalI=i;
                 item.setOnMenuItemClickListener(e->{
-                    ind=finalI;
+                    section=0;
+                    page=finalI;
                     hideContents();
                     return true;
                 });
                 j=-1;
             } else if (str.startsWith("### ")) {
                 ++j;
-                subHeaders.get(i).add(str);
                 content.get(i).add(new ArrayList<>());
+                content.get(i).get(j).add(str);
             } else {
                 content.get(i).get(j).add(str);
             }
         }
     }
 
-    public void loadPage(){
-        loadPage(ind);
-    }
-
-    public void loadPage(int i) {
-        getSupportActionBar().setTitle(parse(headers.get(i)));
+    public void loadPage() {
+        int s = scrollView.getScrollY();
+        getSupportActionBar().setTitle(parse(headers.get(page)));
         container.removeAllViews();
-        hideModal();
         optionsMenu.getMenu().clear();
-        for (int j=0;j<subHeaders.get(i).size();j++) {
-            if (j==0) addCard(subHeaders.get(i).get(j),content.get(i).get(j),false);
-            else {
-                optionsMenu.getMenu().add(parse(subHeaders.get(i).get(j)));
-                int finalJ = j;
-                optionsMenu.getMenu().getItem(j-1).setOnMenuItemClickListener(e->{
-                    TransitionManager.beginDelayedTransition(root);
-                    view=finalJ;
-                    addCard(subHeaders.get(i).get(finalJ),content.get(i).get(finalJ),true);
-                    hideButtons();
-                    overlay.setVisibility(View.VISIBLE);
-                    return true;
-                });
-            }
+        addCard(0);
+        for (int j=1;j<content.get(page).size();j++) {
+            optionsMenu.getMenu().add(parse(content.get(page).get(j).get(0)));
+            int finalJ = j;
+            optionsMenu.getMenu().getItem(j-1).setOnMenuItemClickListener(e->{
+                showModal(finalJ);
+                return true;
+            });
         }
-        if (view!=0) addCard(subHeaders.get(i).get(view),content.get(i).get(view),true);
-    }
-    public SpannableStringBuilder parse(String s) {return parse(s,0);}
+        if (section!=0) showModal(section); else hideModal();
+        while (searching) {
+            if (section==content.get(page).size()-1) {
+                hideModal();
+                if (searchSwitch.isChecked()) {
+                    if (page == content.size() - 1) {
+                        page = 0;
+                        searching = false;
+                    } else ++page;
+                    loadPage();
+                } else {
+                    hideModal();
+                    searching = false;
+                }
+            } else showModal(++section);
+        }
 
-    public SpannableStringBuilder parse(String s, int ind) {
+        if (!searchTerm.isEmpty()) showSearch();
+        else scrollView.scrollTo(0,s);
+
+        TransitionManager.endTransitions(root);
+    }
+
+    public interface SearchFoundHandler {
+        void onSearchFound();
+    }
+
+    public SpannableStringBuilder parse(String s) {return parse(s,0,-2, null);}
+
+    public SpannableStringBuilder parse(String s, int sc) {return parse(s,0,sc,null);}
+
+    public SpannableStringBuilder parse(String s, int sc, SearchFoundHandler sfh) {return parse(s,0,sc,sfh);}
+
+    public SpannableStringBuilder parse(String s, int ind, int sc, SearchFoundHandler sfh) {
         SpannableStringBuilder span = new SpannableStringBuilder();
         String[] a = s.split("\n");
         int bold=-1, italic=-1, sub=-1, sup=-1;
@@ -313,7 +438,7 @@ public class MainActivity extends AppCompatActivity implements WeightDialogFragm
             String original = str;
             if (str.startsWith("#")) {
                 str=str.substring(str.indexOf(' ')+1);
-                if (original.startsWith("##### ")&&ind!=0) str=ind+". "+str;
+                if (ind!=0) str=ind+". "+str;
             }
             if (str.matches(" *-.*"))
                 str=str.substring(str.indexOf('-')+1);
@@ -325,7 +450,7 @@ public class MainActivity extends AppCompatActivity implements WeightDialogFragm
                         if (bold==-1) bold=span.length();
                         else {
                             span.setSpan(new StyleSpan(Typeface.BOLD),bold,span.length(),Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-                            span.setSpan(new ForegroundColorSpan(ContextCompat.getColor(getApplicationContext(),R.color.colorAccent)),bold,span.length(),Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+                            span.setSpan(new ForegroundColorSpan(ContextCompat.getColor(this,R.color.colorAccent)),bold,span.length(),Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
                             bold=-1;
                         }
                         i++;
@@ -336,56 +461,95 @@ public class MainActivity extends AppCompatActivity implements WeightDialogFragm
                             italic=-1;
                         }
                     }
-                else if (c=='{') {
-                    int e = str.indexOf('}',i);
-                    float x = Float.parseFloat(str.substring(i+1,e));
+                else if (c=='{'&&str.indexOf('}',i)!=-1) {
+                    int e = str.indexOf('}', i);
+                    String unit = "", subs = str.substring(i + 1, e);
+                    float x;
+                    if (subs.indexOf(' ') == -1) x = Float.parseFloat(subs);
+                    else {
+                        x = Float.parseFloat(subs.substring(0, subs.indexOf(' ')));
+                        unit = subs.substring(subs.indexOf(' '));
+                    }
                     int k = span.length();
-                    span.append(calculateByWeight?x*weight+"":x+"/kg");
+                    span.append(calculateByWeight ? df.format(x * weight) + unit : df.format(x) + unit + "/kg");
                     //span.setSpan(new TypefaceSpan(Typeface.MONOSPACE),k,span.length(),Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-                    span.setSpan(new StyleSpan(Typeface.BOLD),k,span.length(),Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-                    span.setSpan(new ForegroundColorSpan(ContextCompat.getColor(getApplicationContext(),R.color.colorAccent)),k,span.length(),Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-                    span.setSpan(new BackgroundColorSpan(ContextCompat.getColor(getApplicationContext(),R.color.colorTranslucent)),k,span.length(),Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-                    i=e;
-                } else if (i+5<=str.length()&&str.substring(i,i+5).equals("<sub>")) {
+                    span.setSpan(new StyleSpan(Typeface.BOLD), k, span.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+                    span.setSpan(new ForegroundColorSpan(ContextCompat.getColor(this, R.color.colorAccent)), k, span.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+                    span.setSpan(new BackgroundColorSpan(ContextCompat.getColor(this, R.color.colorTranslucent)), k, span.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+                    i = e;
+                } else if (c=='<'&&i+5<=str.length()&&str.substring(i,i+5).equals("<sub>")) {
                     sub=span.length();
                     i+=4;
-                } else if (i+6<=str.length()&&str.substring(i,i+6).equals("</sub>")) {
+                } else if (c=='<'&&i+6<=str.length()&&str.substring(i,i+6).equals("</sub>")) {
                     if (sub!=-1) {
                         span.setSpan(new SubscriptSpan(),sub,span.length(),Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
                         span.setSpan(new RelativeSizeSpan(0.8f),sub,span.length(),Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
                     }
                     sub=-1;
                     i+=5;
-                } else if (i+5<=str.length()&&str.substring(i,i+5).equals("<sup>")) {
+                } else if (c=='<'&&i+5<=str.length()&&str.substring(i,i+5).equals("<sup>")) {
                     sup=span.length();
                     i+=4;
-                } else if (i+6<=str.length()&&str.substring(i,i+6).equals("</sup>")) {
+                } else if (c=='<'&&i+6<=str.length()&&str.substring(i,i+6).equals("</sup>")) {
                     if (sup!=-1) {
                         span.setSpan(new SuperscriptSpan(),sup,span.length(),Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
                         span.setSpan(new RelativeSizeSpan(0.8f),sup,span.length(),Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
                     }
                     sup=-1;
                     i+=5;
-                } else span.append(c);
+                } else if ('0'<=c&&c<='9'&&i+9<=str.length()&&str.substring(i,i+9).matches("\\d{4} \\d{4}")) {
+                    span.append(str.substring(i,i+9));
+                    span.setSpan(new URLSpan("tel:"+str.substring(i,i+4)+str.substring(i+5,i+9)),span.length()-9,span.length(),Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+                    i+=9;
+                } else {
+                    span.append(c);
+                }
             }
             if (original.startsWith("#### ")) {
                 span.setSpan(new StyleSpan(Typeface.BOLD), st, span.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
                 span.setSpan(new RelativeSizeSpan(1.4f), st, span.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-                //span.setSpan(new LineHeightSpan.Standard(4*size), st, span.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+                //span.setSpan(new LineHeightSpan.Standard(4*fontSize), st, span.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
             } else if (original.startsWith("##### ")) {
                 span.setSpan(new StyleSpan(Typeface.BOLD_ITALIC), st, span.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-                span.setSpan(new ForegroundColorSpan(ContextCompat.getColor(getApplicationContext(),R.color.colorAccentDark)),st,span.length(),Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+                span.setSpan(new ForegroundColorSpan(ContextCompat.getColor(this,R.color.colorAccentDark)),st,span.length(),Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
                 span.setSpan(new RelativeSizeSpan(1.2f), st, span.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-                //span.setSpan(new LineHeightSpan.Standard(4*size), st, span.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+                //span.setSpan(new LineHeightSpan.Standard(4*fontSize), st, span.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
             } else if (original.startsWith("- ")) {
+                span.setSpan(new LeadingMarginSpan.Standard(0, 18), st, span.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
                 span.setSpan(new BulletSpan(), st, span.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
             } else if (original.startsWith("  - ")) {
-                span.setSpan(new LeadingMarginSpan.Standard(size*2), st, span.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+                span.setSpan(new LeadingMarginSpan.Standard(fontSize *2, fontSize*2+18), st, span.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
                 span.setSpan(new BulletSpan(), st, span.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
             }
             if (!(original.startsWith("#")&&original.indexOf(' ')<4)) {
                 span.append("\n\n");
                 span.setSpan(new RelativeSizeSpan(0.5f),span.length()-2,span.length(),Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+            }
+        }
+
+        if (!searchTerm.isEmpty()&&sc!=-2) {
+            int i = -1;
+            String str = span.toString().toLowerCase();
+            while ((i = str.indexOf(searchTerm, ++i)) != -1) {
+                if (searching && i >= sc && sc!=-1) {
+                    span.setSpan(new BackgroundColorSpan(getColor(R.color.colorAccentLight)), i, i + searchTerm.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+                    searchChar = i+1;
+                    if (sfh!=null) sfh.onSearchFound();
+                    searching = false;
+                } else span.setSpan(new BackgroundColorSpan(getColor(R.color.colorAccentLighter)), i, i + searchTerm.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+            }
+            if (searching&&sc!=-1) { //current line is henceforth obsolete.
+                ++searchLine; searchChar=0;
+                if (searchLine >= content.get(page).get(section).size()) {
+                    ++searchSection; searchLine=0;
+                    if (searchSection >= content.get(page).size()) {
+                        if (searchSwitch.isChecked()) {
+                            ++searchPage;
+                            if (searchPage >= content.size()) searchPage = 0;
+                        }
+                        searchSection = 0;
+                    }
+                }
             }
         }
         return span;
@@ -407,20 +571,26 @@ public class MainActivity extends AppCompatActivity implements WeightDialogFragm
                 WeightDialogFragment f = new WeightDialogFragment();
                 f.show(getSupportFragmentManager(),null);
                 break;
-            case R.id.more:
-                Toast.makeText(getApplicationContext(),"Nothing to see here!",Toast.LENGTH_SHORT).show();
+            case R.id.email:
+                Intent intent = new Intent(Intent.ACTION_SEND);
+                intent.setData(Uri.parse("mailto:"));
+                intent.setType("text/plain");
+                intent.putExtra(Intent.EXTRA_EMAIL,new String[]{"shevonnechia1+manual@gmail.com"});
+                intent.putExtra(Intent.EXTRA_SUBJECT,new String[]{"Feedback: Crisis Manual"});
+                startActivity(intent);
                 break;
             case R.id.search:
                 TransitionManager.beginDelayedTransition(root);
                 if (searchText.isShown()) hideSearch();
                 else showSearch();
+                break;
         }
         return true;
     }
 
     @Override
     public void onBackPressed() {
-        if (view==0) {
+        if (section==0) {
             if (navigationView.isShown()) super.onBackPressed();
             else showContents();
         }
@@ -429,7 +599,7 @@ public class MainActivity extends AppCompatActivity implements WeightDialogFragm
 
     @Override
     public void onDialogPositiveClick(DialogFragment dialog) {
-        if (ind!=-1) loadPage();
+        if (page!=-1) loadPage();
         TransitionManager.endTransitions(root);
         showButtons();
     }
@@ -438,4 +608,5 @@ public class MainActivity extends AppCompatActivity implements WeightDialogFragm
     public void onDialogNegativeClick(DialogFragment dialog) {
         showButtons();
     }
+
 }

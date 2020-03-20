@@ -3,17 +3,17 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:id="@+id/scale"
-        app:showAsAction="ifRoom"
+        app:showAsAction="always"
         android:icon="@drawable/ic_scale"
         android:title="@string/scale" />
     <item
         android:id="@+id/search"
-        app:showAsAction="ifRoom"
+        app:showAsAction="always"
         android:icon="@drawable/ic_search"
         android:title="@string/search" />
     <item
-        android:id="@+id/more"
-        app:showAsAction="always"
-        android:icon="@drawable/ic_more_vert"
-        android:title="@string/more" />
+        android:id="@+id/email"
+        app:showAsAction="ifRoom"
+        android:icon="@drawable/ic_email"
+        android:title="@string/email" />
 </menu>

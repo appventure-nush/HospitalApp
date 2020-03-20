@@ -6,8 +6,8 @@ android {
         applicationId "tk.owl10124.crisismanual"
         minSdkVersion 23
         targetSdkVersion 29
-        versionCode 15
-        versionName "1.11"
+        versionCode 19
+        versionName "1.13"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {

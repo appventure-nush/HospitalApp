@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorWhite">#000000</color>
+    <color name="colorTranslucent">#ee000000</color>
+    <color name="colorOverlay">#88000000</color>
+    <color name="colorBackground">#202428</color>
+    <color name="colorPrimaryLight">#0D1424</color>
+    <color name="colorPrimary">#1F3049</color>
+    <color name="colorPrimaryDark">#BDD8FF</color>
+    <color name="colorAccent">#C0556F</color>
+    <color name="colorAccentDark">#C08191</color>
+    <color name="colorAccentTransparent">#A0639A</color>
+    <color name="colorAccentLight">#FF9CB5</color>
+    <color name="colorAccentLighter">#FFE6EC</color>
+    <color name="colorText">#ffffff</color>
+</resources>
