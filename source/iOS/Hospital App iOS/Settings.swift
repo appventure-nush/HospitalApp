@@ -9,7 +9,7 @@
 import Foundation
 
 public class Settings {
-    static var contentMinimumTextSize: Double {
+    public static var contentMinimumTextSize: Double {
         get {
             UserDefaults.standard.object(forKey: "contentMinimumTextSize") as? Double ?? 1.0
         }
@@ -17,4 +17,5 @@ public class Settings {
             UserDefaults.standard.set(x, forKey: "contentMinimumTextSize")
         }
     }
+    public static var patientWeightPreferred: Double?
 }

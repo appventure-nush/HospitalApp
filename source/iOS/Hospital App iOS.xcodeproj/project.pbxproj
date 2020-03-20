@@ -19,6 +19,7 @@
 		ED730734220B2E360093B38F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED730732220B2E360093B38F /* LaunchScreen.storyboard */; };
 		ED73073C220B2F2D0093B38F /* MainTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED73073B220B2F2D0093B38F /* MainTableViewController.swift */; };
 		EDBA523A2424C39B0084CC27 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDBA52392424C39B0084CC27 /* Settings.swift */; };
+		EDBA523C24252D420084CC27 /* WeightCalcHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDBA523B24252D420084CC27 /* WeightCalcHandler.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,7 +30,7 @@
 		D0983807239A579B00F850A3 /* DataHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataHandler.swift; sourceTree = "<group>"; };
 		D0983809239A5BE300F850A3 /* transcript.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = transcript.md; path = ../../../transcript.md; sourceTree = "<group>"; };
 		D098380B239A72CE00F850A3 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
-		ED730726220B2E310093B38F /* Hospital App iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Hospital App iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		ED730726220B2E310093B38F /* SGH Crisis Manual.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SGH Crisis Manual.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED730729220B2E310093B38F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ED73072B220B2E310093B38F /* ContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewController.swift; sourceTree = "<group>"; };
 		ED73072E220B2E310093B38F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -38,6 +39,7 @@
 		ED730735220B2E360093B38F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ED73073B220B2F2D0093B38F /* MainTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTableViewController.swift; sourceTree = "<group>"; };
 		EDBA52392424C39B0084CC27 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		EDBA523B24252D420084CC27 /* WeightCalcHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightCalcHandler.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,7 +75,7 @@
 		ED730727220B2E310093B38F /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				ED730726220B2E310093B38F /* Hospital App iOS.app */,
+				ED730726220B2E310093B38F /* SGH Crisis Manual.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -86,6 +88,7 @@
 				D0983807239A579B00F850A3 /* DataHandler.swift */,
 				D098380B239A72CE00F850A3 /* Extensions.swift */,
 				EDBA52392424C39B0084CC27 /* Settings.swift */,
+				EDBA523B24252D420084CC27 /* WeightCalcHandler.swift */,
 				ED73072B220B2E310093B38F /* ContentViewController.swift */,
 				D0361F1A239AC17F0013B12E /* index.html */,
 				ED73072D220B2E310093B38F /* Main.storyboard */,
@@ -125,7 +128,7 @@
 			);
 			name = "Hospital App iOS";
 			productName = "Hospital App iOS";
-			productReference = ED730726220B2E310093B38F /* Hospital App iOS.app */;
+			productReference = ED730726220B2E310093B38F /* SGH Crisis Manual.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -229,6 +232,7 @@
 				D0983808239A579B00F850A3 /* DataHandler.swift in Sources */,
 				ED73072C220B2E310093B38F /* ContentViewController.swift in Sources */,
 				ED73073C220B2F2D0093B38F /* MainTableViewController.swift in Sources */,
+				EDBA523C24252D420084CC27 /* WeightCalcHandler.swift in Sources */,
 				ED73072A220B2E310093B38F /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -385,7 +389,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.limwernjie.Hospital-App-iOS";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "SGH Crisis Manual";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -405,7 +409,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.limwernjie.Hospital-App-iOS";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "SGH Crisis Manual";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

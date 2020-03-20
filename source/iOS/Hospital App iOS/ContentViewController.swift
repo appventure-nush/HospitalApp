@@ -109,6 +109,12 @@ class ContentViewController: UIViewController, UITableViewDelegate, UITableViewD
         print(Settings.contentMinimumTextSize)
     }
     
+    @IBAction func weightConfigPressed(_ sender: UIBarButtonItem!) {
+        WeightCalcHandler.showConfigurationPrompt(on: self, completion: {
+            self.updateViews()
+        })
+    }
+    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return topic?.subsections.count ?? 0
@@ -162,8 +168,10 @@ class ContentViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         //Update markdown view
         do {
-            if contents != nil {
-                try self.downView?.update(markdownString: (contents ?? "") + "\n\n</br>")
+            if let downView = self.downView,
+                let contents = contents {
+                let contentsWDynDose = WeightCalcHandler.updateDynamicDosage(markdownContents: contents + "\n\n</br>")
+                try downView.update(markdownString: contentsWDynDose, options: .unsafe)
             }
         } catch (let e) {
             let alert = UIAlertController(title: "Something went wrong.", message: e.localizedDescription, preferredStyle: .alert)
@@ -202,8 +210,8 @@ class ContentViewController: UIViewController, UITableViewDelegate, UITableViewD
             if let iP = self.selectedSegmentIndexPath {
                 self.tableView.scrollToRow(at: iP, at: .middle, animated: true)
             }
-            if contents == nil && completed {
-                try? self.downView?.update(markdownString: "")
+            if let downView = self.downView, contents == nil && completed {
+                try? downView.update(markdownString: "", options: .unsafe)
             }
         })
         

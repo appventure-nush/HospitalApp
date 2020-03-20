@@ -29,6 +29,10 @@ class MainTableViewController: UITableViewController {
             }
         }
     }
+    
+    @IBAction func weightConfigPressed(_ sender: UIBarButtonItem!) {
+        WeightCalcHandler.showConfigurationPrompt(on: self, completion: nil)
+    }
 
     // MARK: - Table view data source
 
