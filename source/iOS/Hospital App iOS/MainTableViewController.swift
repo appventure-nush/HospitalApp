@@ -26,30 +26,44 @@ class MainTableViewController: UITableViewController {
             let str = try? String(contentsOf: url, encoding: .utf8) {
                 
             dataHandler = DataHandler(rawContents: str)
+            for topic in dataHandler?.sectionList ?? [] {
+                topic.convertToSubsections()
+            }
         }
     }
 
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return dataHandler?.sectionList.count ?? 0
+    }
+    
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return dataHandler?.sectionList[section].title ?? "?"
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return dataHandler?.topicList.count ?? 0
+        return dataHandler?.sectionList[section].subsections.count ?? 0
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         
-        cell.textLabel?.text = dataHandler!.topicList[indexPath.row].title
+        cell.textLabel?.text = dataHandler!
+            .sectionList[indexPath.section]
+            .subsections[indexPath.row]
+            .title
+        
         return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        self.performSegue(withIdentifier: "showContents", sender: dataHandler!.topicList[indexPath.row])
+        self.performSegue(withIdentifier: "showContents",
+                          sender: dataHandler!
+                            .sectionList[indexPath.section]
+                            .subsections[indexPath.row]
+        )
     }
     
 
@@ -70,9 +84,9 @@ class MainTableViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showContents",
             let vc = segue.destination as? ContentViewController,
-            let topic = sender as? DataHandler.Topic {
+            let subsection = sender as? DataHandler.Section {
             
-            vc.topic = topic
+            vc.topic = subsection
         }
     }
 

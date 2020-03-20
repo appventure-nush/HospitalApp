@@ -12,7 +12,7 @@ import Down
 
 class ContentViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
-    var topic: DataHandler.Topic?
+    var topic: DataHandler.Section?
     var selectedSegmentIndexPath: IndexPath?
     
     @IBOutlet var tableView: UITableView!
@@ -46,7 +46,7 @@ class ContentViewController: UIViewController, UITableViewDelegate, UITableViewD
         self.zoomStepper.value = Settings.contentMinimumTextSize
         
         guard let topic = topic else {return}
-        topic.convertToSubtopics()
+        topic.convertToSubsections()
         
         self.title = topic.title
         do {
@@ -111,13 +111,13 @@ class ContentViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return topic?.subtopics.count ?? 0
+        return topic?.subsections.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         let selected = indexPath == selectedSegmentIndexPath
-        cell.textLabel?.text = topic!.subtopics[indexPath.row].title
+        cell.textLabel?.text = topic!.subsections[indexPath.row].title
         cell.textLabel?.font = selected ? UIFont.boldSystemFont(ofSize: 20) : UIFont.systemFont(ofSize: 20)
         cell.accessoryType = selected ? .checkmark : .disclosureIndicator
         return cell
@@ -154,7 +154,7 @@ class ContentViewController: UIViewController, UITableViewDelegate, UITableViewD
         //Get contents to be displayed
         var contents: String?
         if let iP = selectedSegmentIndexPath {
-            contents = topic.subtopics[iP.row].asMarkdown()
+            contents = topic.subsections[iP.row].asMarkdown()
         } else if topic.markdownContents.isEmpty == false {
             contents = topic.markdownContents
         }
