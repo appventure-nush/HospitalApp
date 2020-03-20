@@ -18,6 +18,7 @@
 		ED730731220B2E360093B38F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ED730730220B2E360093B38F /* Assets.xcassets */; };
 		ED730734220B2E360093B38F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED730732220B2E360093B38F /* LaunchScreen.storyboard */; };
 		ED73073C220B2F2D0093B38F /* MainTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED73073B220B2F2D0093B38F /* MainTableViewController.swift */; };
+		EDBA523A2424C39B0084CC27 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDBA52392424C39B0084CC27 /* Settings.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		ED730733220B2E360093B38F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		ED730735220B2E360093B38F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ED73073B220B2F2D0093B38F /* MainTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTableViewController.swift; sourceTree = "<group>"; };
+		EDBA52392424C39B0084CC27 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +85,7 @@
 				ED73073B220B2F2D0093B38F /* MainTableViewController.swift */,
 				D0983807239A579B00F850A3 /* DataHandler.swift */,
 				D098380B239A72CE00F850A3 /* Extensions.swift */,
+				EDBA52392424C39B0084CC27 /* Settings.swift */,
 				ED73072B220B2E310093B38F /* ContentViewController.swift */,
 				D0361F1A239AC17F0013B12E /* index.html */,
 				ED73072D220B2E310093B38F /* Main.storyboard */,
@@ -221,6 +224,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EDBA523A2424C39B0084CC27 /* Settings.swift in Sources */,
 				D098380C239A72CE00F850A3 /* Extensions.swift in Sources */,
 				D0983808239A579B00F850A3 /* DataHandler.swift in Sources */,
 				ED73072C220B2E310093B38F /* ContentViewController.swift in Sources */,
