@@ -18,6 +18,7 @@ class ContentViewController: UIViewController, UITableViewDelegate, UITableViewD
     @IBOutlet var tableView: UITableView!
     @IBOutlet var contentView: UIView!
     @IBOutlet var sectionPickerView: UIView!
+    @IBOutlet var zoomStepper: UIStepper!
     var downView: DownView?
     
     @IBOutlet var activityIndicator: UIActivityIndicatorView!
@@ -40,12 +41,16 @@ class ContentViewController: UIViewController, UITableViewDelegate, UITableViewD
         self.sectionPickerView.layer.shadowOpacity = 0.2
         self.sectionPickerView.layer.shadowRadius = 3
         
+        self.zoomStepper.clipsToBounds = true
+        self.zoomStepper.layer.cornerRadius = 8
+        self.zoomStepper.value = Settings.contentMinimumTextSize
+        
         guard let topic = topic else {return}
         topic.convertToSubtopics()
         
         self.title = topic.title
         do {
-            var contents: String? = topic.markdownContents
+            let contents: String? = topic.markdownContents
             
             self.downView = try DownView(frame: .zero,
                                          markdownString: contents ?? "",
@@ -59,8 +64,10 @@ class ContentViewController: UIViewController, UITableViewDelegate, UITableViewD
             }
             
             self.downView?.alpha = 0
+            self.downView?.configuration.preferences.minimumFontSize = CGFloat(Settings.contentMinimumTextSize)
             
             self.contentView.addSubview(self.downView!)
+            self.contentView.sendSubviewToBack(self.downView!)
             
             self.downView!.translatesAutoresizingMaskIntoConstraints = false
             let leadC = NSLayoutConstraint(item: downView!, attribute: .leading, relatedBy: .equal, toItem: contentView, attribute: .leading, multiplier: 1, constant: 0)
@@ -94,6 +101,12 @@ class ContentViewController: UIViewController, UITableViewDelegate, UITableViewD
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
+    }
+    
+    @IBAction func zoomStepperPressed(_ sender: UIStepper!) {
+        downView?.configuration.preferences.minimumFontSize = CGFloat(sender.value)
+        Settings.contentMinimumTextSize = sender.value
+        print(Settings.contentMinimumTextSize)
     }
     
     
@@ -150,7 +163,7 @@ class ContentViewController: UIViewController, UITableViewDelegate, UITableViewD
         //Update markdown view
         do {
             if contents != nil {
-                try self.downView?.update(markdownString: contents ?? "")
+                try self.downView?.update(markdownString: (contents ?? "") + "\n\n</br>")
             }
         } catch (let e) {
             let alert = UIAlertController(title: "Something went wrong.", message: e.localizedDescription, preferredStyle: .alert)
@@ -190,7 +203,7 @@ class ContentViewController: UIViewController, UITableViewDelegate, UITableViewD
                 self.tableView.scrollToRow(at: iP, at: .middle, animated: true)
             }
             if contents == nil && completed {
-                try? self.downView?.update(markdownString: contents ?? "")
+                try? self.downView?.update(markdownString: "")
             }
         })
         

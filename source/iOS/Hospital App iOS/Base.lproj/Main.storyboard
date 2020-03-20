@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="JhW-FN-w3w">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="JhW-FN-w3w">
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -116,10 +116,19 @@
                                         <rect key="frame" x="169" y="249.66666666666669" width="37" height="37"/>
                                         <color key="color" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </activityIndicatorView>
+                                    <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="16" minimumValue="16" maximumValue="32" stepValue="2" translatesAutoresizingMaskIntoConstraints="NO" id="rHZ-5A-u2Y">
+                                        <rect key="frame" x="8" y="496" width="94" height="32"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <connections>
+                                            <action selector="zoomStepperPressed:" destination="BYZ-38-t0r" eventType="valueChanged" id="wcb-Pl-rFE"/>
+                                        </connections>
+                                    </stepper>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
                                     <constraint firstItem="ImU-Iy-i8e" firstAttribute="centerY" secondItem="bng-Rw-b9i" secondAttribute="centerY" id="7rg-OM-5cW"/>
+                                    <constraint firstItem="rHZ-5A-u2Y" firstAttribute="bottom" secondItem="bng-Rw-b9i" secondAttribute="bottomMargin" id="YIo-qc-DbF"/>
+                                    <constraint firstItem="rHZ-5A-u2Y" firstAttribute="leading" secondItem="bng-Rw-b9i" secondAttribute="leadingMargin" id="hop-tb-prg"/>
                                     <constraint firstItem="ImU-Iy-i8e" firstAttribute="centerX" secondItem="bng-Rw-b9i" secondAttribute="centerX" id="nPc-vr-Dma"/>
                                 </constraints>
                             </view>
@@ -143,6 +152,7 @@
                         <outlet property="sectionPickerHeightConstraint" destination="5OW-OJ-CRc" id="a2j-HG-ugQ"/>
                         <outlet property="sectionPickerView" destination="Mlm-BM-xNn" id="hYl-um-Dco"/>
                         <outlet property="tableView" destination="35n-nE-f3G" id="VqU-Zf-drk"/>
+                        <outlet property="zoomStepper" destination="rHZ-5A-u2Y" id="iZB-NY-nrT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
