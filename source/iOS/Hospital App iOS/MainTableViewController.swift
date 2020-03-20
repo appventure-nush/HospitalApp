@@ -12,8 +12,6 @@ class MainTableViewController: UITableViewController {
 
     var dataHandler: DataHandler?
     
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -50,10 +48,10 @@ class MainTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         
-        cell.textLabel?.text = dataHandler!
-            .sectionList[indexPath.section]
-            .subsections[indexPath.row]
-            .title
+        let no = dataHandler!.sectionList[0..<indexPath.section].reduce(0, { $0 + $1.subsections.count }) + indexPath.row + 1
+        let title = dataHandler!.sectionList[indexPath.section].subsections[indexPath.row].title
+        
+        cell.textLabel?.text = "\(no). \(title)"
         
         return cell
     }
