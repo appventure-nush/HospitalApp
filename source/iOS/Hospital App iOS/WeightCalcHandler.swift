@@ -43,7 +43,7 @@ public class WeightCalcHandler {
         vc.present(prompt, animated: true, completion: nil)
     }
     
-    ///Replaces dynamic dosage values (wrapped in `{}`) in the input text with the relevant calculations based off `Settings.preferredPatientWeight`, and then returns the updated text as an output.
+    ///Replaces dynamic dosage values (wrapped in `{# unit}`) in the input text with the relevant calculations (assuming it to be unit/kg) based off `Settings.preferredPatientWeight`, and then returns the updated text as an output.
     public static func updateDynamicDosage(markdownContents: String) -> String {
         var newStr = ""
         var inDynDosTag = false

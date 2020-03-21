@@ -20,6 +20,7 @@
 		ED73073C220B2F2D0093B38F /* MainTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED73073B220B2F2D0093B38F /* MainTableViewController.swift */; };
 		EDBA523A2424C39B0084CC27 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDBA52392424C39B0084CC27 /* Settings.swift */; };
 		EDBA523C24252D420084CC27 /* WeightCalcHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDBA523B24252D420084CC27 /* WeightCalcHandler.swift */; };
+		EDBA523E2425A5050084CC27 /* webViewSearch.js in Resources */ = {isa = PBXBuildFile; fileRef = EDBA523D2425A5050084CC27 /* webViewSearch.js */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		ED73073B220B2F2D0093B38F /* MainTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTableViewController.swift; sourceTree = "<group>"; };
 		EDBA52392424C39B0084CC27 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		EDBA523B24252D420084CC27 /* WeightCalcHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightCalcHandler.swift; sourceTree = "<group>"; };
+		EDBA523D2425A5050084CC27 /* webViewSearch.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = webViewSearch.js; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +93,7 @@
 				EDBA523B24252D420084CC27 /* WeightCalcHandler.swift */,
 				ED73072B220B2E310093B38F /* ContentViewController.swift */,
 				D0361F1A239AC17F0013B12E /* index.html */,
+				EDBA523D2425A5050084CC27 /* webViewSearch.js */,
 				ED73072D220B2E310093B38F /* Main.storyboard */,
 				ED730730220B2E360093B38F /* Assets.xcassets */,
 				ED730732220B2E360093B38F /* LaunchScreen.storyboard */,
@@ -174,6 +177,7 @@
 				ED730734220B2E360093B38F /* LaunchScreen.storyboard in Resources */,
 				ED730731220B2E360093B38F /* Assets.xcassets in Resources */,
 				D098380A239A5BE300F850A3 /* transcript.md in Resources */,
+				EDBA523E2425A5050084CC27 /* webViewSearch.js in Resources */,
 				ED73072F220B2E310093B38F /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

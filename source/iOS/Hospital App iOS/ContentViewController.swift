@@ -10,7 +10,7 @@ import UIKit
 import WebKit
 import Down
 
-class ContentViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class ContentViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate, UITextFieldDelegate {
 
     var topic: DataHandler.Section?
     var selectedSegmentIndexPath: IndexPath?
@@ -21,10 +21,15 @@ class ContentViewController: UIViewController, UITableViewDelegate, UITableViewD
     @IBOutlet var zoomStepper: UIStepper!
     var downView: DownView?
     
+    @IBOutlet var searchAccessoryView: UIView!
+    @IBOutlet var searchBar: UISearchBar!
+    var activeSearchResultCount: Int?
+    var activeSearchResultIndex: Int?
+    
     @IBOutlet var activityIndicator: UIActivityIndicatorView!
     @IBOutlet var sectionPickerHeightConstraint: NSLayoutConstraint!
     
-    
+    // MARK: - View Controller Methods
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -55,7 +60,7 @@ class ContentViewController: UIViewController, UITableViewDelegate, UITableViewD
             self.downView = try DownView(frame: .zero,
                                          markdownString: contents ?? "",
                                          templateBundle: Bundle.main,
-                                         options: [.unsafe]) {
+                                         options: [.unsafe, .hardBreaks]) {
                 UIView.animate(withDuration: 0.2, animations: {
                     self.downView?.alpha = 1
                 }) { (completion) in
@@ -98,24 +103,30 @@ class ContentViewController: UIViewController, UITableViewDelegate, UITableViewD
         super.viewWillAppear(animated)
         
     }
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.searchBar.resignFirstResponder()
+    }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
     }
     
+    // MARK: - View Zooming Config
     @IBAction func zoomStepperPressed(_ sender: UIStepper!) {
         downView?.configuration.preferences.minimumFontSize = CGFloat(sender.value)
         Settings.contentMinimumTextSize = sender.value
         print(Settings.contentMinimumTextSize)
     }
     
+    // MARK: - Patient Weight Config
     @IBAction func weightConfigPressed(_ sender: UIBarButtonItem!) {
         WeightCalcHandler.showConfigurationPrompt(on: self, completion: {
             self.updateViews()
         })
     }
     
-    
+    // MARK: - Table View Delegate Methods
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return topic?.subsections.count ?? 0
     }
@@ -132,7 +143,7 @@ class ContentViewController: UIViewController, UITableViewDelegate, UITableViewD
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         defer {
-            tableView.deselectRow(at: indexPath, animated: true)
+            //tableView.deselectRow(at: indexPath, animated: true)
             updateViews()
         }
         
@@ -153,7 +164,101 @@ class ContentViewController: UIViewController, UITableViewDelegate, UITableViewD
         return
     }
     
+    // MARK: - Text field handling
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        switch textField {
+        case searchBar.searchTextField:
+            if let dw = downView,
+                let sCount = activeSearchResultCount,
+                let sIndex = activeSearchResultIndex,
+                sCount >= 0 {
+                
+                let newIndex = (sIndex + 1) % sCount
+                activeSearchResultIndex = newIndex
+                
+                webViewScrollToSearchResult(dw, index: newIndex)
+                return true
+            }
+            return false
+        default:
+            break
+        }
+        
+        return true
+    }
     
+    // MARK: - Search result handling
+    @IBAction func searchToggle() {
+        if searchBar.isFirstResponder {
+            searchBar.resignFirstResponder()
+            searchBar.text = ""
+            searchAccessoryView.removeFromSuperview()
+            if let dw = downView {
+                webViewRemoveAllSearchHighlights(dw)
+            }
+            self.activeSearchResultCount = nil
+            self.activeSearchResultIndex = nil
+        } else {
+            searchBar.inputAccessoryView = searchAccessoryView
+            self.view.addSubview(searchAccessoryView)
+            searchBar.delegate = self
+            searchBar.searchTextField.returnKeyType = .next
+            searchBar.searchTextField.delegate = self
+            searchBar.becomeFirstResponder()
+        }
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if let dw = downView {
+            webViewSearchAndHighlightAllOccurencesOfString(dw, str: searchText) { count in
+                self.activeSearchResultCount = count
+                self.activeSearchResultIndex = count == 0 ? nil : 0
+                if count > 0 {
+                    self.webViewScrollToSearchResult(dw, index: 0)
+                } else {
+                    self.webViewRemoveAllSearchHighlights(dw)
+                }
+            }
+        }
+        
+    }
+    
+    func webViewSearchAndHighlightAllOccurencesOfString(_ webView: WKWebView, str: String, resultCount: @escaping (Int) -> ()) {
+        guard
+            let path = Bundle.main.path(forResource: "webViewSearch", ofType: "js"),
+            let jsCode = try? String(contentsOfFile: path)
+            else {resultCount(0); return}
+        
+        let startSearch = "webView_HighlightAllOccurencesOfString('\(str)')"
+        let result = "webView_SearchResultCount"
+        
+        print("performing search highlights")
+        webView.evaluateJavaScript(jsCode + ";" + startSearch + ";[" + result + "]",
+                                   completionHandler: { (res, err) in
+            if err == nil,
+                let res = res as? Array<Int> {
+                let count = res[0]
+                resultCount(count)
+            } else {
+                print(err!)
+                resultCount(0)
+            }
+        })
+    }
+
+    func webViewScrollToSearchResult(_ webView: WKWebView, index:Int)  {
+        print("attempting scroll to search highlight at index \(index)")
+        webView.evaluateJavaScript("webView_ScrollToSearch(\(index))", completionHandler: {res, err in if let err = err {print(err)}})
+
+    }
+
+    func webViewRemoveAllSearchHighlights(_ webView: WKWebView) {
+        print("removing search highlights")
+        webView.evaluateJavaScript("webView_RemoveAllHighlights()", completionHandler: {res, err in if let err = err {print(err)}})
+    }
+    
+    
+    // MARK: - Overall view updates
     func updateViews(animated: Bool = true) {
         guard let topic = topic else {return}
         
@@ -163,15 +268,18 @@ class ContentViewController: UIViewController, UITableViewDelegate, UITableViewD
             contents = topic.subsections[iP.row].asMarkdown()
         } else if topic.markdownContents.isEmpty == false {
             contents = topic.markdownContents
+        } else if topic.subsections.count > 0 {
+            selectedSegmentIndexPath = IndexPath(row: 0, section: 0)
+            self.tableView.selectRow(at: selectedSegmentIndexPath, animated: true, scrollPosition: .middle)
+            contents = topic.subsections[0].asMarkdown()
         }
-        
         
         //Update markdown view
         do {
             if let downView = self.downView,
                 let contents = contents {
                 let contentsWDynDose = WeightCalcHandler.updateDynamicDosage(markdownContents: contents + "\n\n</br>")
-                try downView.update(markdownString: contentsWDynDose, options: .unsafe)
+                try downView.update(markdownString: contentsWDynDose, options: [.unsafe, .hardBreaks])
             }
         } catch (let e) {
             let alert = UIAlertController(title: "Something went wrong.", message: e.localizedDescription, preferredStyle: .alert)
@@ -211,7 +319,7 @@ class ContentViewController: UIViewController, UITableViewDelegate, UITableViewD
                 self.tableView.scrollToRow(at: iP, at: .middle, animated: true)
             }
             if let downView = self.downView, contents == nil && completed {
-                try? downView.update(markdownString: "", options: .unsafe)
+                try? downView.update(markdownString: "", options: [.unsafe, .hardBreaks])
             }
         })
         
