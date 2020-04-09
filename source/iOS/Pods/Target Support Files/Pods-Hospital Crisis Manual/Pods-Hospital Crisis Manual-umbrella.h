@@ -11,6 +11,6 @@
 #endif
 
 
-FOUNDATION_EXPORT double Pods_Hospital_App_iOSVersionNumber;
-FOUNDATION_EXPORT const unsigned char Pods_Hospital_App_iOSVersionString[];
+FOUNDATION_EXPORT double Pods_Hospital_Crisis_ManualVersionNumber;
+FOUNDATION_EXPORT const unsigned char Pods_Hospital_Crisis_ManualVersionString[];
 

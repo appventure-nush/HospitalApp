@@ -1,0 +1,6 @@
+framework module Pods_Hospital_Crisis_Manual {
+  umbrella header "Pods-Hospital Crisis Manual-umbrella.h"
+
+  export *
+  module * { export * }
+}

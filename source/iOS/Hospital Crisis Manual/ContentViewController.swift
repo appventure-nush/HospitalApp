@@ -165,26 +165,17 @@ class ContentViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     // MARK: - Text field handling
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        switch textField {
-        case searchBar.searchTextField:
-            if let dw = downView,
-                let sCount = activeSearchResultCount,
-                let sIndex = activeSearchResultIndex,
-                sCount >= 0 {
-                
-                let newIndex = (sIndex + 1) % sCount
-                activeSearchResultIndex = newIndex
-                
-                webViewScrollToSearchResult(dw, index: newIndex)
-                return true
-            }
-            return false
-        default:
-            break
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        if let dw = downView,
+            let sCount = activeSearchResultCount,
+            let sIndex = activeSearchResultIndex,
+            sCount >= 0 {
+            
+            let newIndex = (sIndex + 1) % sCount
+            activeSearchResultIndex = newIndex
+            
+            webViewScrollToSearchResult(dw, index: newIndex)
         }
-        
-        return true
     }
     
     // MARK: - Search result handling
@@ -202,8 +193,6 @@ class ContentViewController: UIViewController, UITableViewDelegate, UITableViewD
             searchBar.inputAccessoryView = searchAccessoryView
             self.view.addSubview(searchAccessoryView)
             searchBar.delegate = self
-            searchBar.searchTextField.returnKeyType = .next
-            searchBar.searchTextField.delegate = self
             searchBar.becomeFirstResponder()
         }
     }

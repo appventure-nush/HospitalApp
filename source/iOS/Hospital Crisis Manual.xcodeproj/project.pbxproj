@@ -7,11 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		73EBC61F65229D8644044C03 /* Pods_Hospital_App_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 083F9EFE1826A1A6CA598CE4 /* Pods_Hospital_App_iOS.framework */; };
+		BA0C23B26D87A29DEFC0267D /* Pods_Hospital_Crisis_Manual.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 47CAED732B5C2CA2B3D2A30D /* Pods_Hospital_Crisis_Manual.framework */; };
 		D0361F1B239AC17F0013B12E /* index.html in Resources */ = {isa = PBXBuildFile; fileRef = D0361F1A239AC17F0013B12E /* index.html */; };
 		D0983808239A579B00F850A3 /* DataHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0983807239A579B00F850A3 /* DataHandler.swift */; };
 		D098380A239A5BE300F850A3 /* transcript.md in Resources */ = {isa = PBXBuildFile; fileRef = D0983809239A5BE300F850A3 /* transcript.md */; };
 		D098380C239A72CE00F850A3 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D098380B239A72CE00F850A3 /* Extensions.swift */; };
+		ED36D1DC243EE428005B7711 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ED36D1DB243EE428005B7711 /* Default-568h@2x.png */; };
 		ED73072A220B2E310093B38F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED730729220B2E310093B38F /* AppDelegate.swift */; };
 		ED73072C220B2E310093B38F /* ContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED73072B220B2E310093B38F /* ContentViewController.swift */; };
 		ED73072F220B2E310093B38F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED73072D220B2E310093B38F /* Main.storyboard */; };
@@ -24,13 +25,16 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		083F9EFE1826A1A6CA598CE4 /* Pods_Hospital_App_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Hospital_App_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		47CAED732B5C2CA2B3D2A30D /* Pods_Hospital_Crisis_Manual.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Hospital_Crisis_Manual.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		53F3A86ABED3A62A0333BFD4 /* Pods-Hospital App iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hospital App iOS.release.xcconfig"; path = "Target Support Files/Pods-Hospital App iOS/Pods-Hospital App iOS.release.xcconfig"; sourceTree = "<group>"; };
 		92F6700C5CF8D4715760208C /* Pods-Hospital App iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hospital App iOS.debug.xcconfig"; path = "Target Support Files/Pods-Hospital App iOS/Pods-Hospital App iOS.debug.xcconfig"; sourceTree = "<group>"; };
+		9CDF200491AEF22B2890DFBE /* Pods-Hospital Crisis Manual.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hospital Crisis Manual.debug.xcconfig"; path = "Target Support Files/Pods-Hospital Crisis Manual/Pods-Hospital Crisis Manual.debug.xcconfig"; sourceTree = "<group>"; };
+		BD3F8FE87FFE18FB5FCE0478 /* Pods-Hospital Crisis Manual.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hospital Crisis Manual.release.xcconfig"; path = "Target Support Files/Pods-Hospital Crisis Manual/Pods-Hospital Crisis Manual.release.xcconfig"; sourceTree = "<group>"; };
 		D0361F1A239AC17F0013B12E /* index.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = index.html; sourceTree = "<group>"; };
 		D0983807239A579B00F850A3 /* DataHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataHandler.swift; sourceTree = "<group>"; };
 		D0983809239A5BE300F850A3 /* transcript.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = transcript.md; path = ../../../transcript.md; sourceTree = "<group>"; };
 		D098380B239A72CE00F850A3 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		ED36D1DB243EE428005B7711 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		ED730726220B2E310093B38F /* SGH Crisis Manual.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SGH Crisis Manual.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED730729220B2E310093B38F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ED73072B220B2E310093B38F /* ContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewController.swift; sourceTree = "<group>"; };
@@ -49,7 +53,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				73EBC61F65229D8644044C03 /* Pods_Hospital_App_iOS.framework in Frameworks */,
+				BA0C23B26D87A29DEFC0267D /* Pods_Hospital_Crisis_Manual.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -59,7 +63,7 @@
 		27C3936ECFE834D8C279D0BA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				083F9EFE1826A1A6CA598CE4 /* Pods_Hospital_App_iOS.framework */,
+				47CAED732B5C2CA2B3D2A30D /* Pods_Hospital_Crisis_Manual.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -67,7 +71,8 @@
 		ED73071D220B2E310093B38F = {
 			isa = PBXGroup;
 			children = (
-				ED730728220B2E310093B38F /* Hospital App iOS */,
+				ED36D1DB243EE428005B7711 /* Default-568h@2x.png */,
+				ED730728220B2E310093B38F /* Hospital Crisis Manual */,
 				ED730727220B2E310093B38F /* Products */,
 				FF374339C0EB5E2CC52F872B /* Pods */,
 				27C3936ECFE834D8C279D0BA /* Frameworks */,
@@ -82,7 +87,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		ED730728220B2E310093B38F /* Hospital App iOS */ = {
+		ED730728220B2E310093B38F /* Hospital Crisis Manual */ = {
 			isa = PBXGroup;
 			children = (
 				ED730729220B2E310093B38F /* AppDelegate.swift */,
@@ -100,7 +105,7 @@
 				D0983809239A5BE300F850A3 /* transcript.md */,
 				ED730735220B2E360093B38F /* Info.plist */,
 			);
-			path = "Hospital App iOS";
+			path = "Hospital Crisis Manual";
 			sourceTree = "<group>";
 		};
 		FF374339C0EB5E2CC52F872B /* Pods */ = {
@@ -108,6 +113,8 @@
 			children = (
 				92F6700C5CF8D4715760208C /* Pods-Hospital App iOS.debug.xcconfig */,
 				53F3A86ABED3A62A0333BFD4 /* Pods-Hospital App iOS.release.xcconfig */,
+				9CDF200491AEF22B2890DFBE /* Pods-Hospital Crisis Manual.debug.xcconfig */,
+				BD3F8FE87FFE18FB5FCE0478 /* Pods-Hospital Crisis Manual.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -115,9 +122,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		ED730725220B2E310093B38F /* Hospital App iOS */ = {
+		ED730725220B2E310093B38F /* Hospital Crisis Manual */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = ED730738220B2E360093B38F /* Build configuration list for PBXNativeTarget "Hospital App iOS" */;
+			buildConfigurationList = ED730738220B2E360093B38F /* Build configuration list for PBXNativeTarget "Hospital Crisis Manual" */;
 			buildPhases = (
 				038E1C754B1DCE8F1F6AD5E1 /* [CP] Check Pods Manifest.lock */,
 				ED730722220B2E310093B38F /* Sources */,
@@ -129,7 +136,7 @@
 			);
 			dependencies = (
 			);
-			name = "Hospital App iOS";
+			name = "Hospital Crisis Manual";
 			productName = "Hospital App iOS";
 			productReference = ED730726220B2E310093B38F /* SGH Crisis Manual.app */;
 			productType = "com.apple.product-type.application";
@@ -150,7 +157,7 @@
 					};
 				};
 			};
-			buildConfigurationList = ED730721220B2E310093B38F /* Build configuration list for PBXProject "Hospital App iOS" */;
+			buildConfigurationList = ED730721220B2E310093B38F /* Build configuration list for PBXProject "Hospital Crisis Manual" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -163,7 +170,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				ED730725220B2E310093B38F /* Hospital App iOS */,
+				ED730725220B2E310093B38F /* Hospital Crisis Manual */,
 			);
 		};
 /* End PBXProject section */
@@ -178,6 +185,7 @@
 				ED730731220B2E360093B38F /* Assets.xcassets in Resources */,
 				D098380A239A5BE300F850A3 /* transcript.md in Resources */,
 				EDBA523E2425A5050084CC27 /* webViewSearch.js in Resources */,
+				ED36D1DC243EE428005B7711 /* Default-568h@2x.png in Resources */,
 				ED73072F220B2E310093B38F /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -200,7 +208,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Hospital App iOS-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-Hospital Crisis Manual-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -213,15 +221,15 @@
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Hospital App iOS/Pods-Hospital App iOS-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-Hospital Crisis Manual/Pods-Hospital Crisis Manual-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Hospital App iOS/Pods-Hospital App iOS-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-Hospital Crisis Manual/Pods-Hospital Crisis Manual-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Hospital App iOS/Pods-Hospital App iOS-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Hospital Crisis Manual/Pods-Hospital Crisis Manual-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -381,18 +389,20 @@
 		};
 		ED730739220B2E360093B38F /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 92F6700C5CF8D4715760208C /* Pods-Hospital App iOS.debug.xcconfig */;
+			baseConfigurationReference = 9CDF200491AEF22B2890DFBE /* Pods-Hospital Crisis Manual.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 0.9.0.1;
 				DEVELOPMENT_TEAM = 2MNM6PUQP4;
-				INFOPLIST_FILE = "Hospital App iOS/Info.plist";
+				INFOPLIST_FILE = "Hospital Crisis Manual/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.limwernjie.Hospital-App-iOS";
+				MARKETING_VERSION = 0.9;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.limwernjie.schoolwork.sgh-crisis-manual";
 				PRODUCT_NAME = "SGH Crisis Manual";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -401,18 +411,20 @@
 		};
 		ED73073A220B2E360093B38F /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 53F3A86ABED3A62A0333BFD4 /* Pods-Hospital App iOS.release.xcconfig */;
+			baseConfigurationReference = BD3F8FE87FFE18FB5FCE0478 /* Pods-Hospital Crisis Manual.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 0.9.0.1;
 				DEVELOPMENT_TEAM = 2MNM6PUQP4;
-				INFOPLIST_FILE = "Hospital App iOS/Info.plist";
+				INFOPLIST_FILE = "Hospital Crisis Manual/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.limwernjie.Hospital-App-iOS";
+				MARKETING_VERSION = 0.9;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.limwernjie.schoolwork.sgh-crisis-manual";
 				PRODUCT_NAME = "SGH Crisis Manual";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -422,7 +434,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		ED730721220B2E310093B38F /* Build configuration list for PBXProject "Hospital App iOS" */ = {
+		ED730721220B2E310093B38F /* Build configuration list for PBXProject "Hospital Crisis Manual" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				ED730736220B2E360093B38F /* Debug */,
@@ -431,7 +443,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		ED730738220B2E360093B38F /* Build configuration list for PBXNativeTarget "Hospital App iOS" */ = {
+		ED730738220B2E360093B38F /* Build configuration list for PBXNativeTarget "Hospital Crisis Manual" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				ED730739220B2E360093B38F /* Debug */,
