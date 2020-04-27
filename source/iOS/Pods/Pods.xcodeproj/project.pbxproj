@@ -127,46 +127,46 @@
 
 /* Begin PBXFileReference section */
 		01A0A54345EDB418E3D19ECD67D392D4 /* CGRect+Helpers.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "CGRect+Helpers.swift"; path = "Source/AST/Styling/Helpers/Extensions/CGRect+Helpers.swift"; sourceTree = "<group>"; };
-		028EBAD77734E354008D69771A6DE8A8 /* houdini_href_e.c */ = {isa = PBXFileReference; includeInIndex = 1; name = houdini_href_e.c; path = Source/cmark/houdini_href_e.c; sourceTree = "<group>"; };
+		028EBAD77734E354008D69771A6DE8A8 /* houdini_href_e.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = houdini_href_e.c; path = Source/cmark/houdini_href_e.c; sourceTree = "<group>"; };
 		05EA539303A5B20586EB0BB3024B7DE9 /* CustomBlock.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CustomBlock.swift; path = Source/AST/Nodes/CustomBlock.swift; sourceTree = "<group>"; };
 		060810B33361F807CD7A1F91EF160D90 /* houdini.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = houdini.h; path = Source/cmark/houdini.h; sourceTree = "<group>"; };
 		082F71C4E512FEDF2DE0E767444D4FF9 /* Node.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Node.swift; path = Source/AST/Nodes/Node.swift; sourceTree = "<group>"; };
-		0A6D2379950D71E49C84349F4FE41DCD /* cmark.c */ = {isa = PBXFileReference; includeInIndex = 1; name = cmark.c; path = Source/cmark/cmark.c; sourceTree = "<group>"; };
+		0A6D2379950D71E49C84349F4FE41DCD /* cmark.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = cmark.c; path = Source/cmark/cmark.c; sourceTree = "<group>"; };
 		0E49976BE7AFC95AB3B0DA2CFFDC882B /* Paragraph.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Paragraph.swift; path = Source/AST/Nodes/Paragraph.swift; sourceTree = "<group>"; };
-		0F6AF875B8800D7BC8FBB729AED516C4 /* buffer.c */ = {isa = PBXFileReference; includeInIndex = 1; name = buffer.c; path = Source/cmark/buffer.c; sourceTree = "<group>"; };
+		0F6AF875B8800D7BC8FBB729AED516C4 /* buffer.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = buffer.c; path = Source/cmark/buffer.c; sourceTree = "<group>"; };
 		0FE95F91CDEE383BD691779F30FC3897 /* FontCollection.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FontCollection.swift; path = "Source/AST/Styling/Attribute Collections/FontCollection.swift"; sourceTree = "<group>"; };
 		100B2BC3F7862AE04E53F193B04A9BF7 /* Strong.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Strong.swift; path = Source/AST/Nodes/Strong.swift; sourceTree = "<group>"; };
 		108777BDE15E4D7401D2E3E4AB8079FB /* Down-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Down-Info.plist"; sourceTree = "<group>"; };
 		13DC909508A1E0DAB70FA0BF0DF96231 /* DownStylerConfiguration.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DownStylerConfiguration.swift; path = Source/AST/Styling/Stylers/DownStylerConfiguration.swift; sourceTree = "<group>"; };
 		1493774F66456C94D30FB7BB57813246 /* Pods-Hospital App iOS-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Hospital App iOS-frameworks.sh"; sourceTree = "<group>"; };
-		14B6BA21F412416A2FB124CBBA0E5429 /* references.c */ = {isa = PBXFileReference; includeInIndex = 1; name = references.c; path = Source/cmark/references.c; sourceTree = "<group>"; };
-		14BF545DC2B030837DD762C15F7684D6 /* xml.c */ = {isa = PBXFileReference; includeInIndex = 1; name = xml.c; path = Source/cmark/xml.c; sourceTree = "<group>"; };
+		14B6BA21F412416A2FB124CBBA0E5429 /* references.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = references.c; path = Source/cmark/references.c; sourceTree = "<group>"; };
+		14BF545DC2B030837DD762C15F7684D6 /* xml.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = xml.c; path = Source/cmark/xml.c; sourceTree = "<group>"; };
 		19955617565C9630249B9232F259E3CD /* Image.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Image.swift; path = Source/AST/Nodes/Image.swift; sourceTree = "<group>"; };
 		1A9EE9CF41792040C43D5F19C0AB11E6 /* config.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = config.h; path = Source/cmark/config.h; sourceTree = "<group>"; };
-		1C0551A7BAE68653100941FAB9D7A823 /* blocks.c */ = {isa = PBXFileReference; includeInIndex = 1; name = blocks.c; path = Source/cmark/blocks.c; sourceTree = "<group>"; };
+		1C0551A7BAE68653100941FAB9D7A823 /* blocks.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = blocks.c; path = Source/cmark/blocks.c; sourceTree = "<group>"; };
 		1E9BF4756D6D1EA477DB1166CF678319 /* ListItemPrefixGenerator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ListItemPrefixGenerator.swift; path = Source/AST/Visitors/ListItemPrefixGenerator.swift; sourceTree = "<group>"; };
 		263DBDE19B4DE9B5C2303CEC3CB07788 /* NSMutableAttributedString+Attributes.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "NSMutableAttributedString+Attributes.swift"; path = "Source/AST/Styling/Helpers/Extensions/NSMutableAttributedString+Attributes.swift"; sourceTree = "<group>"; };
 		27C72F3B5EF53DDA7693B2A102D1E8BC /* DownStyler.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DownStyler.swift; path = Source/AST/Styling/Stylers/DownStyler.swift; sourceTree = "<group>"; };
-		2A2F3A7A1FEE56815727CBEFD00027A2 /* cmark_ctype.c */ = {isa = PBXFileReference; includeInIndex = 1; name = cmark_ctype.c; path = Source/cmark/cmark_ctype.c; sourceTree = "<group>"; };
-		2CB7285BA3199D3231527A7B7816C12C /* utf8.c */ = {isa = PBXFileReference; includeInIndex = 1; name = utf8.c; path = Source/cmark/utf8.c; sourceTree = "<group>"; };
+		2A2F3A7A1FEE56815727CBEFD00027A2 /* cmark_ctype.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = cmark_ctype.c; path = Source/cmark/cmark_ctype.c; sourceTree = "<group>"; };
+		2CB7285BA3199D3231527A7B7816C12C /* utf8.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = utf8.c; path = Source/cmark/utf8.c; sourceTree = "<group>"; };
 		3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		35FEA71564D6A8275A562BF52165B781 /* Pods-Hospital App iOS-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Hospital App iOS-acknowledgements.plist"; sourceTree = "<group>"; };
 		360B168E12FBFB291EBE45D564F5719F /* Styler.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Styler.swift; path = Source/AST/Styling/Stylers/Styler.swift; sourceTree = "<group>"; };
 		36EBCEE0DA0BFDE4B66B2A298710D9C8 /* SoftBreak.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SoftBreak.swift; path = Source/AST/Nodes/SoftBreak.swift; sourceTree = "<group>"; };
-		3742BCF716E6B8384C7D69547BAAAE42 /* scanners.c */ = {isa = PBXFileReference; includeInIndex = 1; name = scanners.c; path = Source/cmark/scanners.c; sourceTree = "<group>"; };
+		3742BCF716E6B8384C7D69547BAAAE42 /* scanners.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = scanners.c; path = Source/cmark/scanners.c; sourceTree = "<group>"; };
 		37B712635C997488E34E1C519538B2EC /* Pods-Hospital App iOS-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Hospital App iOS-acknowledgements.markdown"; sourceTree = "<group>"; };
 		3ECB60F88D5ED5BF1476F92AC14FA0CA /* Vistor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Vistor.swift; path = Source/AST/Visitors/Vistor.swift; sourceTree = "<group>"; };
 		3EF6C2342CB884BE923E3702DC9282A3 /* UIFont+Traits.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIFont+Traits.swift"; path = "Source/AST/Styling/Helpers/Extensions/UIFont+Traits.swift"; sourceTree = "<group>"; };
-		3F1181FB76A068392CB0772DEED4E6E6 /* Pods_Hospital_App_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_Hospital_App_iOS.framework; path = "Pods-Hospital App iOS.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3F1181FB76A068392CB0772DEED4E6E6 /* Pods_Hospital_App_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Hospital_App_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F96F7A248CBB0EEF6C9F439CAD9A717 /* ColorCollection.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ColorCollection.swift; path = "Source/AST/Styling/Attribute Collections/ColorCollection.swift"; sourceTree = "<group>"; };
 		4276B4427EC3FBD8EEE89D84DB480653 /* QuoteStripeOptions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = QuoteStripeOptions.swift; path = Source/AST/Styling/Options/QuoteStripeOptions.swift; sourceTree = "<group>"; };
-		42A5E59DE9BE57575A2B0DC1CA45786D /* inlines.c */ = {isa = PBXFileReference; includeInIndex = 1; name = inlines.c; path = Source/cmark/inlines.c; sourceTree = "<group>"; };
+		42A5E59DE9BE57575A2B0DC1CA45786D /* inlines.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = inlines.c; path = Source/cmark/inlines.c; sourceTree = "<group>"; };
 		446AEFB59CEB429CB436BAAD51D05BA8 /* Emphasis.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Emphasis.swift; path = Source/AST/Nodes/Emphasis.swift; sourceTree = "<group>"; };
 		45F60143CB85EC11DD0ACA6A2B3EB600 /* ParagraphStyleCollection.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ParagraphStyleCollection.swift; path = "Source/AST/Styling/Attribute Collections/ParagraphStyleCollection.swift"; sourceTree = "<group>"; };
 		4807FC240F65945FFC85ED14A4DF5E46 /* DownOptions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DownOptions.swift; path = "Source/Enums & Options/DownOptions.swift"; sourceTree = "<group>"; };
 		480FC7F9B086A34DD1D9C73E6500D934 /* CustomInline.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CustomInline.swift; path = Source/AST/Nodes/CustomInline.swift; sourceTree = "<group>"; };
-		4866B635199C73B2EF01C34B2893A6AA /* render.c */ = {isa = PBXFileReference; includeInIndex = 1; name = render.c; path = Source/cmark/render.c; sourceTree = "<group>"; };
-		4C90E8F3F21B7688E1FB09920322D768 /* Down.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Down.framework; path = Down.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4866B635199C73B2EF01C34B2893A6AA /* render.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = render.c; path = Source/cmark/render.c; sourceTree = "<group>"; };
+		4C90E8F3F21B7688E1FB09920322D768 /* Down.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Down.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4FE4D33D8882EB882AFDC0DF7F06B731 /* Down-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Down-umbrella.h"; sourceTree = "<group>"; };
 		513D63EFADD0A201C7E6EBFD6EE2ED1C /* DownXMLRenderable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DownXMLRenderable.swift; path = Source/Renderers/DownXMLRenderable.swift; sourceTree = "<group>"; };
 		5404227CBE7DD2B3224374302EC3545D /* DownRenderable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DownRenderable.swift; path = Source/Renderers/DownRenderable.swift; sourceTree = "<group>"; };
@@ -183,7 +183,7 @@
 		63A7F614EE6980FB2E45222BA0D14056 /* ListItemParagraphStyler.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ListItemParagraphStyler.swift; path = Source/AST/Styling/Helpers/ListItemParagraphStyler.swift; sourceTree = "<group>"; };
 		64251F905DCCC1FD1BC4D5E72162AD57 /* CodeBlockOptions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CodeBlockOptions.swift; path = Source/AST/Styling/Options/CodeBlockOptions.swift; sourceTree = "<group>"; };
 		64F296966DE8C07673E40DFB9912DA82 /* Pods-Hospital App iOS.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-Hospital App iOS.modulemap"; sourceTree = "<group>"; };
-		661F0DBF467493D16A0DCBBC106E370A /* houdini_html_u.c */ = {isa = PBXFileReference; includeInIndex = 1; name = houdini_html_u.c; path = Source/cmark/houdini_html_u.c; sourceTree = "<group>"; };
+		661F0DBF467493D16A0DCBBC106E370A /* houdini_html_u.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = houdini_html_u.c; path = Source/cmark/houdini_html_u.c; sourceTree = "<group>"; };
 		684E6D6079075822C72F81138ACE9289 /* ThematicBreakOptions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ThematicBreakOptions.swift; path = Source/AST/Styling/Options/ThematicBreakOptions.swift; sourceTree = "<group>"; };
 		6874230B136855960C7C302FA3579AE2 /* utf8.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = utf8.h; path = Source/cmark/utf8.h; sourceTree = "<group>"; };
 		6A5B633D48746DB1AB4537557039390E /* parser.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = parser.h; path = Source/cmark/parser.h; sourceTree = "<group>"; };
@@ -194,30 +194,30 @@
 		7B2F024034FAFD6BA89C75D5230E5BB5 /* references.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = references.h; path = Source/cmark/references.h; sourceTree = "<group>"; };
 		8AADF6A21390DE97CB9BF4EB47E127A2 /* Item.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Item.swift; path = Source/AST/Nodes/Item.swift; sourceTree = "<group>"; };
 		8AC7E6E201A62966848B389945C51882 /* buffer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = buffer.h; path = Source/cmark/buffer.h; sourceTree = "<group>"; };
-		8DFCAD84D763007988490D8BB9B9F18A /* man.c */ = {isa = PBXFileReference; includeInIndex = 1; name = man.c; path = Source/cmark/man.c; sourceTree = "<group>"; };
+		8DFCAD84D763007988490D8BB9B9F18A /* man.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = man.c; path = Source/cmark/man.c; sourceTree = "<group>"; };
 		902FE3F4184C09B4425DF57129939A3E /* Code.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Code.swift; path = Source/AST/Nodes/Code.swift; sourceTree = "<group>"; };
 		90CE00F34A05975BEC0FD83C48B9EFDE /* Heading.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Heading.swift; path = Source/AST/Nodes/Heading.swift; sourceTree = "<group>"; };
-		98387C660556ED0B47BFDFC82857B683 /* commonmark.c */ = {isa = PBXFileReference; includeInIndex = 1; name = commonmark.c; path = Source/cmark/commonmark.c; sourceTree = "<group>"; };
+		98387C660556ED0B47BFDFC82857B683 /* commonmark.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = commonmark.c; path = Source/cmark/commonmark.c; sourceTree = "<group>"; };
 		9B7B4C5B256925D505634D2B973BF106 /* Down.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Down.swift; path = Source/Down.swift; sourceTree = "<group>"; };
 		9B8177EDCF1D40EEFD02B31D04B4CE88 /* chunk.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = chunk.h; path = Source/cmark/chunk.h; sourceTree = "<group>"; };
 		9C962C098C998E6EBC21380074FF782B /* HtmlBlock.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HtmlBlock.swift; path = Source/AST/Nodes/HtmlBlock.swift; sourceTree = "<group>"; };
-		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		A1301AEDD840E29B6ED770B9761B6A23 /* iterator.c */ = {isa = PBXFileReference; includeInIndex = 1; name = iterator.c; path = Source/cmark/iterator.c; sourceTree = "<group>"; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		A1301AEDD840E29B6ED770B9761B6A23 /* iterator.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = iterator.c; path = Source/cmark/iterator.c; sourceTree = "<group>"; };
 		A14382A493BE11155149B2CAD9356ACC /* Pods-Hospital App iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Hospital App iOS.debug.xcconfig"; sourceTree = "<group>"; };
 		A1B62042C550A6E1FC668BD94FF3C7BA /* DownCommonMarkRenderable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DownCommonMarkRenderable.swift; path = Source/Renderers/DownCommonMarkRenderable.swift; sourceTree = "<group>"; };
 		A2E9531DF4AC08C21F559189A47FDA03 /* DownDebugTextView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DownDebugTextView.swift; path = "Source/AST/Styling/Text Views/DownDebugTextView.swift"; sourceTree = "<group>"; };
-		A62ACAEF704D2F3A5C9388BCA608F5FE /* node.c */ = {isa = PBXFileReference; includeInIndex = 1; name = node.c; path = Source/cmark/node.c; sourceTree = "<group>"; };
+		A62ACAEF704D2F3A5C9388BCA608F5FE /* node.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = node.c; path = Source/cmark/node.c; sourceTree = "<group>"; };
 		A77C55E049D38807894CFF0FC7F2E633 /* DownHTMLRenderable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DownHTMLRenderable.swift; path = Source/Renderers/DownHTMLRenderable.swift; sourceTree = "<group>"; };
 		A8CA38692D1F586560317B3C11973BFB /* Down-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Down-prefix.pch"; sourceTree = "<group>"; };
 		A983855E9159695098250FDE0F4F2B57 /* DownDebugLayoutManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DownDebugLayoutManager.swift; path = "Source/AST/Styling/Layout Managers/DownDebugLayoutManager.swift"; sourceTree = "<group>"; };
 		B05FE7EF1C17536DBBA8275CF0268218 /* DownView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DownView.swift; path = Source/Views/DownView.swift; sourceTree = "<group>"; };
-		B45BD9BF9E4E2AD45A760D86C163B8BE /* houdini_html_e.c */ = {isa = PBXFileReference; includeInIndex = 1; name = houdini_html_e.c; path = Source/cmark/houdini_html_e.c; sourceTree = "<group>"; };
+		B45BD9BF9E4E2AD45A760D86C163B8BE /* houdini_html_e.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = houdini_html_e.c; path = Source/cmark/houdini_html_e.c; sourceTree = "<group>"; };
 		B493A8F2D63754FF005FBE73F9C43B48 /* BlockQuote.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BlockQuote.swift; path = Source/AST/Nodes/BlockQuote.swift; sourceTree = "<group>"; };
 		B4DDA54166CB290128211B6A07460687 /* iterator.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = iterator.h; path = Source/cmark/iterator.h; sourceTree = "<group>"; };
 		B54171ED8711871B13F63BA92C00EC4E /* Down.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Down.release.xcconfig; sourceTree = "<group>"; };
 		B5FCFC7D12A51EC475B725FBC365F126 /* ThematicBreak.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ThematicBreak.swift; path = Source/AST/Nodes/ThematicBreak.swift; sourceTree = "<group>"; };
 		B5FE79B26D0A089EC330C64C2A3C6893 /* Pods-Hospital App iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Hospital App iOS.release.xcconfig"; sourceTree = "<group>"; };
-		BB64023EDBC5996DD51858F08E055C57 /* html.c */ = {isa = PBXFileReference; includeInIndex = 1; name = html.c; path = Source/cmark/html.c; sourceTree = "<group>"; };
+		BB64023EDBC5996DD51858F08E055C57 /* html.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = html.c; path = Source/cmark/html.c; sourceTree = "<group>"; };
 		BD4685A9C66F5C5EC2654204D96D4223 /* Down.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = Down.modulemap; sourceTree = "<group>"; };
 		BF549301520E7DCB3D0D0983DBB111F1 /* Document.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Document.swift; path = Source/AST/Nodes/Document.swift; sourceTree = "<group>"; };
 		C0AE79125134BDC1A223D81B58390D3B /* ListItemOptions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ListItemOptions.swift; path = Source/AST/Styling/Options/ListItemOptions.swift; sourceTree = "<group>"; };
@@ -234,7 +234,7 @@
 		D923179E2DD1E0D3AADE8FA9D0741DB2 /* Down-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Down-dummy.m"; sourceTree = "<group>"; };
 		DF804F838C5B10E18E2B75DD397730DF /* cmark_ctype.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = cmark_ctype.h; path = Source/cmark/cmark_ctype.h; sourceTree = "<group>"; };
 		E3E04A961D327B74139F8E6A02970482 /* node.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = node.h; path = Source/cmark/node.h; sourceTree = "<group>"; };
-		E698AA0F9FA86AB20E606FF6C2761A82 /* latex.c */ = {isa = PBXFileReference; includeInIndex = 1; name = latex.c; path = Source/cmark/latex.c; sourceTree = "<group>"; };
+		E698AA0F9FA86AB20E606FF6C2761A82 /* latex.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = latex.c; path = Source/cmark/latex.c; sourceTree = "<group>"; };
 		EC909580F635D8985068EC7EDF7E623B /* NSAttributedString+HTML.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "NSAttributedString+HTML.swift"; path = "Source/Extensions/NSAttributedString+HTML.swift"; sourceTree = "<group>"; };
 		EF12D04D843D1A89A149A6E415A59280 /* DownLaTeXRenderable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DownLaTeXRenderable.swift; path = Source/Renderers/DownLaTeXRenderable.swift; sourceTree = "<group>"; };
 		F033CFAD6C1ED9F27F18F5F94B5A68B8 /* DownAttributedStringRenderable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DownAttributedStringRenderable.swift; path = Source/Renderers/DownAttributedStringRenderable.swift; sourceTree = "<group>"; };
@@ -398,7 +398,6 @@
 				EF47F8CBA768082763B995D7B05B2A57 /* Resources */,
 				8CAE7C061786B3E36F9B7A571098B9A0 /* Support Files */,
 			);
-			name = Down;
 			path = Down;
 			sourceTree = "<group>";
 		};
@@ -718,7 +717,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/Down/Down-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/Down/Down-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -915,7 +914,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/Down/Down-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/Down/Down-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

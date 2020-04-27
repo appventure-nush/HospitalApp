@@ -27,7 +27,7 @@ public class WeightDialogFragment extends DialogFragment {
         });
         t.setChecked(MainActivity.calculateByWeight);
         w.setEnabled(MainActivity.calculateByWeight);
-        w.setText(MainActivity.weight+"");
+        w.setText(String.valueOf(MainActivity.weight));
         AlertDialog.Builder b = new AlertDialog.Builder(getActivity());
         b.setTitle("Weight")
                 .setView(v)

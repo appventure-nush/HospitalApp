@@ -4,8 +4,10 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
+import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.text.Editable;
 import android.text.Spannable;
 import android.text.SpannableString;
@@ -15,6 +17,8 @@ import android.text.TextWatcher;
 import android.text.method.LinkMovementMethod;
 import android.text.style.BackgroundColorSpan;
 import android.text.style.BulletSpan;
+import android.text.style.ClickableSpan;
+import android.text.style.DynamicDrawableSpan;
 import android.text.style.ForegroundColorSpan;
 import android.text.style.ImageSpan;
 import android.text.style.LeadingMarginSpan;
@@ -32,9 +36,11 @@ import android.view.ViewGroup.LayoutParams;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.MediaController;
 import android.widget.ScrollView;
 import android.widget.Switch;
 import android.widget.TextView;
+import android.widget.VideoView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
@@ -43,9 +49,11 @@ import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 import java.util.ArrayList;
 import java.util.Locale;
+import java.util.Objects;
 import java.util.Scanner;
 import java.util.concurrent.atomic.AtomicInteger;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -167,6 +175,9 @@ public class MainActivity extends AppCompatActivity implements WeightDialogFragm
         actionBar.setTitle("Contents");
 
         loadManual();
+        headers.add("Media");
+        MenuItem item = menu.getMenu().add(headers.size()+".  Media");
+        item.setOnMenuItemClickListener(e->viewMedia());
     }
 
     public int getSearchChar(int page, int section, int item) {
@@ -258,6 +269,11 @@ public class MainActivity extends AppCompatActivity implements WeightDialogFragm
         System.out.println("Adding view "+section);
     }
 
+    public boolean viewMedia() {
+        startActivity(new Intent(this, MediaActivity.class));
+        return true;
+    }
+
     public void showContents() {
         TransitionManager.beginDelayedTransition(root);
         page=-1;
@@ -271,6 +287,7 @@ public class MainActivity extends AppCompatActivity implements WeightDialogFragm
         hideButtons();
         hideSearch();
     }
+
     public void hideContents() {
         if (!navigationView.isShown()) return;
         if (page==-1) page=0;
@@ -384,39 +401,41 @@ public class MainActivity extends AppCompatActivity implements WeightDialogFragm
     }
 
     public void loadPage() {
-        int s = scrollView.getScrollY();
-        getSupportActionBar().setTitle(parse(headers.get(page)));
         container.removeAllViews();
         optionsMenu.getMenu().clear();
-        addCard(0);
-        for (int j=1;j<content.get(page).size();j++) {
-            optionsMenu.getMenu().add(parse(content.get(page).get(j).get(0)));
-            int finalJ = j;
-            optionsMenu.getMenu().getItem(j-1).setOnMenuItemClickListener(e->{
-                showModal(finalJ);
-                return true;
-            });
-        }
-        if (section!=0) showModal(section); else hideModal();
-        while (searching) {
-            if (section==content.get(page).size()-1) {
-                hideModal();
-                if (searchSwitch.isChecked()) {
-                    if (page == content.size() - 1) {
-                        page = 0;
-                        searching = false;
-                    } else ++page;
-                    loadPage();
-                } else {
+        getSupportActionBar().setTitle(parse(headers.get(page)));
+        if (page<content.size()) {
+            int s = scrollView.getScrollY();
+            addCard(0);
+            for (int j = 1; j < content.get(page).size(); j++) {
+                optionsMenu.getMenu().add(parse(content.get(page).get(j).get(0)));
+                int finalJ = j;
+                optionsMenu.getMenu().getItem(j - 1).setOnMenuItemClickListener(e -> {
+                    showModal(finalJ);
+                    return true;
+                });
+            }
+            if (section != 0) showModal(section);
+            else hideModal();
+            while (searching) {
+                if (section == content.get(page).size() - 1) {
                     hideModal();
-                    searching = false;
-                }
-            } else showModal(++section);
+                    if (searchSwitch.isChecked()) {
+                        if (page == content.size() - 1) {
+                            page = 0;
+                            searching = false;
+                        } else ++page;
+                        loadPage();
+                    } else {
+                        hideModal();
+                        searching = false;
+                    }
+                } else showModal(++section);
+            }
+
+            if (!searchTerm.isEmpty()) showSearch();
+            else scrollView.scrollTo(0, s);
         }
-
-        if (!searchTerm.isEmpty()) showSearch();
-        else scrollView.scrollTo(0,s);
-
         TransitionManager.endTransitions(root);
     }
 
@@ -445,7 +464,10 @@ public class MainActivity extends AppCompatActivity implements WeightDialogFragm
             int st = span.length();
             for (int i=0;i<str.length();i++) {
                 char c = str.charAt(i);
-                if (c=='*')
+                if (c=='\\'&&i+1<str.length()) {
+                    span.append(str.charAt(++i));
+                }
+                else if (c=='*')
                     if (i+1<str.length()&&str.charAt(i+1)=='*') {
                         if (bold==-1) bold=span.length();
                         else {
@@ -461,9 +483,29 @@ public class MainActivity extends AppCompatActivity implements WeightDialogFragm
                             italic=-1;
                         }
                     }
+                else if (c=='['&&str.indexOf(']',i)!=-1) {
+                    int e = str.indexOf(']',i), l = str.indexOf('(',e); if (l==-1) continue;
+                    int r = str.indexOf(')',l); if (r==-1) continue;
+                    int k = span.length();
+                    String type = str.substring(i+1,e), link=str.substring(l+1,r);
+                    span.append(type);
+                    Drawable d;
+                    if (type.equals("Video")) d = getDrawable(R.drawable.ic_movie);
+                    else if (type.equals("Image")) d = getDrawable(R.drawable.ic_image);
+                    else d = getDrawable(R.drawable.ic_error);
+                    d.setBounds(0,0,(int)(3.5*fontSize),(int)(3.5*fontSize));
+                    span.setSpan(new ImageSpan(d),k,span.length(),Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+                    span.setSpan(new RelativeSizeSpan(0.5f),k,span.length(),Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+                    span.append("  ");
+                    k=span.length();
+                    span.append(link.substring(6));
+                    span.setSpan(new MediaLinkSpan(this,link),k,span.length(),Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+
+                    i=r;
+                }
                 else if (c=='{'&&str.indexOf('}',i)!=-1) {
                     int e = str.indexOf('}', i);
-                    String unit = "", subs = str.substring(i + 1, e);
+                    String unit = "", subs = str.substring(i+1, e);
                     float x;
                     if (subs.indexOf(' ') == -1) x = Float.parseFloat(subs);
                     else {
@@ -571,14 +613,6 @@ public class MainActivity extends AppCompatActivity implements WeightDialogFragm
                 WeightDialogFragment f = new WeightDialogFragment();
                 f.show(getSupportFragmentManager(),null);
                 break;
-            case R.id.email:
-                Intent intent = new Intent(Intent.ACTION_SEND);
-                intent.setData(Uri.parse("mailto:"));
-                intent.setType("text/plain");
-                intent.putExtra(Intent.EXTRA_EMAIL,new String[]{"shevonnechia1+manual@gmail.com"});
-                intent.putExtra(Intent.EXTRA_SUBJECT,new String[]{"Feedback: Crisis Manual"});
-                startActivity(intent);
-                break;
             case R.id.search:
                 TransitionManager.beginDelayedTransition(root);
                 if (searchText.isShown()) hideSearch();
@@ -609,4 +643,18 @@ public class MainActivity extends AppCompatActivity implements WeightDialogFragm
         showButtons();
     }
 
+    public static class MediaLinkSpan extends ClickableSpan {
+        String media;
+        Context ctx;
+        MediaLinkSpan(Context c, String m) {
+            ctx = c;
+            media = m;
+        }
+        @Override
+        public void onClick(@NonNull View widget) {
+            Intent i = new Intent(ctx,MediaActivity.class);
+            i.putExtra("link",media);
+            ctx.startActivity(i);
+        }
+    }
 }

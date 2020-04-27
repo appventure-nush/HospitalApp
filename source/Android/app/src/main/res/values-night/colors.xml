@@ -6,11 +6,11 @@
     <color name="colorBackground">#202428</color>
     <color name="colorPrimaryLight">#0D1424</color>
     <color name="colorPrimary">#1F3049</color>
-    <color name="colorPrimaryDark">#BDD8FF</color>
-    <color name="colorAccent">#C0556F</color>
-    <color name="colorAccentDark">#C08191</color>
-    <color name="colorAccentTransparent">#A0639A</color>
-    <color name="colorAccentLight">#FF9CB5</color>
+    <color name="colorPrimaryDark">#E7F1FF</color>
+    <color name="colorAccent">#FF748F</color>
+    <color name="colorAccentDark">#C2536D</color>
+    <color name="colorAccentTransparent">#A36B8B</color>
+    <color name="colorAccentLight">#E0BDC5</color>
     <color name="colorAccentLighter">#FFE6EC</color>
     <color name="colorText">#ffffff</color>
 </resources>
