@@ -4,10 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
-import android.media.MediaPlayer;
-import android.net.Uri;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.text.Editable;
 import android.text.Spannable;
 import android.text.SpannableString;
@@ -18,7 +15,6 @@ import android.text.method.LinkMovementMethod;
 import android.text.style.BackgroundColorSpan;
 import android.text.style.BulletSpan;
 import android.text.style.ClickableSpan;
-import android.text.style.DynamicDrawableSpan;
 import android.text.style.ForegroundColorSpan;
 import android.text.style.ImageSpan;
 import android.text.style.LeadingMarginSpan;
@@ -36,11 +32,10 @@ import android.view.ViewGroup.LayoutParams;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.LinearLayout;
-import android.widget.MediaController;
 import android.widget.ScrollView;
+import android.widget.SeekBar;
 import android.widget.Switch;
 import android.widget.TextView;
-import android.widget.VideoView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
@@ -49,7 +44,6 @@ import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 import java.util.ArrayList;
 import java.util.Locale;
-import java.util.Objects;
 import java.util.Scanner;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -72,8 +66,9 @@ public class MainActivity extends AppCompatActivity implements WeightDialogFragm
     private LinearLayout container;
     private LinearLayout navigationView;
     private LinearLayout modal;
-    private FloatingActionButton zoomIn;
-    private FloatingActionButton zoomOut;
+    private LinearLayout zoomHolder;
+    private FloatingActionButton zoomBtn;
+    private SeekBar fontSizeBar;
     private FloatingActionButton menuBtn;
     private ScrollView scrollView, activeScrollView;
     private Switch searchSwitch;
@@ -81,7 +76,11 @@ public class MainActivity extends AppCompatActivity implements WeightDialogFragm
     private EditText searchText;
     private ArrayList<String> headers = new ArrayList<>();
     private ArrayList<ArrayList<ArrayList<String>>> content = new ArrayList<>();
-    private int fontSize = 18;
+    private RelativeSizeSpan sp = new RelativeSizeSpan(1f);
+    private TextView rootHeaderView, rootContentView;
+    private TextView headerView, contentView;
+    private int fontRatio = 100;
+    private final int fontSize = 18;
     public static float weight = 50f;
     public static boolean calculateByWeight = false;
     private int page=-1, section=0;
@@ -98,14 +97,15 @@ public class MainActivity extends AppCompatActivity implements WeightDialogFragm
         setContentView(R.layout.activity_main);
         container = findViewById(R.id.container);
         modal = findViewById(R.id.modal);
+        zoomHolder = findViewById(R.id.zoomContainer);
         navigationView = findViewById(R.id.navigationView);
         menu = findViewById(R.id.menu);
         menuBar = findViewById(R.id.menuBar);
         toolbar = findViewById(R.id.toolbar);
         optionsMenu = findViewById(R.id.optionsMenu);
         root = findViewById(R.id.root);
-        zoomIn = findViewById(R.id.zoomInBtn);
-        zoomOut = findViewById(R.id.zoomOutBtn);
+        zoomBtn = findViewById(R.id.zoomBtn);
+        fontSizeBar = findViewById(R.id.fontSizeBar);
         menuBtn = findViewById(R.id.menuBtn);
         activeScrollView = scrollView = findViewById(R.id.scrollView);
         overlay = findViewById(R.id.overlay);
@@ -113,23 +113,39 @@ public class MainActivity extends AppCompatActivity implements WeightDialogFragm
         searchSwitch = findViewById(R.id.searchAllSwitch);
 
         scrollView.setOnScrollChangeListener((v,x,y,ox,oy)->{
-            if (y-oy>20&&zoomIn.isOrWillBeShown()) hideButtons();
-            else if (oy-y>20&&zoomIn.isOrWillBeHidden()) showButtons();
+            if (y-oy>20&&zoomBtn.isShown()) hideButtons();
+            else if (oy-y>20&&!zoomBtn.isShown()) showButtons();
         });
 
-        zoomIn.setOnClickListener(e->{
-            if (fontSize<36) fontSize +=2;
-            loadPage();
-            showButtons();
-            TransitionManager.endTransitions(root);
+        zoomBtn.setOnClickListener(e->{
+            TransitionManager.beginDelayedTransition(zoomHolder);
+            fontSizeBar.setVisibility(fontSizeBar.isShown()?View.GONE:View.VISIBLE);
         });
 
-        zoomOut.setOnClickListener(e->{
-            if (fontSize>8) fontSize -=2;
-            loadPage();
-            showButtons();
-            TransitionManager.endTransitions(root);
+
+        fontSizeBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                if (page==-1) return; //magic
+                fontRatio = 2*progress+50;
+                RelativeSizeSpan s = new RelativeSizeSpan(fontRatio/100f);
+                replaceSpan(sp, s);
+                sp=s;
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+                TransitionManager.beginDelayedTransition(zoomHolder);
+                fontSizeBar.setVisibility(View.GONE);
+            }
         });
+
+
 
         menuBtn.setOnClickListener(e->{
             if (optionsMenu.isShown()) hideOptions(); else showOptions();
@@ -208,22 +224,23 @@ public class MainActivity extends AppCompatActivity implements WeightDialogFragm
         TextView h = new TextView(this);
         h.setTextColor(getColor(R.color.colorText));
         CardView.LayoutParams lp = new CardView.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
-        lp.setMargins(2* fontSize, 2* fontSize, 2* fontSize, 2* fontSize);
+        lp.setMargins(36, 36, 36, 36);
         h.setLayoutParams(lp);
         ch.addView(h);
-        h.setTextSize(1.4f* fontSize);
-        h.setText(parse(text.get(0),getSearchChar(page,section,0),()->{scrollView.scrollTo(0,0);}));
+        h.setTextSize(25.199999f);
+        SpannableStringBuilder ssb = parse(text.get(0),getSearchChar(page,section,0),()->scrollView.scrollTo(0,0));
+        ssb.setSpan(sp,0,ssb.length(),Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        h.setText(ssb);
 
         CardView cc = new CardView(this);
         cc.setRadius(0);
         cc.setCardBackgroundColor(getColor(R.color.colorPrimaryLight));
         cc.setCardElevation(1);
 
-
         TextView c = new TextView(this);
         c.setTextColor(getColor(R.color.colorText));
         lp = new CardView.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
-        lp.setMargins(2* fontSize, 2* fontSize, 2* fontSize, 2* fontSize);
+        lp.setMargins(36, 36, 36, 36);
         c.setLayoutParams(lp);
         //c.setLineHeight(Math.round(3*fontSize));
         c.setTextSize(fontSize);
@@ -234,14 +251,14 @@ public class MainActivity extends AppCompatActivity implements WeightDialogFragm
         if (section>0) {
             activeScrollView = new ScrollView(this);
             activeScrollView.setOnScrollChangeListener((v, x, y, ox, oy)->{
-                if (y-oy>20&&zoomIn.isOrWillBeShown()||!searchTerm.isEmpty()) hideButtons();
-                else if (oy-y>20&&zoomIn.isOrWillBeHidden()) showButtons();
+                if (y-oy>20&&zoomBtn.isShown()||!searchTerm.isEmpty()) hideButtons();
+                else if (oy-y>20&&!zoomBtn.isShown()) showButtons();
             });
             ll.addView(activeScrollView);
             activeScrollView.addView(cc);
         } else ll.addView(cc);
 
-        SpannableStringBuilder ssb = new SpannableStringBuilder();
+        ssb = new SpannableStringBuilder();
         int j=0;
         int cChar=0;
         AtomicInteger fChar= new AtomicInteger(0);
@@ -254,14 +271,21 @@ public class MainActivity extends AppCompatActivity implements WeightDialogFragm
             }));
             cChar=ssb.length();
         }
+        ssb.setSpan(sp,0,ssb.length(),Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
         c.setText(ssb);
 
         if (section>0) {
             modal.removeAllViews();
             modal.addView(ll);
         }
-        else container.addView(ll);
+        else {
+            rootHeaderView = h;
+            rootContentView = c;
+            container.addView(ll);
+        }
 
+        headerView = h;
+        contentView = c;
         c.getViewTreeObserver().addOnGlobalLayoutListener(()->{
             if (c.getLayout()!=null&&!searchTerm.isEmpty()) activeScrollView.scrollTo(0, c.getLayout().getLineTop(c.getLayout().getLineForOffset(fChar.get())));
         });
@@ -315,10 +339,10 @@ public class MainActivity extends AppCompatActivity implements WeightDialogFragm
     }
 
     public void showButtons() {
-        zoomIn.show(); zoomOut.show(); if (optionsMenu.getMenu().hasVisibleItems()) menuBtn.show(); hideOptions();
+        zoomBtn.show(); if (optionsMenu.getMenu().hasVisibleItems()) menuBtn.show(); hideOptions();
     }
     public void hideButtons() {
-        zoomIn.hide(); zoomOut.hide(); menuBtn.hide(); hideOptions();
+        zoomBtn.hide(); menuBtn.hide(); hideOptions();
     }
 
     public void showSearch() {
@@ -347,7 +371,7 @@ public class MainActivity extends AppCompatActivity implements WeightDialogFragm
             section = i;
             addCard(i);
             overlay.setVisibility(View.VISIBLE);
-            hideButtons();
+            hideOptions();
             System.out.println("seek");
         }
     }
@@ -439,6 +463,25 @@ public class MainActivity extends AppCompatActivity implements WeightDialogFragm
         TransitionManager.endTransitions(root);
     }
 
+    public void replaceSpan(Object oldSpan, Object newSpan) {
+        SpannableStringBuilder srh = new SpannableStringBuilder(rootHeaderView.getText()), src = new SpannableStringBuilder(rootContentView.getText());
+        srh.removeSpan(oldSpan);
+        src.removeSpan(oldSpan);
+        srh.setSpan(newSpan,0,srh.length(),Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        rootHeaderView.setText(srh);
+        src.setSpan(newSpan,0,src.length(),Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        rootContentView.setText(src);
+        if (section!=0) {
+            SpannableStringBuilder sh = new SpannableStringBuilder(headerView.getText()), sc = new SpannableStringBuilder(contentView.getText());
+            sh.removeSpan(oldSpan);
+            sc.removeSpan(oldSpan);
+            sh.setSpan(newSpan,0,sh.length(),Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+            headerView.setText(sh);
+            sc.setSpan(newSpan,0,sc.length(),Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+            contentView.setText(sc);
+        }
+    }
+
     public interface SearchFoundHandler {
         void onSearchFound();
     }
@@ -490,15 +533,15 @@ public class MainActivity extends AppCompatActivity implements WeightDialogFragm
                     String type = str.substring(i+1,e), link=str.substring(l+1,r);
                     span.append(type);
                     Drawable d;
-                    if (type.equals("Video")) d = getDrawable(R.drawable.ic_movie);
-                    else if (type.equals("Image")) d = getDrawable(R.drawable.ic_image);
+                    if (link.startsWith("media_video")) d = getDrawable(R.drawable.ic_movie);
+                    else if (link.startsWith("media_image")) d = getDrawable(R.drawable.ic_image);
                     else d = getDrawable(R.drawable.ic_error);
                     d.setBounds(0,0,(int)(3.5*fontSize),(int)(3.5*fontSize));
                     span.setSpan(new ImageSpan(d),k,span.length(),Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
                     span.setSpan(new RelativeSizeSpan(0.5f),k,span.length(),Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
                     span.append("  ");
                     k=span.length();
-                    span.append(link.substring(6));
+                    span.append(type);
                     span.setSpan(new MediaLinkSpan(this,link),k,span.length(),Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
 
                     i=r;
@@ -550,17 +593,15 @@ public class MainActivity extends AppCompatActivity implements WeightDialogFragm
             if (original.startsWith("#### ")) {
                 span.setSpan(new StyleSpan(Typeface.BOLD), st, span.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
                 span.setSpan(new RelativeSizeSpan(1.4f), st, span.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-                //span.setSpan(new LineHeightSpan.Standard(4*fontSize), st, span.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
             } else if (original.startsWith("##### ")) {
                 span.setSpan(new StyleSpan(Typeface.BOLD_ITALIC), st, span.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
                 span.setSpan(new ForegroundColorSpan(ContextCompat.getColor(this,R.color.colorAccentDark)),st,span.length(),Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
                 span.setSpan(new RelativeSizeSpan(1.2f), st, span.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-                //span.setSpan(new LineHeightSpan.Standard(4*fontSize), st, span.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
             } else if (original.startsWith("- ")) {
                 span.setSpan(new LeadingMarginSpan.Standard(0, 18), st, span.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
                 span.setSpan(new BulletSpan(), st, span.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
             } else if (original.startsWith("  - ")) {
-                span.setSpan(new LeadingMarginSpan.Standard(fontSize *2, fontSize*2+18), st, span.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+                span.setSpan(new LeadingMarginSpan.Standard(36, 54), st, span.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
                 span.setSpan(new BulletSpan(), st, span.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
             }
             if (!(original.startsWith("#")&&original.indexOf(' ')<4)) {

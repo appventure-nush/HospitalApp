@@ -34,6 +34,7 @@ public class MediaActivity extends AppCompatActivity {
     private RelativeLayout mediaHolder;
     private View media = null;
 
+    private boolean redirect = false;
     private ArrayList<String> keys = new ArrayList<>();
     private HashMap<String,Integer> list = new HashMap<>();
     private static final int[] icons = {R.drawable.ic_movie,R.drawable.ic_image,R.drawable.ic_error};
@@ -45,18 +46,29 @@ public class MediaActivity extends AppCompatActivity {
 
         root = findViewById(R.id.root);
 
+        overlay = findViewById(R.id.overlay);
+        mediaHolder = findViewById(R.id.videoHolder);
+
+        if (getIntent()!=null) {
+            Bundle x = getIntent().getExtras();
+            if (x != null) {
+                redirect = true;
+                String key = x.getString("link");
+                list.put(key,getResources().getIdentifier(x.getString("link"),"raw",getPackageName()));
+                showMedia(key);
+                overlay.setOnClickListener(y->finish());
+                return;
+            }
+        }
+
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         actionBar = getSupportActionBar();
         assert(actionBar!=null);
         actionBar.setTitle("Media");
         actionBar.setDisplayHomeAsUpEnabled(true);
-        System.out.println("help me\n");
 
-        overlay = findViewById(R.id.overlay);
-        mediaHolder = findViewById(R.id.videoHolder);
         listView = findViewById(R.id.listView);
-
         Field[] f = R.raw.class.getFields();
         for (Field i: f) {
             if (i.getName().startsWith("media_")) {
@@ -69,18 +81,12 @@ public class MediaActivity extends AppCompatActivity {
             }
         }
         listView.setAdapter(new MediaAdapter(this, R.layout.adapter_media, keys));
-
         listView.setOnItemClickListener((p,v,pos,id)->{
             if (pos>=0) showMedia(keys.get(pos));
         });
 
         overlay.setOnClickListener(x->hideMedia());
 
-        if (getIntent()==null) return;
-        Bundle x = getIntent().getExtras();
-        if (x!=null) {
-            showMedia(x.getString("link"));
-        }
     }
 
     public int mediaType(String s) {
@@ -152,10 +158,12 @@ public class MediaActivity extends AppCompatActivity {
             if (v==null) v = (LayoutInflater.from(ctx)).inflate(R.layout.adapter_media,null);
             TextView t = v.findViewById(R.id.titleView);
             String s = getItem(position).substring(6);
-            t.setText(s);
             ImageView img = v.findViewById(R.id.imageView);
             if (s.startsWith("video")) img.setImageResource(R.drawable.ic_movie);
             else if (s.startsWith("image")) img.setImageResource(R.drawable.ic_image);
+            else img.setImageResource(R.drawable.ic_error);
+            s=s.substring(s.indexOf('_')+1).replace('_',' ');
+            t.setText(s);
             return v;
         }
     }
