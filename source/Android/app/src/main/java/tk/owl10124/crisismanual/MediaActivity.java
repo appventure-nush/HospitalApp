@@ -15,6 +15,8 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.VideoView;
 
+import com.github.chrisbanes.photoview.PhotoView;
+
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -107,8 +109,9 @@ public class MediaActivity extends AppCompatActivity {
     public void showImage(String m) {
         TransitionManager.beginDelayedTransition(root);
         overlay.setVisibility(View.VISIBLE);
-        ImageView img = new ImageView(this);
+        PhotoView img = new PhotoView(this);
         media = img;
+        img.setOnOutsidePhotoTapListener(e->overlay.callOnClick());
         img.setImageResource(list.get(m));
         mediaHolder.addView(img);
     }

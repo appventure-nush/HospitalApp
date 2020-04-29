@@ -113,12 +113,13 @@ public class MainActivity extends AppCompatActivity implements WeightDialogFragm
         searchSwitch = findViewById(R.id.searchAllSwitch);
 
         scrollView.setOnScrollChangeListener((v,x,y,ox,oy)->{
-            if (y-oy>20&&zoomBtn.isShown()) hideButtons();
+            if (y-oy>20&&zoomBtn.isShown()||!searchTerm.isEmpty()) hideButtons();
             else if (oy-y>20&&!zoomBtn.isShown()) showButtons();
         });
 
         zoomBtn.setOnClickListener(e->{
             TransitionManager.beginDelayedTransition(zoomHolder);
+            zoomHolder.setBackground(fontSizeBar.isShown()?null:getDrawable(R.drawable.rounded_rect));
             fontSizeBar.setVisibility(fontSizeBar.isShown()?View.GONE:View.VISIBLE);
         });
 
@@ -127,7 +128,7 @@ public class MainActivity extends AppCompatActivity implements WeightDialogFragm
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 if (page==-1) return; //magic
-                fontRatio = 2*progress+50;
+                fontRatio = progress+50;
                 RelativeSizeSpan s = new RelativeSizeSpan(fontRatio/100f);
                 replaceSpan(sp, s);
                 sp=s;
@@ -186,9 +187,7 @@ public class MainActivity extends AppCompatActivity implements WeightDialogFragm
         });
 
         setSupportActionBar(menuBar);
-        ActionBar actionBar = getSupportActionBar();
-        assert actionBar != null;
-        actionBar.setTitle("Contents");
+        getSupportActionBar().setTitle("Contents");
 
         loadManual();
         headers.add("Media");
@@ -227,7 +226,7 @@ public class MainActivity extends AppCompatActivity implements WeightDialogFragm
         lp.setMargins(36, 36, 36, 36);
         h.setLayoutParams(lp);
         ch.addView(h);
-        h.setTextSize(25.199999f);
+        h.setTextSize(25.2f);
         SpannableStringBuilder ssb = parse(text.get(0),getSearchChar(page,section,0),()->scrollView.scrollTo(0,0));
         ssb.setSpan(sp,0,ssb.length(),Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
         h.setText(ssb);
@@ -266,9 +265,7 @@ public class MainActivity extends AppCompatActivity implements WeightDialogFragm
             String s = text.get(i);
             if (section==0&&s.startsWith("#####")) ++j;
             int finalCChar = cChar;
-            ssb.append(parse(s,(section==0&&s.startsWith("#####")?j:0),getSearchChar(page,section,i),()->{
-                fChar.set(finalCChar + searchChar);
-            }));
+            ssb.append(parse(s,(section==0&&s.startsWith("#####")?j:0),getSearchChar(page,section,i),()->fChar.set(finalCChar + searchChar)));
             cChar=ssb.length();
         }
         ssb.setSpan(sp,0,ssb.length(),Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
@@ -318,9 +315,7 @@ public class MainActivity extends AppCompatActivity implements WeightDialogFragm
         TransitionManager.beginDelayedTransition(root);
         setSupportActionBar(toolbar);
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_menu);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(false);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setTitle(parse(headers.get(page)));
         ViewGroup.LayoutParams lp = navigationView.getLayoutParams();
         lp.width=1;
         navigationView.setLayoutParams(lp);
@@ -342,7 +337,7 @@ public class MainActivity extends AppCompatActivity implements WeightDialogFragm
         zoomBtn.show(); if (optionsMenu.getMenu().hasVisibleItems()) menuBtn.show(); hideOptions();
     }
     public void hideButtons() {
-        zoomBtn.hide(); menuBtn.hide(); hideOptions();
+        zoomBtn.hide(); menuBtn.hide(); hideOptions(); fontSizeBar.setVisibility(View.GONE);
     }
 
     public void showSearch() {
@@ -378,7 +373,6 @@ public class MainActivity extends AppCompatActivity implements WeightDialogFragm
 
     public void hideModal() {
         TransitionManager.beginDelayedTransition(root);
-        showButtons();
         modal.removeAllViews();
         overlay.setVisibility(View.GONE);
         activeScrollView = scrollView;
@@ -427,7 +421,7 @@ public class MainActivity extends AppCompatActivity implements WeightDialogFragm
     public void loadPage() {
         container.removeAllViews();
         optionsMenu.getMenu().clear();
-        getSupportActionBar().setTitle(parse(headers.get(page)));
+        getSupportActionBar().setTitle((page+1)+". "+parse(headers.get(page)));
         if (page<content.size()) {
             int s = scrollView.getScrollY();
             addCard(0);
@@ -460,7 +454,6 @@ public class MainActivity extends AppCompatActivity implements WeightDialogFragm
             if (!searchTerm.isEmpty()) showSearch();
             else scrollView.scrollTo(0, s);
         }
-        TransitionManager.endTransitions(root);
     }
 
     public void replaceSpan(Object oldSpan, Object newSpan) {
@@ -515,7 +508,7 @@ public class MainActivity extends AppCompatActivity implements WeightDialogFragm
                         if (bold==-1) bold=span.length();
                         else {
                             span.setSpan(new StyleSpan(Typeface.BOLD),bold,span.length(),Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-                            span.setSpan(new ForegroundColorSpan(ContextCompat.getColor(this,R.color.colorAccent)),bold,span.length(),Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+                            span.setSpan(new ForegroundColorSpan(getColor(R.color.colorAccent)),bold,span.length(),Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
                             bold=-1;
                         }
                         i++;
@@ -531,19 +524,36 @@ public class MainActivity extends AppCompatActivity implements WeightDialogFragm
                     int r = str.indexOf(')',l); if (r==-1) continue;
                     int k = span.length();
                     String type = str.substring(i+1,e), link=str.substring(l+1,r);
-                    span.append(type);
-                    Drawable d;
-                    if (link.startsWith("media_video")) d = getDrawable(R.drawable.ic_movie);
-                    else if (link.startsWith("media_image")) d = getDrawable(R.drawable.ic_image);
-                    else d = getDrawable(R.drawable.ic_error);
-                    d.setBounds(0,0,(int)(3.5*fontSize),(int)(3.5*fontSize));
-                    span.setSpan(new ImageSpan(d),k,span.length(),Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-                    span.setSpan(new RelativeSizeSpan(0.5f),k,span.length(),Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-                    span.append("  ");
-                    k=span.length();
-                    span.append(type);
-                    span.setSpan(new MediaLinkSpan(this,link),k,span.length(),Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-
+                    if (link.startsWith("media")) {
+                        Drawable d;
+                        if (link.startsWith("media_video")) d = getDrawable(R.drawable.ic_movie);
+                        else if (link.startsWith("media_image")) d = getDrawable(R.drawable.ic_image);
+                        else if (link.startsWith("page")) d = getDrawable(R.drawable.ic_book);
+                        else d = getDrawable(R.drawable.ic_error);
+                        d.setBounds(0,0,(int)(0.63*fontRatio),(int)(0.63*fontRatio));
+                        span.append(' ');
+                        span.setSpan(new ImageSpan(d),k,span.length(),Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+                        span.setSpan(new RelativeSizeSpan(0.5f),k,span.length(),Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+                        span.append(' ');
+                        k=span.length();
+                        span.append(type);
+                        span.setSpan(new MediaLinkSpan(this,link),k,span.length(),Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+                    } else if (link.startsWith("page")){
+                        span.append(type);
+                        int x = Integer.parseInt(link.substring(5));
+                        if (x>=0&&x<=content.size())
+                            span.setSpan(new ClickableSpan() {
+                                @Override
+                                public void onClick(@NonNull View widget) {
+                                    TransitionManager.beginDelayedTransition(root);
+                                    page=x;
+                                    loadPage();
+                                }
+                            },k,span.length(),Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+                    } else if (link.startsWith("http")){
+                        span.append(type);
+                        span.setSpan(new URLSpan(link),k,span.length(),Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+                    }
                     i=r;
                 }
                 else if (c=='{'&&str.indexOf('}',i)!=-1) {
@@ -559,8 +569,8 @@ public class MainActivity extends AppCompatActivity implements WeightDialogFragm
                     span.append(calculateByWeight ? df.format(x * weight) + unit : df.format(x) + unit + "/kg");
                     //span.setSpan(new TypefaceSpan(Typeface.MONOSPACE),k,span.length(),Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
                     span.setSpan(new StyleSpan(Typeface.BOLD), k, span.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-                    span.setSpan(new ForegroundColorSpan(ContextCompat.getColor(this, R.color.colorAccent)), k, span.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-                    span.setSpan(new BackgroundColorSpan(ContextCompat.getColor(this, R.color.colorTranslucent)), k, span.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+                    span.setSpan(new ForegroundColorSpan(getColor(R.color.colorAccent)), k, span.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+                    span.setSpan(new BackgroundColorSpan(getColor(R.color.colorTranslucent)), k, span.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
                     i = e;
                 } else if (c=='<'&&i+5<=str.length()&&str.substring(i,i+5).equals("<sub>")) {
                     sub=span.length();
@@ -595,7 +605,7 @@ public class MainActivity extends AppCompatActivity implements WeightDialogFragm
                 span.setSpan(new RelativeSizeSpan(1.4f), st, span.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
             } else if (original.startsWith("##### ")) {
                 span.setSpan(new StyleSpan(Typeface.BOLD_ITALIC), st, span.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-                span.setSpan(new ForegroundColorSpan(ContextCompat.getColor(this,R.color.colorAccentDark)),st,span.length(),Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+                span.setSpan(new ForegroundColorSpan(getColor(R.color.colorAccentDark)),st,span.length(),Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
                 span.setSpan(new RelativeSizeSpan(1.2f), st, span.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
             } else if (original.startsWith("- ")) {
                 span.setSpan(new LeadingMarginSpan.Standard(0, 18), st, span.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
