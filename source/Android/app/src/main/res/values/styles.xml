@@ -20,6 +20,16 @@
         <item name="android:textColorPrimary">@color/colorPrimaryDark</item>
         <item name="android:textColorSecondary">@color/colorPrimaryDark</item>
         <item name="android:backgroundTint">@color/colorWhite</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="FloatingActionButton" parent="@style/Widget.Design.FloatingActionButton">
+        <item name="android:backgroundTint">@color/colorAccentDark</item>
+    </style>
+
+    <style name="Button" parent="@style/Widget.AppCompat.Button.Colored">
+        <item name="android:background">@color/colorAccentDark</item>
+        <item name="android:textColor">#ffffff</item>
     </style>
 
 </resources>

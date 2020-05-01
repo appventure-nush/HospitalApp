@@ -11,9 +11,4 @@
         app:showAsAction="always"
         android:icon="@drawable/ic_search"
         android:title="@string/search" />
-    <item
-        android:id="@+id/email"
-        app:showAsAction="ifRoom"
-        android:icon="@drawable/ic_email"
-        android:title="@string/email" />
 </menu>
