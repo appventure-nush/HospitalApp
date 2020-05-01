@@ -29,10 +29,9 @@
 
         <Button
             android:id="@+id/startBtn"
+            style="@style/Button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@color/colorAccentDark"
-            android:text="@string/begin"
-            android:textColor="@color/colorWhite" />
+            android:text="@string/begin" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

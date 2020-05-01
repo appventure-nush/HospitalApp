@@ -32,7 +32,13 @@ public class WeightDialogFragment extends DialogFragment {
         b.setTitle("Weight")
                 .setView(v)
                 .setPositiveButton(R.string.set,(d,id)->{
-                    MainActivity.weight = Float.parseFloat(w.getText().toString());
+                    try {
+                        MainActivity.weight = Float.parseFloat(w.getText().toString());
+                    } catch (NumberFormatException e) {
+                        Toast.makeText(getContext(), "Input invalid.",Toast.LENGTH_SHORT).show();
+                        listener.onDialogNegativeClick(this);
+                        return;
+                    }
                     MainActivity.calculateByWeight=t.isChecked();
                     if (t.isChecked())
                         Toast.makeText(getContext(), "Calculating doses for " + String.format(Locale.ENGLISH, "%.1f", MainActivity.weight) + "kg patient", Toast.LENGTH_SHORT).show();

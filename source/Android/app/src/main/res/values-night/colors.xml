@@ -7,10 +7,10 @@
     <color name="colorPrimaryLight">#0D1424</color>
     <color name="colorPrimary">#1F3049</color>
     <color name="colorPrimaryDark">#E7F1FF</color>
-    <color name="colorAccent">#FF748F</color>
-    <color name="colorAccentDark">#C2536D</color>
+    <color name="colorAccent">#FF99AD</color>
+    <color name="colorAccentDark">#FFC6D5</color>
     <color name="colorAccentTransparent">#A36B8B</color>
-    <color name="colorAccentLight">#E0BDC5</color>
-    <color name="colorAccentLighter">#FFE6EC</color>
+    <color name="colorAccentLight">#CC6F85</color>
+    <color name="colorAccentLighter">#DB4D67</color>
     <color name="colorText">#ffffff</color>
 </resources>

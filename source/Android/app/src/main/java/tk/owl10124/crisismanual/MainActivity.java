@@ -54,6 +54,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.cardview.widget.CardView;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.content.ContextCompat;
+import androidx.core.content.res.ResourcesCompat;
 import androidx.fragment.app.DialogFragment;
 
 
@@ -391,7 +392,7 @@ public class MainActivity extends AppCompatActivity implements WeightDialogFragm
                 ++h;
                 SpannableString s = new SpannableString(str.substring(2));
                 s.setSpan(new ForegroundColorSpan(getColor(R.color.colorAccent)),0,s.length(),Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-                s.setSpan(new RelativeSizeSpan(1.75f),0,s.length(),Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+                s.setSpan(new RelativeSizeSpan(1.25f),0,s.length(),Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
                 s.setSpan(new StyleSpan(Typeface.BOLD),0,s.length(),Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
                 MenuItem item = menu.getMenu().add(s);
                 item.setEnabled(false);
@@ -550,7 +551,7 @@ public class MainActivity extends AppCompatActivity implements WeightDialogFragm
                                     loadPage();
                                 }
                             },k,span.length(),Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-                    } else if (link.startsWith("http")){
+                    } else {
                         span.append(type);
                         span.setSpan(new URLSpan(link),k,span.length(),Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
                     }
@@ -595,7 +596,7 @@ public class MainActivity extends AppCompatActivity implements WeightDialogFragm
                 } else if ('0'<=c&&c<='9'&&i+9<=str.length()&&str.substring(i,i+9).matches("\\d{4} \\d{4}")) {
                     span.append(str.substring(i,i+9));
                     span.setSpan(new URLSpan("tel:"+str.substring(i,i+4)+str.substring(i+5,i+9)),span.length()-9,span.length(),Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-                    i+=9;
+                    i+=8;
                 } else {
                     span.append(c);
                 }
@@ -684,14 +685,16 @@ public class MainActivity extends AppCompatActivity implements WeightDialogFragm
 
     @Override
     public void onDialogPositiveClick(DialogFragment dialog) {
-        if (page!=-1) loadPage();
-        TransitionManager.endTransitions(root);
-        showButtons();
+        if (page!=-1) {
+            loadPage();
+            TransitionManager.endTransitions(root);
+            showButtons();
+        }
     }
 
     @Override
     public void onDialogNegativeClick(DialogFragment dialog) {
-        showButtons();
+        //showButtons();
     }
 
     public static class MediaLinkSpan extends ClickableSpan {
