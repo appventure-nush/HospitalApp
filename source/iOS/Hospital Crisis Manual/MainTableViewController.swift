@@ -20,7 +20,7 @@ class MainTableViewController: UITableViewController {
             self.navigationItem.largeTitleDisplayMode = .always
         }
         
-        if let url = Bundle.main.url(forResource: "transcript", withExtension: "md"),
+        if let url = Bundle.main.url(forResource: "info", withExtension: "md"),
             let str = try? String(contentsOf: url, encoding: .utf8) {
                 
             dataHandler = DataHandler(rawContents: str)
