@@ -25,7 +25,7 @@
 - Change CPR compression provider as and when necessary
 - Consider *reversible* causes. Read aloud Hs and Ts
 - Check rhythm, if rhythm organised, check pulse
-  - **If VF/VT:** Resume CPR; Go to **[ALGORITHM 2](page_1)**
+  - **If VF/VT:** Resume CPR; Go to **[ALGORITHM 3](page_2)**
   - **If asystole/PEA continues:** Resume CPR.
 - Check EtCO<sub>2</sub>
   - If < 10mmHg, evaluate CPR technique
