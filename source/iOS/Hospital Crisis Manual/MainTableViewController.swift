@@ -12,6 +12,8 @@ class MainTableViewController: UITableViewController {
 
     var dataHandler: DataHandler?
     
+    var autoOpenPage: Int?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -26,6 +28,34 @@ class MainTableViewController: UITableViewController {
             dataHandler = DataHandler(rawContents: str)
             for topic in dataHandler?.sectionList ?? [] {
                 topic.convertToSubsections()
+            }
+        }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        
+        //Handle page open
+        if let pageNo = autoOpenPage,
+            let dataHandler = dataHandler {
+        
+            var tmpCount = 0
+            var tmpSectionIdx = 0
+            for section in dataHandler.sectionList {
+                if section.subsections.count + tmpCount < pageNo {
+                    tmpCount += section.subsections.count
+                    tmpSectionIdx += 1
+                } else {
+                    autoOpenPage = nil
+                    let tmpSubsectionIdx = pageNo - tmpCount - 1
+                    
+                    tableView.selectRow(at: IndexPath(row: tmpSubsectionIdx, section: tmpSectionIdx),
+                                        animated: true,
+                                        scrollPosition: .none)
+                    
+                    self.performSegue(withIdentifier: "showContents",
+                                      sender: ["topic": section.subsections[tmpSubsectionIdx], "no": pageNo])
+                    break
+                }
             }
         }
     }
@@ -56,16 +86,19 @@ class MainTableViewController: UITableViewController {
         let title = dataHandler!.sectionList[indexPath.section].subsections[indexPath.row].title
         
         cell.textLabel?.text = "\(no). \(title)"
+        cell.tag = no
         
         return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.performSegue(withIdentifier: "showContents",
-                          sender: dataHandler!
-                            .sectionList[indexPath.section]
-                            .subsections[indexPath.row]
-        )
+                          sender: [
+                            "topic": dataHandler!
+                                .sectionList[indexPath.section]
+                                .subsections[indexPath.row],
+                            "no": tableView.cellForRow(at: indexPath)?.tag ?? 0
+        ])
     }
     
 
@@ -86,9 +119,13 @@ class MainTableViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showContents",
             let vc = segue.destination as? ContentViewController,
-            let subsection = sender as? DataHandler.Section {
+            let dict = sender as? [String: Any],
+            let subsection = dict["topic"] as? DataHandler.Section {
+            var no = dict["no"] as? Int
             
+            vc.homepage = self
             vc.topic = subsection
+            if no != 0 { vc.topicNo = no }
         }
     }
 

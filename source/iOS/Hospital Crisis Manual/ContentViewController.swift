@@ -10,16 +10,20 @@ import UIKit
 import WebKit
 import Down
 
-class ContentViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate, UITextFieldDelegate {
+class ContentViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate, UITextFieldDelegate, WKNavigationDelegate {
 
+    var homepage: MainTableViewController?
     var topic: DataHandler.Section?
-    var selectedSegmentIndexPath: IndexPath?
+    var topicNo: Int?
+    
+    var selectedSegmentIndexPath: IndexPath? = IndexPath(row: 0, section: 0)
     
     @IBOutlet var tableView: UITableView!
     @IBOutlet var contentView: UIView!
     @IBOutlet var sectionPickerView: UIView!
     @IBOutlet var zoomStepper: UIStepper!
     var downView: DownView?
+    var downViewNavigationDelegate: WKNavigationDelegate?
     
     @IBOutlet var searchAccessoryView: UIView!
     @IBOutlet var searchBar: UISearchBar!
@@ -53,7 +57,7 @@ class ContentViewController: UIViewController, UITableViewDelegate, UITableViewD
         guard let topic = topic else {return}
         topic.convertToSubsections()
         
-        self.title = topic.title
+        self.title = (topicNo != nil ? "\(topicNo!). " : "") + topic.title
         do {
             let contents: String? = topic.markdownContents
             
@@ -65,6 +69,8 @@ class ContentViewController: UIViewController, UITableViewDelegate, UITableViewD
                     self.downView?.alpha = 1
                 }) { (completion) in
                     self.activityIndicator.stopAnimating()
+                    self.downViewNavigationDelegate = self.downView?.navigationDelegate
+                    self.downView?.navigationDelegate = self
                 }
             }
             
@@ -95,7 +101,6 @@ class ContentViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        updateViews()
     }
     
     
@@ -112,6 +117,14 @@ class ContentViewController: UIViewController, UITableViewDelegate, UITableViewD
         
     }
     
+    // MARK: - Section Table Action Handler
+    @IBAction func launchSectionView() {
+        if let iP = selectedSegmentIndexPath {
+            tableView(tableView, didSelectRowAt: iP)
+        }
+        updateViews()
+    }
+    
     // MARK: - View Zooming Config
     @IBAction func zoomStepperPressed(_ sender: UIStepper!) {
         downView?.configuration.preferences.minimumFontSize = CGFloat(sender.value)
@@ -124,6 +137,101 @@ class ContentViewController: UIViewController, UITableViewDelegate, UITableViewD
         WeightCalcHandler.showConfigurationPrompt(on: self, completion: {
             self.updateViews()
         })
+    }
+    
+    // MARK: - Down View Navigation Delegate Methods
+    func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
+        
+        if let url = navigationAction.request.url,
+            url != Bundle.main.url(forResource: "index", withExtension: "html") {
+            
+            if url.lastPathComponent.starts(with: "page_"),
+                let pageNo = Int(url.lastPathComponent.replacingOccurrences(of: "page_", with: "")) {
+                
+                homepage?.autoOpenPage = pageNo + 1 //counterintuitively the page numbers in this document is zero-indexed
+                self.navigationController?.popViewController(animated: true)
+            } else if url.lastPathComponent.starts(with: "media_") {
+                var filename = url.lastPathComponent
+                if filename.starts(with: "media_image") && url.pathExtension == "" {
+                    filename += ".png"
+                }
+                if filename.starts(with: "media_video") && url.pathExtension == "" {
+                    filename += ".mp4"
+                }
+                if let mediaUrl = Bundle.main.url(forResource: filename, withExtension: nil) {
+                    QuickLookPreviewer(mediaUrl).present(over: self)
+                } else {
+                    let a = UIAlertController(title: "Can't find document", message: "Cannot locate document '\(filename)'", preferredStyle: .alert)
+                    a.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+                    self.present(a, animated: true, completion: nil)
+                }
+            } else if UIApplication.shared.canOpenURL(url) {
+                let a = UIAlertController(title: "Open external link?", message: url.absoluteString, preferredStyle: .alert)
+                a.addAction(UIAlertAction(title: "Open", style: .default, handler: { action in
+                    if #available(iOS 10.0, *) {
+                        UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                    } else {
+                        UIApplication.shared.openURL(url)
+                    }
+                }))
+                a.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+                self.present(a, animated: true, completion: nil)
+            } else {
+                let a = UIAlertController(title: "The link is invalid", message: url.absoluteString, preferredStyle: .alert)
+                a.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+                self.present(a, animated: true, completion: nil)
+            }
+            
+            decisionHandler(.cancel)
+        } else if webView == downView {
+            downViewNavigationDelegate?.webView?(webView, decidePolicyFor: navigationAction, decisionHandler: decisionHandler)
+        }
+    }
+    func webView(_ webView: WKWebView, decidePolicyFor navigationResponse: WKNavigationResponse, decisionHandler: @escaping (WKNavigationResponsePolicy) -> Void) {
+        
+        if webView == downView {
+            downViewNavigationDelegate?.webView?(webView, decidePolicyFor: navigationResponse, decisionHandler: decisionHandler)
+        }
+    }
+    func webView(_ webView: WKWebView, didCommit navigation: WKNavigation!) {
+        if webView == downView {
+            downViewNavigationDelegate?.webView?(webView, didCommit: navigation)
+        }
+    }
+    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+        if webView == downView {
+            downViewNavigationDelegate?.webView?(webView, didFinish: navigation)
+        }
+    }
+    func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
+        if webView == downView {
+            downViewNavigationDelegate?.webView?(webView, didStartProvisionalNavigation: navigation)
+        }
+    }
+    func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
+        if webView == downView {
+            downViewNavigationDelegate?.webView?(webView, didFail: navigation, withError: error)
+        }
+    }
+    func webView(_ webView: WKWebView, didReceiveServerRedirectForProvisionalNavigation navigation: WKNavigation!) {
+        if webView == downView {
+            downViewNavigationDelegate?.webView?(webView, didReceiveServerRedirectForProvisionalNavigation: navigation)
+        }
+    }
+    func webView(_ webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: Error) {
+        if webView == downView {
+            downViewNavigationDelegate?.webView?(webView, didFailProvisionalNavigation: navigation, withError: error)
+        }
+    }
+    func webView(_ webView: WKWebView, didReceive challenge: URLAuthenticationChallenge, completionHandler: @escaping (URLSession.AuthChallengeDisposition, URLCredential?) -> Void) {
+        if webView == downView {
+            downViewNavigationDelegate?.webView?(webView, didReceive: challenge, completionHandler: completionHandler)
+        }
+    }
+    func webViewWebContentProcessDidTerminate(_ webView: WKWebView) {
+        if webView == downView {
+            downViewNavigationDelegate?.webViewWebContentProcessDidTerminate?(webView)
+        }
     }
     
     // MARK: - Table View Delegate Methods
@@ -140,10 +248,12 @@ class ContentViewController: UIViewController, UITableViewDelegate, UITableViewD
         return cell
     }
     
+    var selectRowDate: Date = Date()
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         defer {
-            //tableView.deselectRow(at: indexPath, animated: true)
+            selectRowDate = Date()
+            tableView.deselectRow(at: indexPath, animated: true)
             updateViews()
         }
         
@@ -162,6 +272,12 @@ class ContentViewController: UIViewController, UITableViewDelegate, UITableViewD
         selectedSegmentIndexPath = indexPath
         
         return
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if scrollView == tableView && -selectRowDate.timeIntervalSinceNow > 1 {
+            launchSectionView()
+        }
     }
     
     // MARK: - Text field handling
@@ -255,12 +371,8 @@ class ContentViewController: UIViewController, UITableViewDelegate, UITableViewD
         var contents: String?
         if let iP = selectedSegmentIndexPath {
             contents = topic.subsections[iP.row].asMarkdown()
-        } else if topic.markdownContents.isEmpty == false {
+        } else if !topic.markdownContents.isEmpty {
             contents = topic.markdownContents
-        } else if topic.subsections.count > 0 {
-            selectedSegmentIndexPath = IndexPath(row: 0, section: 0)
-            self.tableView.selectRow(at: selectedSegmentIndexPath, animated: true, scrollPosition: .middle)
-            contents = topic.subsections[0].asMarkdown()
         }
         
         //Update markdown view
@@ -291,11 +403,10 @@ class ContentViewController: UIViewController, UITableViewDelegate, UITableViewD
             
             if let iP = self.selectedSegmentIndexPath {
                 self.tableView.scrollToRow(at: iP, at: .middle, animated: true)
-                self.sectionPickerHeightConstraint.constant = min(totalHeight * 0.3, 200 + bottomInset)
+                self.sectionPickerHeightConstraint.constant = min(totalHeight * 0.3, 120 + bottomInset)
                 self.sectionPickerView.layer.shadowRadius = 3
             } else {
-                self.sectionPickerHeightConstraint.constant =
-                    topic.markdownContents.isEmpty ? totalHeight : min(totalHeight * 0.35, 220 + bottomInset)
+                self.sectionPickerHeightConstraint.constant = min(totalHeight * 0.6, 400 + bottomInset)
                 
                 self.sectionPickerView.layer.shadowRadius =
                     topic.markdownContents.isEmpty ? 0 : 3
@@ -307,9 +418,9 @@ class ContentViewController: UIViewController, UITableViewDelegate, UITableViewD
             if let iP = self.selectedSegmentIndexPath {
                 self.tableView.scrollToRow(at: iP, at: .middle, animated: true)
             }
-            if let downView = self.downView, contents == nil && completed {
+            /*if let downView = self.downView, contents == nil && completed {
                 try? downView.update(markdownString: "", options: [.unsafe, .hardBreaks])
-            }
+            }*/
         })
         
         

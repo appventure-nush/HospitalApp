@@ -4,40 +4,81 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, user-scalable=yes">
         <style>
-            * {
-                font-family: sans-serif, 'Helvetica', 'Arial';
-            }
-            body {
-                margin-left: 16px;
-                margin-right: 16px;
-                margin-top: 8px;
-                margin-bottom: 8px;
-                background-color: white;
-                color: black;
-            }
-            b, strong {
-                color: #ff0000;
-            }
-            h4 {
-                color: #cc2200;
-            }
-            dyn {
-                background-color: #eee;
-            }
-            a {
-                color: #0088ff;
+            @media all {
+                :root {
+                    --color-accent: #a31b3f;
+                    --color-accent-dark: #6c0a24;
+                    --color-accent-light: #FF9CB5;
+                    
+                    --color-background: #fff;
+                    --color-foreground: #000;
+                    --color-translucent: #ddd;
+                }
             }
             @media screen and (prefers-color-scheme: dark) {
+                :root {
+                    --color-accent: #ff99ad;
+                    --color-accent-dark: #ffc6d5;
+                    --color-accent-light: #cc6f85;
+                    
+                    --color-background: #111;
+                    --color-foreground: #fff;
+                    --color-translucent: #444;
+                }
+            }
+            @media all {
+                * {
+                    font-family: sans-serif, 'Helvetica', 'Arial';
+                    font-size: 16px;
+                    line-height: 1.1;
+                    -webkit-text-size-adjust: 100%;
+                }
                 body {
-                    background-color: #111;
-                    color: white;
+                    margin-left: 16px;
+                    margin-right: 16px;
+                    margin-top: 8px;
+                    margin-bottom: 8px;
+                    background-color: var(--color-background);
+                    color: var(--color-foreground);
+                }
+                
+                b, strong {
+                    color: var(--color-accent);
                 }
                 dyn {
-                    background-color: #333;
+                    background-color: var(--color-translucent);
                 }
+                a {
+                    color: #0088ff;
+                }
+                
+                h1, h1 * {
+                    font-size: 32px !important;
+                }
+                h2, h2 * {
+                    font-size: 30px !important;
+                }
+                h3, h3 * {
+                    font-size: 28px !important;
+                }
+                h4, h4 * {
+                    font-size: 24px !important;
+                }
+                h5, h5 * {
+                    font-size: 20px !important;
+                }
+                
                 h4 {
-                    color: #ee5544;
+                    font-weight: bold;
+                    line-height: 1.3;
                 }
+                h5 {
+                    font-weight: bold;
+                    font-style: italic;
+                    color: var(--color-accent-dark);
+                    line-height: 1.3;
+                }
+                
             }
         </style>
         <title></title>
