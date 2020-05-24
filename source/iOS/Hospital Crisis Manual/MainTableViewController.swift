@@ -13,6 +13,7 @@ class MainTableViewController: UITableViewController {
     var dataHandler: DataHandler?
     
     var autoOpenPage: Int?
+    var autoOpenPageCachedSender: Any?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,9 +33,13 @@ class MainTableViewController: UITableViewController {
         }
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        
-        //Handle page open
+    override func viewWillAppear(_ animated: Bool) {
+        //Auto deselect
+        if let selectedRowIndexPath = tableView.indexPathForSelectedRow {
+            tableView.deselectRow(at: selectedRowIndexPath, animated: true)
+        }
+            
+        //Prepare for auto page open
         if let pageNo = autoOpenPage,
             let dataHandler = dataHandler {
         
@@ -52,11 +57,19 @@ class MainTableViewController: UITableViewController {
                                         animated: true,
                                         scrollPosition: .none)
                     
-                    self.performSegue(withIdentifier: "showContents",
-                                      sender: ["topic": section.subsections[tmpSubsectionIdx], "no": pageNo])
+                    autoOpenPageCachedSender = ["topic": section.subsections[tmpSubsectionIdx], "no": pageNo]
+                    print("successfully prepared for automatic page open to page no \(pageNo)")
                     break
                 }
             }
+        }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        if let sender = autoOpenPageCachedSender {
+            autoOpenPageCachedSender = nil
+            print("performatic automatic page open")
+            self.performSegue(withIdentifier: "showContents", sender: sender)
         }
     }
     
