@@ -1005,11 +1005,11 @@ Note: This device can deliver 15L/min but at the expense of high airway pressure
 
 ### **SGH** Contact Numbers / Locations
 
-**BTS MO:** 9186 4133
+**BTS MO:** [9186 4133](tel:91864133)
 
-**Blood Bank:** 6321 3666 or 6321 4852
+**Blood Bank:** [6321 3666](tel:63213666) or [6321 4852](tel:63214852)
 
-**EOT Nurse Clinician in-charge:** 8125 1945
+**EOT Nurse Clinician in-charge:** [8125 1945](tel:81251945)
 
 **Massive Tranfusion Protocol:** Intranet
 
@@ -1023,11 +1023,11 @@ Note: This device can deliver 15L/min but at the expense of high airway pressure
 
 ### **SKH** Contact Numbers / Locations
 
-**Blood bank:** 6390 2880
+**Blood bank:** [6390 2880](tel:63902880)
 
-**EOT Nurse Clinician in-charge:** 6390 3717
+**EOT Nurse Clinician in-charge:** [6390 3717](tel:63903717)
 
-**Blood Bank:** 6390 2888
+**Blood Bank:** [6390 2888](tel:63902888)
 
 **MH Kit:** OT 3.16 Induction Room
 
@@ -1039,11 +1039,11 @@ Note: This device can deliver 15L/min but at the expense of high airway pressure
 
 **Mobile difficult airway box:** OT 3.1 Induction room
 
-**ICU Ward 13:** 6390 3130 / 6390 3132
+**ICU Ward 13:** [6390 3130](tel:63903130) / [6390 3132](tel:63903132)
 
-**ICU Ward 23:** 6390 3230 / 6390 3232
+**ICU Ward 23:** [6390 3230](tel:63903230) / [6390 3232](tel:63903232)
 
-**High Dependency Unit:** 6390 3330 / 6390 3331 / 6390 3335
+**High Dependency Unit:** [6390 3330](tel:63903330) / [6390 3331](tel:63903331) / [6390 3335](tel:63903335)
 
 ## Application Docs
 
@@ -1051,9 +1051,9 @@ Note: This device can deliver 15L/min but at the expense of high airway pressure
 
 **Sidebar icon:** View *content page.* This allows all contents to be viewed.
 
-**Kilogram icon in top bar:** Calculate *mass-dependent drug dosages* via entering patient weight. This will be *enabled until the user disables it.*
+**Kilogram icon in top bar:** Calculate *mass-dependent drug dosages* via entering patient weight. This is *disabled by default*, and *stays enabled for a particular session until the user disables it.*
 
-**Search icon in top bar:** Allows user to *search* one chapter or the entire manual for a key term. The "search entire manual" switch determines if the *entire manual* is searched, or only *one chapter*.
+**Search icon in top bar:** Allows user to *search* for a specific text.
 
 **Zoom pop-up button:** Sets the *font size* of the manual.
 

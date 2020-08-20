@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="JhW-FN-w3w">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="JhW-FN-w3w">
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -41,16 +41,14 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Crisis Manual" largeTitleDisplayMode="never" id="ntT-dn-6U7">
-                        <rightBarButtonItems>
-                            <barButtonItem systemItem="search" id="OqC-gJ-P6L"/>
-                            <barButtonItem title="Weight Configuration" image="weight-kg-24" id="Zom-5N-WDU">
-                                <connections>
-                                    <action selector="weightConfigPressed:" destination="RRz-gJ-JHA" id="BVx-TF-vSQ"/>
-                                </connections>
-                            </barButtonItem>
-                        </rightBarButtonItems>
+                        <barButtonItem key="rightBarButtonItem" title="Weight Configuration" image="weight-kg-24" id="Zom-5N-WDU">
+                            <connections>
+                                <action selector="weightConfigPressed:" destination="RRz-gJ-JHA" id="BVx-TF-vSQ"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="patientWeightConfigButton" destination="Zom-5N-WDU" id="G8f-LT-EaI"/>
                         <segue destination="BYZ-38-t0r" kind="show" identifier="showContents" id="KYy-r6-fHH"/>
                     </connections>
                 </tableViewController>
@@ -123,14 +121,14 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bng-Rw-b9i">
-                                <rect key="frame" x="0.0" y="88" width="375" height="536"/>
+                                <rect key="frame" x="0.0" y="109" width="375" height="515"/>
                                 <subviews>
                                     <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="ImU-Iy-i8e">
-                                        <rect key="frame" x="169" y="249.66666666666669" width="37" height="37"/>
+                                        <rect key="frame" x="169" y="239" width="37" height="37"/>
                                         <color key="color" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </activityIndicatorView>
                                     <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="16" minimumValue="16" maximumValue="32" stepValue="2" translatesAutoresizingMaskIntoConstraints="NO" id="rHZ-5A-u2Y">
-                                        <rect key="frame" x="8" y="496" width="94" height="32"/>
+                                        <rect key="frame" x="8" y="475" width="94" height="32"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <connections>
                                             <action selector="zoomStepperPressed:" destination="BYZ-38-t0r" eventType="valueChanged" id="wcb-Pl-rFE"/>
@@ -145,29 +143,38 @@
                                     <constraint firstItem="ImU-Iy-i8e" firstAttribute="centerX" secondItem="bng-Rw-b9i" secondAttribute="centerX" id="nPc-vr-Dma"/>
                                 </constraints>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&lt;alert placeholder&gt;" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="doQ-sX-jwd">
+                                <rect key="frame" x="0.0" y="88" width="375" height="21"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <color key="textColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="Mlm-BM-xNn" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="069-gS-mky"/>
-                            <constraint firstItem="bng-Rw-b9i" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="1hL-Ll-use"/>
+                            <constraint firstItem="doQ-sX-jwd" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="4Mf-b2-EvU"/>
                             <constraint firstAttribute="trailing" secondItem="Mlm-BM-xNn" secondAttribute="trailing" id="7aK-kS-EOj"/>
                             <constraint firstAttribute="bottom" secondItem="Mlm-BM-xNn" secondAttribute="bottom" constant="-8" id="9Q7-qP-ucl"/>
                             <constraint firstItem="bng-Rw-b9i" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailing" id="UE0-77-FJM"/>
                             <constraint firstItem="Mlm-BM-xNn" firstAttribute="top" secondItem="bng-Rw-b9i" secondAttribute="bottom" id="XH3-cZ-xVd"/>
                             <constraint firstItem="bng-Rw-b9i" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="XqG-c0-m5p"/>
+                            <constraint firstItem="bng-Rw-b9i" firstAttribute="top" secondItem="doQ-sX-jwd" secondAttribute="bottom" id="ZIW-cL-Rsg"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="doQ-sX-jwd" secondAttribute="trailing" id="fOs-2a-2f1"/>
+                            <constraint firstItem="doQ-sX-jwd" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="oeC-1k-Ae3"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" title="Contents" largeTitleDisplayMode="never" id="w6F-5J-R13">
                         <rightBarButtonItems>
-                            <barButtonItem systemItem="search" id="AaD-xN-052">
-                                <connections>
-                                    <action selector="searchToggle" destination="BYZ-38-t0r" id="Snv-cw-NPC"/>
-                                </connections>
-                            </barButtonItem>
                             <barButtonItem title="Weight Configuration" image="weight-kg-24" id="DKa-Ag-emR">
                                 <connections>
                                     <action selector="weightConfigPressed:" destination="BYZ-38-t0r" id="bdH-oX-7Sw"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem systemItem="search" id="AaD-xN-052">
+                                <connections>
+                                    <action selector="searchToggle" destination="BYZ-38-t0r" id="Snv-cw-NPC"/>
                                 </connections>
                             </barButtonItem>
                         </rightBarButtonItems>
@@ -175,11 +182,13 @@
                     <connections>
                         <outlet property="activityIndicator" destination="ImU-Iy-i8e" id="d2E-Oh-PT5"/>
                         <outlet property="contentView" destination="bng-Rw-b9i" id="a8o-Zn-OUo"/>
+                        <outlet property="patientWeightConfigButton" destination="DKa-Ag-emR" id="TB0-9F-nR9"/>
                         <outlet property="searchAccessoryView" destination="cTs-OD-sJW" id="1oU-7v-KHW"/>
                         <outlet property="searchBar" destination="QlZ-eZ-um9" id="w7g-Md-5Ot"/>
                         <outlet property="sectionPickerHeightConstraint" destination="5OW-OJ-CRc" id="a2j-HG-ugQ"/>
                         <outlet property="sectionPickerView" destination="Mlm-BM-xNn" id="hYl-um-Dco"/>
                         <outlet property="tableView" destination="35n-nE-f3G" id="VqU-Zf-drk"/>
+                        <outlet property="warningLabel" destination="doQ-sX-jwd" id="FKF-rn-YUt"/>
                         <outlet property="zoomStepper" destination="rHZ-5A-u2Y" id="iZB-NY-nrT"/>
                     </connections>
                 </viewController>
@@ -191,21 +200,22 @@
                         <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="wER-cD-GsC">
                             <rect key="frame" x="8" y="0.0" width="354" height="48"/>
                             <subviews>
+                                <searchBar contentMode="redraw" searchBarStyle="minimal" text="" placeholder="Search Current Page" id="QlZ-eZ-um9">
+                                    <rect key="frame" x="0.0" y="0.0" width="308" height="48"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
+                                    <textInputTraits key="textInputTraits"/>
+                                </searchBar>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cci-QY-xSJ">
-                                    <rect key="frame" x="0.0" y="9" width="37" height="30"/>
+                                    <rect key="frame" x="316" y="9" width="38" height="30"/>
                                     <constraints>
-                                        <constraint firstAttribute="width" constant="54" id="kxn-De-wvQ"/>
+                                        <constraint firstAttribute="width" constant="72" id="kxn-De-wvQ"/>
                                     </constraints>
+                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                     <state key="normal" title="Done"/>
                                     <connections>
                                         <action selector="searchToggle" destination="BYZ-38-t0r" eventType="touchUpInside" id="OG7-lZ-ltP"/>
                                     </connections>
                                 </button>
-                                <searchBar contentMode="redraw" searchBarStyle="minimal" id="QlZ-eZ-um9">
-                                    <rect key="frame" x="45" y="0.0" width="309" height="48"/>
-                                    <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
-                                    <textInputTraits key="textInputTraits"/>
-                                </searchBar>
                             </subviews>
                             <constraints>
                                 <constraint firstAttribute="height" constant="48" id="Rcd-8J-LGA"/>

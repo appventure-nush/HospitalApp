@@ -39,6 +39,10 @@ class ContentViewController: UIViewController, UITableViewDelegate, UITableViewD
     @IBOutlet var activityIndicator: UIActivityIndicatorView!
     @IBOutlet var sectionPickerHeightConstraint: NSLayoutConstraint!
     
+    @IBOutlet var patientWeightConfigButton: UIBarButtonItem!
+    
+    @IBOutlet var warningLabel: UILabel!
+    
     // MARK: - View Controller Methods
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -377,12 +381,15 @@ class ContentViewController: UIViewController, UITableViewDelegate, UITableViewD
                 try downView.update(markdownString: contentsWDynDose, options: [.unsafe, .hardBreaks])
             }
         } catch (let e) {
-            let alert = UIAlertController(title: "Something went wrong.", message: e.localizedDescription, preferredStyle: .alert)
+            let alert = UIAlertController(title: "Warning: Something went wrong.", message: e.localizedDescription, preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
             self.present(alert, animated: true, completion: nil)
             
             print("an error '\(e.localizedDescription)' has occured")
         }
+        
+        self.warningLabel.text = Settings.preferredPatientWeight != nil ?
+            "Patient Weight set: \(Settings.preferredPatientWeight!) kg" : nil
 
         //Animate possible table view changes
         UIView.animate(withDuration: animated ? 0.3 : 0.0, delay: 0, options: [.curveEaseInOut], animations: {

@@ -15,6 +15,8 @@ class MainTableViewController: UITableViewController {
     var autoOpenPage: Int?
     var autoOpenPageCachedSender: Any?
     
+    @IBOutlet var patientWeightConfigButton: UIBarButtonItem!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -68,7 +70,7 @@ class MainTableViewController: UITableViewController {
     override func viewDidAppear(_ animated: Bool) {
         if let sender = autoOpenPageCachedSender {
             autoOpenPageCachedSender = nil
-            print("performatic automatic page open")
+            print("performing automatic page open")
             self.performSegue(withIdentifier: "showContents", sender: sender)
         }
     }
@@ -134,7 +136,7 @@ class MainTableViewController: UITableViewController {
             let vc = segue.destination as? ContentViewController,
             let dict = sender as? [String: Any],
             let subsection = dict["topic"] as? DataHandler.Section {
-            var no = dict["no"] as? Int
+            let no = dict["no"] as? Int
             
             vc.homepage = self
             vc.topic = subsection
