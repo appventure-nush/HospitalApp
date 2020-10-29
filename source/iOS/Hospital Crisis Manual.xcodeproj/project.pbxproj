@@ -426,7 +426,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 0.9.0.3;
+				CURRENT_PROJECT_VERSION = 1.0;
 				DEVELOPMENT_TEAM = QW2WA8LP5V;
 				INFOPLIST_FILE = "Hospital Crisis Manual/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
@@ -434,7 +434,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.9;
+				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.limwernjie.schoolwork.sghcrisismanual;
 				PRODUCT_NAME = "SGH Crisis Manual";
 				SWIFT_VERSION = 5.0;
@@ -448,7 +448,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 0.9.0.3;
+				CURRENT_PROJECT_VERSION = 1.0;
 				DEVELOPMENT_TEAM = QW2WA8LP5V;
 				INFOPLIST_FILE = "Hospital Crisis Manual/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
@@ -456,7 +456,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.9;
+				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.limwernjie.schoolwork.sghcrisismanual;
 				PRODUCT_NAME = "SGH Crisis Manual";
 				SWIFT_VERSION = 5.0;

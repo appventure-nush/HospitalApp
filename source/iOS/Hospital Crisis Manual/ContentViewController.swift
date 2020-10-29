@@ -10,6 +10,9 @@ import UIKit
 import WebKit
 import Down
 
+class SearchAccessoryView: UIView {
+    @IBOutlet var searchBar: UISearchBar!
+}
 class ContentViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate, UITextFieldDelegate, WKNavigationDelegate {
 
     var homepage: MainTableViewController?
@@ -31,10 +34,14 @@ class ContentViewController: UIViewController, UITableViewDelegate, UITableViewD
     @IBOutlet var zoomStepper: UIStepper!
     var downView: DownView?
     
-    @IBOutlet var searchAccessoryView: UIView!
-    @IBOutlet var searchBar: UISearchBar!
+    @IBOutlet var searchAccessoryView: SearchAccessoryView!
+    var searchBar: UISearchBar! {
+        return searchAccessoryView?.searchBar
+    }
     var activeSearchResultCount: Int?
     var activeSearchResultIndex: Int?
+    
+    var searchBarBottomConstraint: NSLayoutConstraint?
     
     @IBOutlet var activityIndicator: UIActivityIndicatorView!
     @IBOutlet var sectionPickerHeightConstraint: NSLayoutConstraint!
@@ -61,8 +68,10 @@ class ContentViewController: UIViewController, UITableViewDelegate, UITableViewD
         self.sectionPickerView.layer.shadowRadius = 3
         
         self.zoomStepper.clipsToBounds = true
-        self.zoomStepper.layer.cornerRadius = 8
-        self.zoomStepper.value = Settings.contentMinimumTextSize
+        if #available(iOS 13.0, *) {
+            self.zoomStepper.layer.cornerRadius = 8
+        }
+        self.zoomStepper.value = Settings.contentZoomLevel
         
         guard let topic = topic else {return}
         topic.convertToSubsections()
@@ -80,11 +89,12 @@ class ContentViewController: UIViewController, UITableViewDelegate, UITableViewD
                 }) { (completion) in
                     self.activityIndicator.stopAnimating()
                     self.downView?.navigationDelegate = self
+                    self.downView?.evaluateJavaScript("document.body.style.zoom = '\(CGFloat(Settings.contentZoomLevel*100))%';[true];", completionHandler: nil)
                 }
             }
             
             self.downView?.alpha = 0
-            self.downView?.configuration.preferences.minimumFontSize = CGFloat(Settings.contentMinimumTextSize)
+            self.downView?.evaluateJavaScript("document.body.style.zoom = '\(CGFloat(Settings.contentZoomLevel*100))%';[true];", completionHandler: nil)
             
             self.contentView.addSubview(self.downView!)
             self.contentView.sendSubviewToBack(self.downView!)
@@ -102,6 +112,24 @@ class ContentViewController: UIViewController, UITableViewDelegate, UITableViewD
         }
         
         self.view.bringSubviewToFront(self.sectionPickerView)
+        
+        self.searchAccessoryView.isHidden = true
+        if #available(iOS 13.0, *) {} else {
+            NotificationCenter.default.addObserver(
+                self,
+                selector: #selector(keyboardWillShow),
+                name: UIResponder.keyboardWillShowNotification,
+                object: nil
+            )
+            self.view.addSubview(searchAccessoryView)
+            searchAccessoryView.translatesAutoresizingMaskIntoConstraints = false
+            searchBarBottomConstraint = NSLayoutConstraint(item: self.view!, attribute: .bottom, relatedBy: .equal, toItem: searchAccessoryView, attribute: .bottom, multiplier: 1, constant: 0)
+            self.view.addConstraints(
+                [searchBarBottomConstraint!,
+                 NSLayoutConstraint(item: self.view!, attribute: .leading, relatedBy: .equal, toItem: searchAccessoryView!, attribute: .leading, multiplier: 1, constant: 0),
+                 NSLayoutConstraint(item: self.view!, attribute: .trailing, relatedBy: .equal, toItem: searchAccessoryView!, attribute: .trailing, multiplier: 1, constant: 0)])
+            self.view.bringSubviewToFront(self.searchAccessoryView)
+        }
     }
     
     override func viewWillLayoutSubviews() {
@@ -120,6 +148,7 @@ class ContentViewController: UIViewController, UITableViewDelegate, UITableViewD
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         self.searchBar.resignFirstResponder()
+        NotificationCenter.default.removeObserver(self)
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -136,9 +165,10 @@ class ContentViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     // MARK: - View Zooming Config
     @IBAction func zoomStepperPressed(_ sender: UIStepper!) {
-        downView?.configuration.preferences.minimumFontSize = CGFloat(sender.value)
-        Settings.contentMinimumTextSize = sender.value
-        print(Settings.contentMinimumTextSize)
+        Settings.contentZoomLevel = sender.value
+        print(Settings.contentZoomLevel)
+        
+        self.downView?.evaluateJavaScript("document.body.style.zoom = '\(CGFloat(Settings.contentZoomLevel*100))%';[true];", completionHandler: nil)
     }
     
     // MARK: - Patient Weight Config
@@ -291,19 +321,37 @@ class ContentViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     // MARK: - Search result handling
+    @objc func keyboardWillShow(_ notification: Notification) {
+        if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
+            let keyboardRectangle = keyboardFrame.cgRectValue
+            let keyboardHeight = keyboardRectangle.height
+            self.searchBarBottomConstraint?.constant = keyboardHeight
+            self.view.layoutIfNeeded()
+        }
+    }
+    
     @IBAction func searchToggle() {
         if searchBar.isFirstResponder {
             searchBar.resignFirstResponder()
             searchBar.text = ""
-            searchAccessoryView.removeFromSuperview()
+            if #available(iOS 13.0, *) {
+                searchAccessoryView.removeFromSuperview()
+            } else {
+                self.searchBarBottomConstraint?.constant = 0
+                self.view.layoutIfNeeded()
+            }
             if let dw = downView {
                 webViewRemoveAllSearchHighlights(dw)
             }
             self.activeSearchResultCount = nil
             self.activeSearchResultIndex = nil
+            self.searchAccessoryView.isHidden = true
         } else {
-            searchBar.inputAccessoryView = searchAccessoryView
-            self.view.addSubview(searchAccessoryView)
+            self.searchAccessoryView.isHidden = false
+            if #available(iOS 13.0, *) {
+                searchBar.inputAccessoryView = searchAccessoryView
+                self.view.addSubview(searchAccessoryView)
+            }
             searchBar.delegate = self
             searchBar.becomeFirstResponder()
         }

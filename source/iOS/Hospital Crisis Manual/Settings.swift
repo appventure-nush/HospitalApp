@@ -9,12 +9,12 @@
 import Foundation
 
 public class Settings {
-    public static var contentMinimumTextSize: Double {
+    public static var contentZoomLevel: Double {
         get {
-            UserDefaults.standard.object(forKey: "contentMinimumTextSize") as? Double ?? 1.0
+            UserDefaults.standard.object(forKey: "contentZoomLevel") as? Double ?? 1.0
         }
         set (x) {
-            UserDefaults.standard.set(x, forKey: "contentMinimumTextSize")
+            UserDefaults.standard.set(x, forKey: "contentZoomLevel")
         }
     }
     public static var preferredPatientWeight: Double?

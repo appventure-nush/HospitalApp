@@ -28,12 +28,10 @@ open class DownView: WKWebView {
     ///   - configuration: Optional custom web view configuration.
     ///   - options: `DownOptions` to modify parsing or rendering, defaulting to `.default`
     ///   - didLoadSuccessfully: Optional callback for when the web content has loaded successfully
-    ///   - writableBundle: Whether or not the bundle folder is writable.
     /// - Throws: `DownErrors` depending on the scenario
-    public init(frame: CGRect, markdownString: String, openLinksInBrowser: Bool = true, templateBundle: Bundle? = nil, writableBundle: Bool = false, configuration: WKWebViewConfiguration? = nil, options: DownOptions = .default, didLoadSuccessfully: DownViewClosure? = nil) throws {
+    public init(frame: CGRect, markdownString: String, openLinksInBrowser: Bool = true, templateBundle: Bundle? = nil, configuration: WKWebViewConfiguration? = nil, options: DownOptions = .default, didLoadSuccessfully: DownViewClosure? = nil) throws {
         self.options = options
         self.didLoadSuccessfully = didLoadSuccessfully
-        self.writableBundle = writableBundle
 
         if let templateBundle = templateBundle {
             self.bundle = templateBundle
@@ -88,7 +86,6 @@ open class DownView: WKWebView {
     // MARK: - Private Properties
 
     let bundle: Bundle
-    let writableBundle: Bool
     var options: DownOptions
 
     private lazy var baseURL: URL = {
@@ -116,12 +113,7 @@ private extension DownView {
         let pageHTMLString = try htmlFromTemplate(htmlString)
 
         #if os(iOS)
-            if writableBundle {
-                let newIndexUrl = try writeTempIndexFile(pageHTMLString: pageHTMLString)
-                loadFileURL(newIndexUrl, allowingReadAccessTo: newIndexUrl.deletingLastPathComponent())
-            } else {
-                loadHTMLString(pageHTMLString, baseURL: baseURL)
-            }
+            loadHTMLString(pageHTMLString, baseURL: baseURL)
         #elseif os(macOS)
             let indexURL = try createTemporaryBundle(pageHTMLString: pageHTMLString)
             loadFileURL(indexURL, allowingReadAccessTo: indexURL.deletingLastPathComponent())
@@ -132,14 +124,6 @@ private extension DownView {
         let template = try String(contentsOf: baseURL, encoding: .utf8)
         return template.replacingOccurrences(of: "DOWN_HTML", with: htmlString)
     }
-
-    #if os(iOS)
-    func writeTempIndexFile(pageHTMLString: String) throws -> URL {
-        let newIndexUrl = bundle.resourceURL!.appendingPathComponent("tmp_index.html")
-        try pageHTMLString.write(to: newIndexUrl, atomically: true, encoding: .utf8)
-        return newIndexUrl
-    }
-    #endif
 
     #if os(macOS)
     func createTemporaryBundle(pageHTMLString: String) throws -> URL {
